@@ -10,5 +10,5 @@ export declare class GlbViewer extends Main {
     constructor();
     protected bootFinished(): void;
     pause(): void;
-    getRoomleGLBViewer(): RoomleGLBViewer;
+    getApi(): RoomleGLBViewer;
 }
