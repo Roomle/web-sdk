@@ -1,0 +1,28 @@
+{
+  "_from": "http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz",
+  "_id": "roomle-core-hsc@2.8.0",
+  "_inBundle": false,
+  "_integrity": "sha512-95zmghMQU3t4lXaMLjXzyoWAMTKEjS4X0z9gKlBJ1f7d5nykBA1s5R4exKAKY/+lwObrEJpAg5Ndlhhfmn2dAQ==",
+  "_location": "/roomle-core-hsc",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "roomle-core-hsc@http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz",
+    "name": "roomle-core-hsc",
+    "escapedName": "roomle-core-hsc",
+    "rawSpec": "http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz",
+    "saveSpec": "http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz",
+    "fetchSpec": "http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz",
+  "_shasum": "7c04e60893f7e7868951b66ac48b425701759e5d",
+  "_spec": "roomle-core-hsc@http://build.roomle.local/job/KernelEmscriptenRelease/38/artifact/dist/hsc.tar.gz",
+  "_where": "/data/jenkins/jobs/Roomle_Web_SDK/workspace/source",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "name": "roomle-core-hsc",
+  "version": "2.8.0"
+}

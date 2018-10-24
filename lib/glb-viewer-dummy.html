@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GLB Viewer Dummy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<style>
+    .loadConfiguration {
+        background-color: lightblue;
+    }
+
+    .loadConfigurableItem {
+        background-color: lightsalmon;
+    }
+</style>
+<div>
+    <textarea type="text" id="input-url">{
+	"items": [{
+		"path": "furniture/MDFItalia/mdfitalia_eleven_five_comp_01/mdfitalia_eleven_five_comp_01.glb",
+		"camera": {
+			"fieldOfView": 14.65281507171211,
+			"rotation": {
+				"z": -0.5235987901687622,
+				"x": 1.2217304706573486,
+				"y": 0.0
+			},
+			"position": {
+				"z": 4.465890884399414,
+				"x": -5.009007930755615,
+				"y": -8.581267356872559
+			}
+		}
+	}]
+}</textarea>
+    <button id="load-glb-url" disabled="disabled">Load GLB URL</button>
+    <button id="generate-image" disabled="disabled">Generate Image</button>
+    <button id="process-json" disabled="disabled">Process JSON</button>
+</div>
+<script>
+    var appjsLoaded = function load(event) {
+        console.log('ON LOAD DONE');
+        const script = document.createElement('script');
+        script.src = 'glb-viewer-dummy-app.js';
+        document.body.appendChild(script);
+    };
+</script>
+<div id="roomle-glb-viewer" style="height: 100vh; width: 100%; background-color: white; border: solid 1px gray"></div>
+<script src="glb-viewer-main.js" id="appjs" type="module" onload="appjsLoaded();"></script>
+</body>
+</html>

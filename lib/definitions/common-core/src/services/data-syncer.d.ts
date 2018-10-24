@@ -1,0 +1,34 @@
+import { RapiId, AssetUrl } from '../../../typings/rapi-types';
+export default class DataSyncer {
+    private _rapiAccess;
+    private _eventHandler;
+    private _singlePromiseFactory;
+    private _errorHandler;
+    private _worker;
+    private _bootCallbacks;
+    private _isStarted;
+    private _isStarting;
+    start(catalogId: RapiId): Promise<void>;
+    syncCatalog(catalogId: RapiId): Promise<void>;
+    syncFloorTag(tagId: RapiId): Promise<any>;
+    syncTypeChangeTag(tagId: RapiId): Promise<any>;
+    private _syncFloorTag;
+    _syncTypeChangeTag(tagId: RapiId): Promise<any>;
+    getIsCatalogSynced(catalogId: RapiId): boolean;
+    private _startWorker;
+    private _sendToWorker;
+    private _nextConversationId;
+    private _receiveFromWorker;
+    private _triggerCallback;
+    private _handleCatalog;
+    private _handleTags;
+    private _handleExternalMeshes;
+    private _handleItemsAndAdditionalContents;
+    private _handleMaterialsAndTextures;
+    private _handleContentWithAssets;
+    private _fetchAssets;
+    private _preCacheAsset;
+    private _assetUrlToBase64;
+    private _softReject;
+    requestAsset(url: string, urlAsFallback?: boolean): AssetUrl;
+}

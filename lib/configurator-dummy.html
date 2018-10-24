@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HSC Dummy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<style>
+    .loadConfiguration {
+        background-color: lightblue;
+    }
+
+    .loadConfigurableItem {
+        background-color: lightsalmon;
+    }
+</style>
+<div>
+    <textarea type="text" id="input-configuration"></textarea>
+    <button id="load-configuration" disabled="disabled">Load configuration</button>
+    <button id="load-rapi-configuration" disabled="disabled">Load rapi configuration</button>
+    <button id="load-item" disabled="disabled">Load rapi item</button>
+</div>
+<div class="dummy-buttons">
+    <button disabled="disabled" class="loadConfiguration" data-rml-id="usm:frame:FA92430853C0E886C163F12A7DEAEB4609CD3EAC30AA9AC2B6601E6273EB3130">USM conf from RAPI</button>
+    <button disabled="disabled" class="loadConfiguration" data-rml-id="KIKA:Consul:01D1C44477E66A4F12A98E6834A496C8A95FA99492FEC6380087F479F5B709EB">Kika conf fromRAPI</button>
+    <button disabled="disabled" class="loadConfiguration" data-rml-id="ikea:PAX_Wardrobe:61B46FE6B3C405B706F67FAA093092C2DFB9C691052AFC72F9B941BA81BB0C44">Ikea conffrom RAPI</button>
+
+    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="usm:SideCabinetSmall">USM item from RAPI</button>
+    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="fantoni_1:FW_SingleDesk_A">Fantoni item from RAPI</button>
+    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="ikea:pax_100cm_201h_oakframes_oakdoors">Ikea item from RAPI</button>
+
+    <button disabled="disabled" id="load-configuration-sofa">KIKA Sofa</button>
+    <button disabled="disabled" id="load-configuration-string-big">USM from String (big)</button>
+    <button disabled="disabled" id="load-configuration-string-small">USM from String (small)</button>
+    <button disabled="disabled" id="load-configuration-fantoni">Fantoni from String</button>
+    <button disabled="disabled" id="load-configuration-muuto">Muuto from String</button>
+    <button disabled="disabled" id="debug-scene-graph">Scene Graph</button>
+    <button disabled="disabled" id="component-change-width">Change Width to 350.00</button>
+    <button disabled="disabled" id="preview-dockings">Ghosts anzeigen</button>
+    <button disabled="disabled" id="preview-dockings-fantoni">Fantoni Ghosts anzeigen</button>
+    <button disabled="disabled" id="preview-dockings-muuto">Muuto Ghosts anzeigen</button>
+    <button disabled="disabled" id="preview-dockings-umdasch">Umdasch Ghosts anzeigen</button>
+    <button disabled="disabled" id="image">Image anzeigen</button>
+    <button disabled="disabled" id="top-image">Top Image anzeigen</button>
+    <button disabled="disabled" id="component-delete">delete Component</button>
+    <button disabled="disabled" id="camera-reset">Reset Camera</button>
+
+</div>
+<script>
+    window.performance.mark('load_app_js_start');
+    var appjsLoaded = function load(event) {
+        console.log('ON LOAD DONE');
+        window.performance.mark('load_app_js_end');
+        window.performance.measure('load_app_js', 'load_app_js_start', 'load_app_js_end');
+        const script = document.createElement("script");
+        script.src = "configurator-dummy-app.js";
+        document.body.appendChild(script);
+    };
+</script>
+<div id="roomle-configurator" style="height: 100vh; width: 100%; background-color: deeppink; border: solid 1px gray"></div>
+<script src="configurator-main.js" id="appjs" type="module" onload="appjsLoaded();"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "lights": [
+    {
+      "type": "rectarea",
+      "name": "main",
+      "intensity": 240,
+      "color": "#ffffff",
+      "position": {
+        "x": -3,
+        "y": 6,
+        "z": 1.6
+      },
+      "target": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "castShadow": true,
+      "width": 0.8,
+      "height": 0.8
+    },
+    {
+      "type": "spot",
+      "name": "side",
+      "intensity": 0.3,
+      "color": "#ffffff",
+      "position": {
+        "x": 2,
+        "y": 3,
+        "z": 1.5
+      },
+      "target": {
+        "x": 0,
+        "y": 0.1,
+        "z": 0
+      },
+      "castShadow": false,
+      "angle": 50,
+      "penumbra": 0.5
+    },
+    {
+      "type": "spot",
+      "name": "back",
+      "intensity": 0.5,
+      "color": "#ffffff",
+      "position": {
+        "x": 1,
+        "y": 3,
+        "z": -3
+      },
+      "target": {
+        "x": 0,
+        "y": 0.1,
+        "z": 0
+      },
+      "castShadow": false,
+      "angle": 150,
+      "penumbra": 1
+    },
+    {
+      "type": "ambient",
+      "name": "ambient",
+      "intensity": 0.3,
+      "color": "#ffffff",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ]
+}

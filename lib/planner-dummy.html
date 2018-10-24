@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HSP Dummy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<style>
+    .loadConfiguration {
+        background-color: lightblue;
+    }
+
+    .loadConfigurableItem {
+        background-color: lightsalmon;
+    }
+</style>
+<div>
+    <textarea type="text" id="input-xml">8a7080835f0572a8015f0b5a841f4b1d</textarea>
+    <button id="load-plan-xml" disabled="disabled">Load Plan XML</button>
+    <button id="load-plan-id" disabled="disabled">Load Plan ID</button>
+</div>
+<div class="dummy-buttons">
+    <button disabled="disabled" id="back">Back</button>
+    <button disabled="disabled" id="switch2D">Switch to 2D</button>
+    <button disabled="disabled" id="switch3D">Switch to 3D</button>
+    <button disabled="disabled" id="switchFirstPerson">Switch to First Person</button>
+</div>
+<script>
+    var appjsLoaded = function load(event) {
+        console.log('ON LOAD DONE');
+        const script = document.createElement('script');
+        script.src = 'planner-dummy-app.js';
+        document.body.appendChild(script);
+    };
+</script>
+<div id="roomle-planner" style="height: 100vh; width: 100%; background-color: deeppink; border: solid 1px gray"></div>
+<script src="planner-main.js" id="appjs" type="module" onload="appjsLoaded();"></script>
+</body>
+</html>

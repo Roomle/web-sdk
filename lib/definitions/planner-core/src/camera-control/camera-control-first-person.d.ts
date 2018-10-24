@@ -1,0 +1,38 @@
+import CameraControl from '../../../common-core/src/cameracontrol/camera-control';
+import InputManager from '../../../common-core/src/input/input-manager';
+export default class CameraControlFirstPerson extends CameraControl {
+    private _camera;
+    private _orbitPosition;
+    private _state;
+    private _cameraRotation;
+    private _position;
+    private _downPosition;
+    private _downTime;
+    private _longDownTimer;
+    private _rotationSpeed;
+    private _keyMap;
+    private _listenerLoopAnimationFrame;
+    constructor(inputManager: InputManager, initialCameraPosition?: THREE.Vector3);
+    private _gamepadConnected;
+    private _gamepadDisconnected;
+    private startButtonPressListener;
+    private buttonPressListener;
+    private _checkRightStick;
+    private _checkLeftStick;
+    private _checkButtons;
+    animateCamera(delta: number): boolean;
+    protected _getCamera(): THREE.Camera;
+    protected _initInputListener(): void;
+    private _down;
+    private _move;
+    private _up;
+    private _onLongDown;
+    protected _update(overrideTarget?: THREE.Vector3): void;
+    updateCamera(): void;
+    private _onKeyChanged;
+    private _processKeyMap;
+    private _processUpDown;
+    private _orbit;
+    private _moveForward;
+    protected _rotateVertical(angle: number): void;
+}

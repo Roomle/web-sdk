@@ -1,0 +1,20 @@
+{
+  "name": "roomle-web-sdk",
+  "version": "0.9.3",
+  "description": "",
+  "main": "lib/roomle-sdk.js",
+  "scripts": {
+    "postinstall": "node scripts/copy-assets-sdk.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "types": "lib/definitions/common-core/src/roomle-sdk.d.ts",
+  "devDependencies": {
+    "@types/dat.gui": "0.7.1",
+    "@types/jest": "23.1.5",
+    "@types/jszip": "3.1.4",
+    "@types/three": "0.92.0",
+    "@types/tween.js": "16.9.0",
+    "fs-extra": "3.0.0"
+  }
+}
