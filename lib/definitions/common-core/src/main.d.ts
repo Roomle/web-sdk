@@ -20,4 +20,5 @@ export default abstract class Main implements Bootable {
     boot(settings?: object): void;
     protected lookup<T>(specifier: string): T;
     teardown(): void;
+    resetDom(): void;
 }
