@@ -14,7 +14,6 @@
     "@types/jest": "23.1.5",
     "@types/jszip": "3.1.4",
     "@types/three": "0.92.0",
-    "@types/tween.js": "16.9.0",
-    "fs-extra": "3.0.0"
+    "@types/tween.js": "16.9.0"
   }
 }
