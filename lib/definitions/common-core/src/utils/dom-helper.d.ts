@@ -16,5 +16,6 @@ export default class DomHelper {
     private _setClientDimensions;
     getClientDimensions(): THREE.Vector2;
     cleanUp(): void;
+    private _removeDomElement;
     reset(): void;
 }
