@@ -11,9 +11,14 @@ Roomle uses [Three.js](https://threejs.org/) to display the 3D content and a [WA
     "assetTarget": "__REPLACE__WITH__YOUR__PATH__"
   }
 ```
+
+### Asset copy
+
 The script will copy the needed assets to the path you specify, typically these path are something like `public` or `dist`,  (right now this is only triggered at the first install, so make sure that the Roomle Assets are *always* copied. We are working to make this process smoother and we will provide and update soon).
 
 To tell Roomle where to look for this assets you need to specify a global variable before you load the Roomle source code. We need to use a global variable because we try to load all the stuff as fast and parallel as possible.
+
+### Asset path
 
 ```html
 <script>
@@ -52,3 +57,11 @@ To push something into our modules you just need to call the methods exposed on 
 ```typescript
 await roomleConfigurator.getApi().setParameter(parameter, '1000');
 ```
+
+## Browser compatibility
+
+Since our SDK is focused on high performance and high quality 3D visualization we recommend modern browsers. We suggest to target browser which support ES6 modules, for details see: https://caniuse.com/#feat=es6-module. Of course it is possible to do transpile magic and convert the code to some JavaScript version which supports more browsers but this is totally experimental and not supported by this SDK. If you do apply transpile magic, make sure to send the correct bundle to every browser and not a legacy version to everybody.
+
+## Example
+
+A very simplistic example can be found here: https://github.com/Roomle/web-sdk-example. This repo is not intended to be a boilerplate or a project setup. It should just show you all the parts which needs to work together so that you can use our SDK in your project. 
