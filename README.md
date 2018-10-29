@@ -14,7 +14,7 @@ Roomle uses [Three.js](https://threejs.org/) to display the 3D content and a [WA
 
 ### Asset copy
 
-The script will copy the needed assets to the path you specify, typically these path are something like `public` or `dist`,  (right now this is only triggered at the first install, so make sure that the Roomle Assets are *always* copied. We are working to make this process smoother and we will provide and update soon).
+The script will copy the needed assets to the path you specify, typically these path are something like `public` or `dist`,  (right now this is only triggered at the first install, so make sure that the Roomle Assets are *always* copied. We are working to make this process smoother and we will provide an update soon).
 
 To tell Roomle where to look for this assets you need to specify a global variable before you load the Roomle source code. We need to use a global variable because we try to load all the stuff as fast and parallel as possible.
 
