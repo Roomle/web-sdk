@@ -1,10 +1,10 @@
-import { Component, KernelParameter, KernelPart, UiPossibleChild, UiPossibleChildTag } from '../../../typings/kernel';
+import { Component, KernelPart, UiPossibleChild, UiPossibleChildTag, UiKernelParameter } from '../../../typings/kernel';
 import { UIIntersection } from '../utils/ui-intersection-helper';
 import { RAPI_PATHS } from '../../../common-core/src/rapi-access';
 import { RapiTagForUi } from '../../../typings/rapi-types';
 export default class ConfiguratorUiCallbacks {
     onKernelIsReady: () => void;
-    onUpdateParameters: (parameters: KernelParameter[]) => void;
+    onUpdateParameters: (parameters: UiKernelParameter[]) => void;
     onUpdatePossibleChildren: (tags: UiPossibleChildTag[], defaultChild: UiPossibleChild) => void;
     onUpdatePrice: (currencySymbol: string, price: number) => void;
     onSelectionChange: (selectionMode: string, isRoot: boolean, hasChildren: boolean, components: Component[]) => void;
