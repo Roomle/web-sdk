@@ -7,7 +7,7 @@ export default class GLBViewerSceneManager extends SceneManager implements GLBRe
     private _glbInputManager;
     private _standardSceneBackgroundColor;
     private _itemsCount;
-    constructor(offset: CanvasOffset);
+    constructor(creator: string, offset: CanvasOffset);
     protected createCameraControl(mode: CAMERA_TYPE): void;
     protected _getInputManager(): InputManager;
     loadGLB(url: string, automaticallyAdjustCamera?: boolean): Promise<void>;
@@ -16,4 +16,5 @@ export default class GLBViewerSceneManager extends SceneManager implements GLBRe
     onStart(count: number): void;
     onElementFinished(itemsFinished: number): void;
     onFinished(zip: any): void;
+    sceneChanged(): void;
 }

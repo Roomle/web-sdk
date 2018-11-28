@@ -3,6 +3,7 @@ import EventDispatcher from '../utils/event-dispatcher';
 import InputManager, { INPUT_EVENT_TYPE } from '../../../common-core/src/input/input-manager';
 import { SELECTION_MODE } from '../utils/selection-handler';
 import AddonHelper from '../utils/addon-helper';
+import { Context } from '../../../common-core/src/di/context';
 export declare const enum SCENE_EVENT {
     INTERACTION = 0,
     HOVER_ON = 1,
@@ -26,21 +27,13 @@ export declare class SceneEventInfo {
         type?: INPUT_EVENT_TYPE;
     });
 }
-export declare const enum COMPONENT_EVENT {
-    CLICK = "select",
-    HOVER_ON = "hover_on",
-    HOVER_OFF = "hover_off",
-    HOVER_MOVE = "hover_move",
-    DRAG_START = "drag_start",
-    DRAG = "drag",
-    DRAG_END = "drag_end"
-}
 export interface ComponentEventInfo {
     hasListener: boolean;
     priority: number;
     roomleId: number;
 }
-export default class SceneEventHandler extends EventDispatcher<SceneEventInfo> {
+export default class SceneEventHandler extends EventDispatcher<SceneEventInfo> implements Context {
+    _creator_: string;
     private _selectionHandler;
     private _debug;
     private _raycastHelper;
@@ -52,7 +45,7 @@ export default class SceneEventHandler extends EventDispatcher<SceneEventInfo> {
     private _dragStartPosition;
     private _dragStartRotation;
     private _dragIn;
-    constructor(scene: THREE.Scene, camera: THREE.PerspectiveCamera, inputManager: InputManager, addonHelper?: AddonHelper);
+    constructor(creator: string, scene: THREE.Scene, camera: THREE.PerspectiveCamera, inputManager: InputManager, addonHelper?: AddonHelper);
     private _addInputListeners;
     addComponentHandlers(component: RoomleComponent): void;
     addComponentDragInHandler(component: RoomleComponent): void;

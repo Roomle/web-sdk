@@ -3,6 +3,8 @@ import RapiAccess from '../rapi-access';
 import ScriptLoader from '../script-loader';
 import DataSyncer from './data-syncer';
 import { RapiId } from '../../../typings/rapi-types';
+import { LifeCycleCallbacks } from '../life-cycle-manager';
+import { Context } from '../di/context';
 export declare const enum KERNEL_TYPE {
     PLANNER = 0,
     CONFIGURATOR = 1
@@ -11,11 +13,13 @@ interface SubComponentWaiter {
     parentId: number;
     partId: number;
 }
-export default abstract class CommonKernelAccess {
+export default abstract class CommonKernelAccess implements LifeCycleCallbacks, Context {
+    _creator_: string;
     protected _rapiAccess: RapiAccess;
     protected _scriptLoader: ScriptLoader;
     private _kernelIo;
     protected _dataSyncer: DataSyncer;
+    private _lifeCycleManager;
     /**
      *
      * !!!WARNING!!!
@@ -45,7 +49,8 @@ export default abstract class CommonKernelAccess {
     protected _useWASM: boolean;
     protected _utilityToLongArray(longArray: number[]): any;
     protected abstract onLoadComponentError(error: Error): void;
-    constructor(kernelType: KERNEL_TYPE);
+    constructor(creator: string, kernelType: KERNEL_TYPE);
+    readonly kernelContainer: any;
     private _setupKernelPaths;
     private _setupEmsModule;
     private _passSubComponentsToKernel;
@@ -55,5 +60,10 @@ export default abstract class CommonKernelAccess {
     protected addDebugInfo(): void;
     loadComponent(conversationId: number, configuration: ConfigurationObject, parentId: number): void;
     loadSubComponent(parentId: number, partId: number, componentId: string): void;
+    protected cleanUpCallbacks(): void;
+    protected registerCallbacks(): void;
+    pause(): void;
+    resume(): void;
+    destroy(): void;
 }
 export {};

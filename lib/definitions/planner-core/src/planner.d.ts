@@ -9,5 +9,4 @@ export declare class Planner extends Main {
     protected cleanUpDependencies(): void;
     protected bootFinished(): void;
     getApi(): RoomlePlanner;
-    pause(): void;
 }

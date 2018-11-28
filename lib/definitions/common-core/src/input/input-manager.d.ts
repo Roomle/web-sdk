@@ -1,5 +1,9 @@
 import { Position2 } from '../common-interfaces';
 import EventDispatcher from '../../../configurator-core/src/utils/event-dispatcher';
+import { Context } from '../di/context';
+export declare const BROWSER_EVENTS: {
+    [key: string]: string;
+};
 export declare const enum INPUT_EVENT {
     DRAG_START = 0,
     DRAG = 1,
@@ -23,7 +27,8 @@ export declare class InputEvent {
     constructor(position?: Position2, positionRelative?: Position2, type?: INPUT_EVENT_TYPE);
 }
 export declare const MIN_MOVE_DISTANCE: number;
-export default class InputManager extends EventDispatcher<InputEvent> {
+export default class InputManager extends EventDispatcher<InputEvent> implements Context, EventListenerObject {
+    _creator_: string;
     private _debug;
     private _domHelper;
     private _position;
@@ -37,35 +42,39 @@ export default class InputManager extends EventDispatcher<InputEvent> {
     private _firefoxDragPosition;
     private _lastMouseWheelEvent;
     private _lastTouchEvent;
+    private _events;
     private _dragEnabled;
     private _dragTarget;
     private _dragMVName;
     private _dragMV;
     private _dragEVName;
     private _dragEV;
-    constructor();
+    constructor(creator: string);
     enableDragIn(dragEvent?: DragEvent): void;
     private _dragM;
     private _dragE;
     addEvents(element: HTMLElement): void;
-    private _onDocumentMouseMove;
-    private _onDocumentTouchMove;
+    removeEvents(element: HTMLElement): void;
     private _dolly;
     private _move;
-    private _onDocumentMouseDown;
-    private _onDocumentTouchStart;
     private _longClick;
-    private _onDocumentMouseLeave;
-    private _onDocumentMouseEnter;
-    private _onDocumentMouseCancel;
-    private _onDocumentTouchEnd;
     private _onUp;
-    private _onMouseWheel;
-    private _onContextMenu;
     private _getTouchPosition;
     private _getTouchPositionRelative;
     private _getMousePosition;
     private _getMousePositionRelative;
     private _getDelta;
     setDragEnabled(enabled: boolean): void;
+    handleEvent(evt: Event): void;
+    private _onMouseDown;
+    private _onMouseUp;
+    private _onMouseMove;
+    private _onMouseLeave;
+    private _onMouseEnter;
+    private _onMouseWheel;
+    private _onTouchMove;
+    private _onTouchStart;
+    private _onTouchEnd;
+    private _onContextMenu;
+    protected _canDrag(type: INPUT_EVENT_TYPE): boolean;
 }

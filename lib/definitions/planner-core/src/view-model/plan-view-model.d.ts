@@ -4,8 +4,10 @@ import { Plan } from '../../../typings/planner';
 import { Component, KernelVector3 } from '../../../typings/kernel';
 import { ConfiguratorKernelCallbackI } from '../services/planner-kernel-access';
 import PlannerSceneEventHandler from '../webgl/planner-scene-event-handler';
+import StaticPlanObjectViewModel from './static-plan-object-view-model';
 export default class PlanViewModel extends KernelViewModel implements ConfiguratorKernelCallbackI {
-    private _planObjectViewModels;
+    private _configurablePlanObjectViewModels;
+    private _staticPlanObjectViewModels;
     private _components;
     private _componentFactory;
     private _plannerKernelAccess;
@@ -19,6 +21,7 @@ export default class PlanViewModel extends KernelViewModel implements Configurat
     private _addMeshToComponentId;
     private _updateComponentInformation;
     private _getPlanObjectViewModelForRuntimeId;
+    getPlanObjectForId(id: number): PlanObjectViewModel;
     Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number, isRootComponent: boolean): void;
     Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
@@ -29,4 +32,5 @@ export default class PlanViewModel extends KernelViewModel implements Configurat
     Editor3dGeometryNotReady(id: number): void;
     sceneCleared(): void;
     componentDeleted(componentId: number): void;
+    getStaticPlanObjectViewModels(): StaticPlanObjectViewModel[];
 }

@@ -5,9 +5,7 @@ export default class KernelAccess extends CommonKernelAccess {
     private _eventHandler;
     private _unitFormatter;
     private _memoryManager;
-    constructor();
-    private _cleanup;
-    private _resume;
+    constructor(creator: string);
     private _loadSuccess;
     private _loadError;
     private _webGlSelectedComponent;

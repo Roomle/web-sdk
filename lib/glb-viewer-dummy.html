@@ -19,27 +19,12 @@
     }
 </style>
 <div>
-    <textarea type="text" id="input-url">{
-	"items": [{
-		"path": "furniture/MDFItalia/mdfitalia_eleven_five_comp_01/mdfitalia_eleven_five_comp_01.glb",
-		"camera": {
-			"fieldOfView": 14.65281507171211,
-			"rotation": {
-				"z": -0.5235987901687622,
-				"x": 1.2217304706573486,
-				"y": 0.0
-			},
-			"position": {
-				"z": 4.465890884399414,
-				"x": -5.009007930755615,
-				"y": -8.581267356872559
-			}
-		}
-	}]
-}</textarea>
+    <textarea type="text" id="input-url">https://storage.googleapis.com/roomle-static/test/glb_test/DS8065.glb</textarea>
     <button id="load-glb-url" disabled="disabled">Load GLB URL</button>
     <button id="generate-image" disabled="disabled">Generate Image</button>
     <button id="process-json" disabled="disabled">Process JSON</button>
+	<button disabled="disabled" id="pause">Pause</button>
+	<button disabled="disabled" id="resume">Resume</button>
 </div>
 <script>
     var appjsLoaded = function load(event) {

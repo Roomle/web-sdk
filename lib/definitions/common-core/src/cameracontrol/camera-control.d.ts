@@ -1,6 +1,7 @@
 import EventDispatcher, { Listener } from '../../../configurator-core/src/utils/event-dispatcher';
 import DomHelper from '../utils/dom-helper';
 import InputManager, { InputEvent } from '../input/input-manager';
+import { Context } from '../di/context';
 export interface CameraParameter {
     yaw: number;
     pitch: number;
@@ -14,7 +15,8 @@ export interface CameraParameter {
     blockOtherTweens?: boolean;
 }
 export declare const INITIAL_CAMERA_DISTANCE = -1;
-export default abstract class CameraControl extends EventDispatcher<any> {
+export default abstract class CameraControl extends EventDispatcher<any> implements Context {
+    _creator_: string;
     protected _domHelper: DomHelper;
     protected _width: number;
     protected _height: number;
@@ -28,7 +30,7 @@ export default abstract class CameraControl extends EventDispatcher<any> {
     protected _locked: boolean;
     private _inputManager;
     protected _inputListeners: Array<Listener<InputEvent>>;
-    constructor(inputManager: InputManager, initialCameraPosition?: THREE.Vector3);
+    constructor(creator: string, inputManager: InputManager, initialCameraPosition?: THREE.Vector3);
     getCamera(): THREE.Camera;
     protected abstract _getCamera(): THREE.Camera;
     abstract updateCamera(): void;
@@ -49,5 +51,6 @@ export default abstract class CameraControl extends EventDispatcher<any> {
     lock(): void;
     unlock(): void;
     getTargetPosition(): THREE.Vector3;
+    protected _saveYawAndPitch(): void;
     protected abstract _update(overrideTarget?: THREE.Vector3): void;
 }

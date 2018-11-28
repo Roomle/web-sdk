@@ -6,12 +6,14 @@ import { KernelVector3, UiPossibleChild } from '../../../typings/kernel';
 import { DynamicLightSettingSource } from '../../../common-core/src/lightsetting/dynamic-light-setting-loader';
 import { SceneSettings } from '../../../common-core/src/scene-settings-loader';
 import { Base64String, RapiJson, RapiMaterial, RapiTexture } from '../../../typings/rapi-types';
+import { Context } from '../../../common-core/src/di/context';
 export interface Base64Image {
     image: Base64String;
     width: number;
     height: number;
 }
-export default class WebGl {
+export default class WebGl implements Context {
+    _creator_: string;
     private _scriptLoader;
     private _eventHandler;
     private _rapiAccess;
@@ -20,7 +22,7 @@ export default class WebGl {
     private _needsSync;
     private _updatedOffset;
     context: ConfiguratorContext;
-    constructor();
+    constructor(creator: string);
     private _subscribeToKernelEvent;
     private _loadWebGlLib;
     private _loadingError;

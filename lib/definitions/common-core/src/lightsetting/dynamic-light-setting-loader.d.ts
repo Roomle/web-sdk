@@ -3,6 +3,7 @@ import { SceneSettings } from '../scene-settings-loader';
 export declare const PREDEFINED_LIGHTSETTING: {
     SOFA: string;
     SHELF: string;
+    SHELF_FRONT: string;
 };
 export interface DynamicLight {
     type: string;

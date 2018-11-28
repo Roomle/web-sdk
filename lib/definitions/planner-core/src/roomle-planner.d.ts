@@ -1,11 +1,15 @@
 import { KernelCallbackI } from './services/kernel-callback';
 import RoomlePlannerUiCallback from './roomle-planner-ui-callback';
 import { GlobalAPI } from '../../common-core/src/main';
+import { Configurator } from '../../configurator-core/src/configurator';
 import { InitData } from '../../common-core/src/utils/shims';
+import { BackstackCallbacks } from './services/backstack';
+import { Context } from '../../common-core/src/di/context';
 export interface RoomlePlannerCallback {
     switchToHsc: (planObjectId: number) => Promise<void>;
 }
-export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCallback, GlobalAPI {
+export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCallback, GlobalAPI, BackstackCallbacks, Context {
+    _creator_: string;
     private _domHelper;
     private _scriptLoader;
     private _kernelCallback;
@@ -13,6 +17,9 @@ export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCall
     private _rapiAccess;
     private _singlePromiseFactory;
     private _roomlePlannerUiCallback;
+    private _lifeCycleManager;
+    private _backstack;
+    private _overrides;
     private _planInteractionHandler;
     private _plannerSceneManager;
     private _plan;
@@ -20,8 +27,7 @@ export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCall
     private _kernelReadyCallback;
     private _hscInstance;
     private _glbInstance;
-    private _canvasStack;
-    constructor();
+    constructor(creator: string);
     init(element: HTMLElement, preloadPlanId?: string, options?: InitData): Promise<void>;
     loadPlanXml(xml: string, options?: InitData): Promise<void>;
     loadPlan(id: string, options?: InitData): Promise<void>;
@@ -35,14 +41,16 @@ export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCall
     enableHD(): Promise<void>;
     isReady(): void;
     showBenchmarks(): void;
-    private _bringIntoForeground;
     switchToHsc(planObjectId: number): Promise<void>;
     switchToGLB(url: string): Promise<void>;
     switchToPlanner(id: string): void;
-    back(): void;
-    backTo(id: string): void;
     updateSize(): void;
     update(): void;
     callbacks: RoomlePlannerUiCallback;
     showStats(): void;
+    onBackStackChanged(currentStack: string[]): void;
+    onCloseHSC(): void;
+    back(): void;
+    backTo(cssClass: string): void;
+    getConfigurator(): Configurator;
 }

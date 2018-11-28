@@ -2,6 +2,12 @@ import { CanvasOffset } from '../common-interfaces';
 import { ROOMLE_COLORS } from './common-utils';
 import { CAMERA_TYPE } from '../../../planner-core/src/roomle-planner-ui-callback';
 import { RapiId, RapiServerUrlType } from '../../../typings/rapi-types';
+export declare const enum WINDOW_EVENT {
+    RESIZE = "resize",
+    KEY_DOWN = "keydown",
+    KEY_UP = "keyup",
+    VISIBILITY_CHANGE = "visibilitychange"
+}
 export interface CommonInitData {
     retina?: boolean;
     enableHD?: boolean;
@@ -28,6 +34,7 @@ export interface CommonInitData {
     meshSelection?: boolean;
     enableHSC?: boolean;
     stats?: boolean;
+    _measureTraffic?: boolean;
 }
 export interface ConfiguratorInitData {
     addOnSpots?: boolean;
@@ -36,6 +43,7 @@ export interface ConfiguratorInitData {
     dls?: string;
     ls?: string;
     floorMaterialsTag?: RapiId;
+    cameraRestriction?: number;
 }
 export interface PlannerInitData {
     mode?: CAMERA_TYPE;

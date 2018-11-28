@@ -10,7 +10,7 @@ export declare const enum EVENTS {
     WEBGL_LIB_LOAD = 0,
     WEBGL_LIB_LOAD_SUCCESS = 1,
     WEBGL_LIB_LOAD_ERROR = 2,
-    WEBGL_CONTROLS_LOAD_SUCCESS = 3,
+    WEBGL_IS_READY = 3,
     WEBGL_CONTROLS_LOAD_ERROR = 4,
     WEBGL_QUALITY_LOAD_ERROR = 5,
     WEBGL_COMPONENT_DOCK = 6,
@@ -88,8 +88,7 @@ export declare const enum EVENTS {
     UI_REPORT_ERROR = 78,
     UI_SYNC_STARTED = 79,
     UI_SYNC_DONE = 80,
-    KERNEL_CLEANUP = 81,
-    KERNEL_RESUME = 82
+    KERNEL_CLEANUP = 81
 }
 export default class EventHandler {
     private _listeners;

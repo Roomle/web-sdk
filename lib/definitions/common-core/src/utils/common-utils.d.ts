@@ -1,7 +1,9 @@
 import '../../../typings/global-definitions';
 export declare const enum CURSOR_STYLE {
     HOVER = "pointer",
-    DEFAULT = "default"
+    DEFAULT = "default",
+    MOVE = "move",
+    DRAGGING = "grabbing"
 }
 export declare const ROOMLE_COLORS: {
     PRIMARY: string;
@@ -19,3 +21,6 @@ export declare const getColors: () => {
 };
 export declare const getAssetPath: () => string;
 export declare const uuid: (a?: string) => string;
+export declare const setEnumerable: (target: any, property: string, isEnumerable: boolean) => void;
+export declare const setWriteable: (target: any, property: string, isWritable: boolean) => void;
+export declare const setDescriptor: (target: any, property: string, options: PropertyDescriptor) => void;

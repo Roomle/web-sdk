@@ -12,7 +12,7 @@ export default class CameraControlFirstPerson extends CameraControl {
     private _rotationSpeed;
     private _keyMap;
     private _listenerLoopAnimationFrame;
-    constructor(inputManager: InputManager, initialCameraPosition?: THREE.Vector3);
+    constructor(creator: string, inputManager: InputManager, initialCameraPosition?: THREE.Vector3);
     private _gamepadConnected;
     private _gamepadDisconnected;
     private startButtonPressListener;

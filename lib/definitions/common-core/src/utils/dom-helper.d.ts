@@ -1,21 +1,23 @@
+import { LifeCycleCallbacks } from '../life-cycle-manager';
+import { Context } from '../di/context';
 export declare const CANVAS_ID: {
     HSC: string;
     HSP: string;
     GLB: string;
 };
-export default class DomHelper {
-    private _width;
-    private _height;
+export declare const CONTAINER_CSS_CLASS = "rml-threejs-canvas-container";
+export default class DomHelper implements LifeCycleCallbacks, Context {
+    _creator_: string;
+    private _lifeCycleManager;
     private _element;
     private _container;
-    private _canvas;
-    private _resizeListener;
     readonly element: HTMLElement;
-    canvas: HTMLCanvasElement;
+    constructor(creator: string);
     setDomElement(element: HTMLElement): void;
-    private _setClientDimensions;
     getClientDimensions(): THREE.Vector2;
-    cleanUp(): void;
     private _removeDomElement;
     reset(): void;
+    pause(): void;
+    resume(): void;
+    destroy(): void;
 }

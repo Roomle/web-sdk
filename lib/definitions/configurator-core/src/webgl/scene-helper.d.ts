@@ -5,7 +5,10 @@ import { Component, DockLine, DockPair, KernelVector3, PlanObject } from '../../
 import { DynamicLightSettingSource } from '../../../common-core/src/lightsetting/dynamic-light-setting-loader';
 import { SceneSettings } from '../../../common-core/src/scene-settings-loader';
 import { RapiMaterial } from '../../../typings/rapi-types';
-export default class SceneHelper {
+import { Context } from '../../../common-core/src/di/context';
+import { LifeCycleCallbacks } from '../../../common-core/src/life-cycle-manager';
+export default class SceneHelper implements Context, LifeCycleCallbacks, EventListenerObject {
+    _creator_: string;
     private _unitFormatter;
     private _domHelper;
     private _webGl;
@@ -16,6 +19,8 @@ export default class SceneHelper {
     private _errorHandler;
     private _configuratorMeshGenerator;
     private _memoryManager;
+    private _lifeCycleManager;
+    private _backstack;
     private _pixotron;
     private _composer;
     private _outlinePass;
@@ -36,9 +41,6 @@ export default class SceneHelper {
     private _scene;
     private _uiScene;
     private _camera;
-    private _shadow;
-    private _shadowDirty;
-    private _planObjectBounds;
     private _environment;
     private _lightSetting;
     private _components;
@@ -49,8 +51,8 @@ export default class SceneHelper {
     private _previewMaterial;
     private _lastChange;
     private _running;
-    private _shadowRenderer;
-    constructor(offset: CanvasOffset);
+    private _onAfterRender;
+    constructor(creator: string, offset: CanvasOffset);
     stopRenderLoop(): void;
     private _onHoverOn;
     private _onHoverOff;
@@ -60,6 +62,9 @@ export default class SceneHelper {
     private _animateCamera;
     private _cancelDockings;
     private _removePreviews;
+    resume(): void;
+    pause(): void;
+    destroy(): void;
     private _setupScene;
     private _tabVisible;
     addMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
@@ -85,7 +90,6 @@ export default class SceneHelper {
     planObjectUpdate(planObject: PlanObject, shouldUpdateToBounds: boolean): void;
     planObjectConstructionDone(planObject: PlanObject): void;
     private _internalClearScene;
-    private _updateShadow;
     previewConstructionDone(componentId: number, planObjectId: number): void;
     preparePerspectiveImage(): Promise<Base64Image>;
     private _placeCameraForPerspectiveImage;
@@ -114,6 +118,7 @@ export default class SceneHelper {
     setFloorMaterial(url: string, width: number, height: number, repeatable: boolean): Promise<void>;
     changeFloorMaterial(material: RapiMaterial): Promise<void>;
     enableHD(source?: DynamicLightSettingSource): void;
+    private reEnableHD;
     disableHD(): void;
     loadDynamicLightSetting(source: DynamicLightSettingSource): Promise<void>;
     exportGLB(): void;
@@ -127,4 +132,6 @@ export default class SceneHelper {
     loadSceneSettings(sceneSetting: SceneSettings): Promise<{}>;
     setBackgroundColor(hex: string): void;
     setBackgroundImage(url: string): void;
+    handleEvent(evt: Event): void;
+    private _updateCameraToBounds;
 }

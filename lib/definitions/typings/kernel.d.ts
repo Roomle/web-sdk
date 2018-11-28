@@ -1,5 +1,6 @@
 import { PARAMETER_KERNEL_TYPE, PARAMETER_UNIT_TYPES } from '../common-core/src/utils/parameter-types';
-import { RapiId, ConfigurationString, RapiJson, RapiElement, RapiTag, ConfigurationHash } from './rapi-types';
+import { ConfigurationHash, ConfigurationString, RapiElement, RapiId, RapiJson, RapiTag } from './rapi-types';
+import { KernelObject } from './planner';
 export interface WasmDbEntry {
     key: string;
     wasmVersion: string;
@@ -33,6 +34,7 @@ export interface KernelCatalogItem {
     scaleable: boolean;
     size: KernelVector3;
     type: string;
+    detailType: string;
 }
 export interface ConfigurationObject extends Object {
     componentId: RapiId;
@@ -200,4 +202,8 @@ export interface KernelClass {
     };
     loadComponentDefinition(conversationId: number, component: string): void;
     syncPlanObjectToView(conversationId: number, planObjectId: number): void;
+}
+export interface PlanObjectPtrList {
+    size(): void;
+    push_back(object: KernelObject): void;
 }

@@ -5,10 +5,16 @@ import ScriptLoader from '../script-loader';
 import CameraControl from '../cameracontrol/camera-control';
 import LightSetting from '../lightsetting/light-setting';
 import { CAMERA_TYPE } from '../../../planner-core/src/roomle-planner-ui-callback';
-export default abstract class SceneManager {
+import { Context } from '../di/context';
+import { LifeCycleCallbacks } from '../life-cycle-manager';
+export default abstract class SceneManager implements Context, LifeCycleCallbacks, EventListenerObject {
+    _creator_: string;
     protected _domHelper: DomHelper;
     private _environmentLoader;
     protected _scriptLoader: ScriptLoader;
+    private _lifeCycleManager;
+    private _staticItemLoader;
+    private _backstack;
     protected _scene: THREE.Scene;
     protected _cameraControl: CameraControl;
     protected _lightSetting: LightSetting;
@@ -17,6 +23,7 @@ export default abstract class SceneManager {
     private _delta;
     private _devicePixelRatio;
     protected _renderLoopFunction: () => void;
+    protected _renderListener: () => void;
     protected _stopRendering: boolean;
     protected _pixotron: any;
     private _forceRender;
@@ -26,17 +33,21 @@ export default abstract class SceneManager {
     protected _width: number;
     protected _height: number;
     private _statsHelper;
+    private _canvasID;
     protected abstract createCameraControl(mode: CAMERA_TYPE): void;
     protected abstract _getInputManager(): InputManager;
+    abstract sceneChanged(): void;
     protected onBeforeRender(): void;
-    constructor(offset: CanvasOffset, canvasID: string, mode?: CAMERA_TYPE, transparent?: boolean);
+    protected _onAfterRender: () => void;
+    constructor(creator: string, offset: CanvasOffset, canvasID: string, mode?: CAMERA_TYPE, transparent?: boolean);
     protected _changeCameraControl(cameraControl: CameraControl): void;
     cameraControlChanged(): void;
     protected _addCameraControlListener(): void;
     protected _requestRender(forceRender?: boolean): void;
     private _animateCamera;
-    private _setupScene;
+    protected _setupScene(offset?: CanvasOffset, transparent?: boolean): void;
     private _tabVisible;
+    setupScene(offset?: CanvasOffset, transparent?: boolean): void;
     updateCamera(): void;
     private _onWindowResize;
     protected _isPartOfScene(object: THREE.Object3D): boolean;
@@ -46,9 +57,15 @@ export default abstract class SceneManager {
     protected _loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
     private _calculateBoundingBoxOfAllMeshes;
     protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
+    private _setCamera;
     showGUI(): void;
     private _guiLoaded;
     private _addGUIListener;
     showStats(): void;
     protected _onKeyDown(event: KeyboardEvent): void;
+    protected _onKeyUp(event: KeyboardEvent): void;
+    pause(): void;
+    resume(): void;
+    destroy(): void;
+    handleEvent(evt: Event): void;
 }

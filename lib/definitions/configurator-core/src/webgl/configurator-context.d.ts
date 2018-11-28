@@ -6,7 +6,6 @@ export default class ConfiguratorContext {
     lastPossibleChild: UiPossibleChild;
     rootComponentId: number;
     rootComponentParametersAsGlobal: boolean;
-    planObjectBounds: THREE.Vector3;
     requestPreviewsIsUserInitiated: boolean;
     lastConfigurationLoadedComponentId: number;
     lastLoadedRapiId: RapiId;

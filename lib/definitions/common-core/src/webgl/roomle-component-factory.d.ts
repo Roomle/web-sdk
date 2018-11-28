@@ -63,7 +63,7 @@ export interface RoomleComponentFactory {
     createPreviewLine(previewComponent: PreviewComponent): PreviewLineComponent;
     isPreview(obj: RoomleComponent): boolean;
     isPreviewLine(obj: RoomleComponent): boolean;
-    createCamera(fov: number, aspect: number, near: number, far: number, element: HTMLElement, offset?: CanvasOffset): PerspectiveOffsetCamera;
+    createCamera(fov: number, aspect: number, near: number, far: number, offset?: CanvasOffset): PerspectiveOffsetCamera;
 }
 export default function (): {
     create: (id: number, position: KernelVector3, rotation: KernelVector3, parentObjectId: number) => RoomleComponent;
@@ -72,5 +72,5 @@ export default function (): {
     createPreviewLine: (previewComponent: PreviewComponent) => PreviewLineComponent;
     isPreview: (obj: RoomleComponent) => boolean;
     isPreviewLine: (obj: RoomleComponent) => boolean;
-    createCamera: (fov: number, aspect: number, near: number, far: number, element: HTMLElement, offset?: CanvasOffset) => PerspectiveOffsetCamera;
+    createCamera: (fov: number, aspect: number, near: number, far: number, offset?: CanvasOffset) => PerspectiveOffsetCamera;
 };

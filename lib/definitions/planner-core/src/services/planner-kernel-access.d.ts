@@ -1,8 +1,9 @@
 import { Component, KernelEnum, KernelVector3 } from '../../../typings/kernel';
 import PlanViewModel from '../view-model/plan-view-model';
-import { Plan, PlanElement, PlanObject } from '../../../typings/planner';
+import PlanObjectViewModel from '../view-model/plan-object-view-model';
+import { KernelObject, Plan, PlanElement, PlanInteractionHandler, PlanObject } from '../../../typings/planner';
 import CommonKernelAccess from '../../../common-core/src/services/common-kernel-access';
-import { RapiItem, ConfigurationString } from '../../../typings/rapi-types';
+import { ConfigurationString, RapiItem } from '../../../typings/rapi-types';
 export interface PlannerKernelCallbackI {
     handlerSwitchedPlans(planViewModel: PlanViewModel): void;
     planCompletelyLoaded(plan: Plan): void;
@@ -10,6 +11,7 @@ export interface PlannerKernelCallbackI {
     addPlanMesh(plan: Plan, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type: KernelEnum): void;
     endPlanConstruction(plan: Plan): void;
     addPlanObjectToScene(object3D: THREE.Object3D): void;
+    planElementChanged(plan: Plan, planObject: PlanObjectViewModel): void;
 }
 export interface ConfiguratorKernelCallbackI {
     Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number, isRootComponent: boolean): void;
@@ -28,7 +30,7 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     private _plannerKernelCallbackListener;
     private _configuratorKernelCallbackListener;
     readonly kernelContainer: any;
-    constructor();
+    constructor(creator: string);
     private _loadSuccess;
     private _loadError;
     addPlannerListener(listener: PlannerKernelCallbackI): void;
@@ -36,7 +38,7 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     addConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     removeConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     isReady(): void;
-    readonly planInteractionHandler: any;
+    readonly planInteractionHandler: PlanInteractionHandler;
     readonly planModelViewHelper: any;
     catalogItemLoaded(catalogItem: RapiItem): void;
     onLoadComponentError(error: Error): void;
@@ -55,6 +57,8 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     planObjectDeleted(): void;
     requestPlanObjectDimensions(): void;
     sceneCleared(): void;
+    cleanUpCallbacks(): void;
+    registerCallbacks(): void;
     requestExternalMesh(meshId: string, quality: number): Promise<{}>;
     Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number): void;
     Editor3dRootComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number): void;
@@ -107,7 +111,7 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     planCompletelyLoaded(plan: Plan): void;
     planElement3dMeshChanged(plan: any, element: any): void;
     planElementAdded(plan: Plan, element: PlanElement): void;
-    planElementChanged(plan: any, element: any): void;
+    planElementChanged(plan: Plan, element: KernelObject): void;
     planHistoryStateChanged(): void;
     planObjectConfigurationCreated(plan: Plan, element: PlanObject): void;
     planObjectConfigurationLoaded(plan: Plan, element: PlanElement, success: boolean): void;

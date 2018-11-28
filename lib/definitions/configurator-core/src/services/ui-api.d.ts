@@ -6,7 +6,8 @@ import { GlobalAPI } from '../../../common-core/src/main';
 import { SceneSettings } from '../../../common-core/src/scene-settings-loader';
 import { InitData } from '../../../common-core/src/utils/shims';
 import ConfiguratorUiCallbacks from './configurator-ui-callback';
-import { RapiServerUrlType, RapiId, RapiConfiguration, RapiItem, RapiMaterial, ConfigurationString, RapiConfigurationEnhanced, RapiTagForUi, AssetUrl, RapiAdditionalContent } from '../../../typings/rapi-types';
+import { AssetUrl, ConfigurationString, RapiAdditionalContent, RapiConfiguration, RapiConfigurationEnhanced, RapiId, RapiItem, RapiMaterial, RapiServerUrlType, RapiTagForUi } from '../../../typings/rapi-types';
+import { Context } from '../../../common-core/src/di/context';
 export interface LoadOptions {
     overrideTenant?: number;
     overrideCountry?: string;
@@ -15,7 +16,8 @@ export interface LoadOptions {
     applyCurrentGlobalParameters?: boolean;
     id?: string;
 }
-export default class UiApi implements GlobalAPI {
+export default class UiApi implements GlobalAPI, Context {
+    _creator_: string;
     private _eventHandler;
     private _webGl;
     private _rapiAccess;
@@ -24,19 +26,24 @@ export default class UiApi implements GlobalAPI {
     private _unitFormatter;
     private _domHelper;
     _configuratorUiCallbacks: ConfiguratorUiCallbacks;
+    private _lifeCycleManager;
     private _isKernelReady;
+    private _isWebGlReady;
     private _isLoadError;
     private _rejectOnLoadError;
-    private _resolveOnInitDone;
     private _waiterForPreload;
     private _waitingForPreload;
     private _waitingForWebGlLib;
     private _isReloading;
     private _lastPartListHash;
+    private _resolveOnInitDone;
     private readonly _waitingForDependencies;
-    constructor();
+    private _getIsInitDone;
+    constructor(creator: string);
     private _loadError;
     private _webglLibLoaded;
+    private _webGlIsReady;
+    private _resolveInitPromise;
     private _initPromiseCallback;
     private _notifyOnConfigurationReady;
     private _notifyOnConfigurationLoadingError;
@@ -97,7 +104,7 @@ export default class UiApi implements GlobalAPI {
     getCurrentConfiguration(): Promise<ConfigurationString>;
     loadComponentIntoKernel(componentString: string): Promise<void>;
     getShortUrlOfCurrentConfiguration(): Promise<string>;
-    formatMMValueToUnitString(value: number, unitType: string): string;
+    formatValueToUnitString(value: number, parameter: KernelParameter): string | number;
     setFloorMaterial(url: string, width: number, height: number, repeatable: boolean): Promise<void>;
     getTagById(tagId: RapiId, options?: {
         include: RAPI_PATHS[];
@@ -123,7 +130,8 @@ export default class UiApi implements GlobalAPI {
     enableMeshSelection(enabled: boolean): void;
     updateSize(): void;
     cleanup(): void;
-    resume(): void;
+    resumeTest(element: HTMLElement): void;
+    pauseTest(): void;
     zoomIn(value?: number): void;
     zoomOut(value?: number): void;
     readonly callbacks: ConfiguratorUiCallbacks;

@@ -20,6 +20,7 @@ export declare const enum STATE {
     MOVE = 2
 }
 export declare const ROTATION_SPEED = 1;
+export declare const MAX_POLAR_ANGLE = 85;
 export default class CameraControl3D extends CameraControl {
     protected _camera: THREE.PerspectiveCamera;
     private _bounds;
@@ -34,9 +35,8 @@ export default class CameraControl3D extends CameraControl {
     minAzimuthAngle: number;
     maxAzimuthAngle: number;
     private _orbitPosition;
-    private _domElement;
     private _currentZoomHash;
-    constructor(inputManager: InputManager, domElement: HTMLElement, initialCameraPosition?: THREE.Vector3, camera?: THREE.PerspectiveCamera);
+    constructor(creator: string, inputManager: InputManager, initialCameraPosition?: THREE.Vector3, camera?: THREE.PerspectiveCamera);
     protected _getCamera(): THREE.PerspectiveCamera;
     private _initCamera;
     updateCamera(): void;
@@ -44,7 +44,7 @@ export default class CameraControl3D extends CameraControl {
     protected _initInputListener(): void;
     private _move;
     setBounds(bounds: THREE.Vector3): void;
-    updateToBounds(bounds: THREE.Vector3, windowWidth: number, windowHeight: number, isPreview: boolean, changeCamera?: boolean, target?: THREE.Vector3): void;
+    updateToBounds(boundingBox: THREE.Box3, windowWidth: number, windowHeight: number, isPreview: boolean, changeCamera?: boolean, target?: THREE.Vector3): void;
     protected _setDistanceAndRangesBasedOnBounds(bounds: THREE.Vector3, windowWidth: number, windowHeight: number): number;
     reset(bounds: THREE.Vector3, windowWidth: number, windowHeight: number, target?: THREE.Vector3, yaw?: number, pitch?: number, animate?: boolean): void;
     updateAndReset(bounds: THREE.Vector3, windowWidth: number, windowHeight: number, target?: THREE.Vector3, yaw?: number, pitch?: number, spacing?: number, animate?: boolean): void;
@@ -58,7 +58,6 @@ export default class CameraControl3D extends CameraControl {
     private _simulateUpdate;
     zoomTo(bounds: THREE.Vector3, windowWidth: number, windowHeight: number, yaw: number, pitch: number, target: THREE.Vector3): Promise<void>;
     private _getCameraSphere;
-    protected _saveYawAndPitch(): void;
     zoomIn(value?: number): void;
     zoomOut(value?: number): void;
 }

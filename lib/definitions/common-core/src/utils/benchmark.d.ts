@@ -19,6 +19,6 @@ export default class Benchmark {
     static addMeta(name: string | MARKS, data: object): void;
     static getMeta(name: string | MARKS): object;
     static end(name: string | MARKS): void;
-    static getMeasure(name: string | MARKS): any;
+    static getMeasure(name: string | MARKS): PerformanceEntry[];
     static showBenchmarks(filter?: string): void;
 }

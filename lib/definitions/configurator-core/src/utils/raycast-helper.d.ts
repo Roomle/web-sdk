@@ -1,7 +1,21 @@
 import InputManager from '../../../common-core/src/input/input-manager';
 import { SceneEventInfo } from '../webgl/scene-event-handler';
 import EventDispatcher from './event-dispatcher';
+export declare const enum OBJECT_EVENT {
+    CLICK = "select",
+    HOVER_ON = "hover_on",
+    HOVER_OFF = "hover_off",
+    HOVER_MOVE = "hover_move",
+    DRAG_START = "drag_start",
+    DRAG = "drag",
+    DRAG_END = "drag_end"
+}
+export declare const enum INTERSECTION_MODE {
+    MODE_2D = 0,
+    MODE_3D = 1
+}
 export default class RaycastHelper extends EventDispatcher<SceneEventInfo> {
+    private _mode;
     private _scene;
     private _camera;
     private _raycaster;
@@ -12,11 +26,12 @@ export default class RaycastHelper extends EventDispatcher<SceneEventInfo> {
     private _backgroundSceneWidth;
     private _currentHover;
     private _currentDrag;
+    private _currentDragOffset;
     private _offset;
     private _planeFront;
     private _planeBottom;
     private _planeSide;
-    constructor(scene: THREE.Scene, camera: THREE.Camera, generalInput: InputManager);
+    constructor(scene: THREE.Scene, camera: THREE.Camera, generalInput: InputManager, mode?: INTERSECTION_MODE);
     private _addInputListeners;
     private _findSelection;
     private _findHover;
@@ -24,6 +39,7 @@ export default class RaycastHelper extends EventDispatcher<SceneEventInfo> {
     private _intersect;
     private _onDragStart;
     private _onDrag;
+    private _getDistanceToCamera;
     private _onDragEnd;
     private _positionPlanes;
     private _calculateOffset;
@@ -32,4 +48,5 @@ export default class RaycastHelper extends EventDispatcher<SceneEventInfo> {
     enableDragIn(mesh: THREE.Mesh): void;
     setRootComponentId(rootComponentId: number): void;
     setCamera(camera: THREE.Camera): void;
+    setScene(scene: THREE.Scene): void;
 }

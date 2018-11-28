@@ -3,7 +3,6 @@ import Main from '../../common-core/src/main';
 import UiApi from './services/ui-api';
 export declare class Configurator extends Main {
     protected setupDependencies(): void;
-    pause(): void;
     protected cleanUpGlobals(): void;
     protected cleanUpDependencies(): void;
     protected setupGlobals(settings?: {

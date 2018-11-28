@@ -2,7 +2,8 @@ import { Component, KernelPart, UiPossibleChild, UiPossibleChildTag, UiKernelPar
 import { UIIntersection } from '../utils/ui-intersection-helper';
 import { RAPI_PATHS } from '../../../common-core/src/rapi-access';
 import { RapiTagForUi } from '../../../typings/rapi-types';
-export default class ConfiguratorUiCallbacks {
+import { UiCallback } from '../../../common-core/src/utils/UiCallback';
+export default class ConfiguratorUiCallbacks extends UiCallback {
     onKernelIsReady: () => void;
     onUpdateParameters: (parameters: UiKernelParameter[]) => void;
     onUpdatePossibleChildren: (tags: UiPossibleChildTag[], defaultChild: UiPossibleChild) => void;
