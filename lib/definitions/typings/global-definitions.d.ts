@@ -2,6 +2,7 @@ import * as __THREE from 'three';
 import * as __dat from 'dat.gui';
 import Container from '../common-core/src/di/container';
 import { ExternalEnv } from './shims';
+type ThreeShader = string;
 declare global {
     const THREE: typeof __THREE;
     const dat: typeof __dat;
@@ -14,6 +15,9 @@ declare global {
         __RML__ENV__: ExternalEnv;
         __RML_GUI__: dat.GUI;
         __RML__DEBUG__: any;
+        _rsl: {
+            [key: string]: ThreeShader;
+        };
     }
 }
 declare const _default: {};

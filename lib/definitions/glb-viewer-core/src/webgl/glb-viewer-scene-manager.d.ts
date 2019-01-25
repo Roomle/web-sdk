@@ -16,5 +16,7 @@ export default class GLBViewerSceneManager extends SceneManager implements GLBRe
     onStart(count: number): void;
     onElementFinished(itemsFinished: number): void;
     onFinished(zip: any): void;
+    enableHD(): void;
     sceneChanged(): void;
+    getPixotronParams(): any;
 }

@@ -23,7 +23,6 @@ export default class RaycastHelper extends EventDispatcher<SceneEventInfo> {
     private _rootComponentId;
     private _rootComponentPosition;
     private _backgroundScene;
-    private _backgroundSceneWidth;
     private _currentHover;
     private _currentDrag;
     private _currentDragOffset;

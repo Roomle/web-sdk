@@ -1,4 +1,4 @@
-import { KernelClass, KernelCube, KernelVector3, PlanObjectPtrList } from './kernel';
+import { ConfiguratorKernelClass, KernelCube, KernelVector3, PlanObjectPtrList } from './kernel';
 export interface EMSReference {
     jsObject: any;
     delete(): any;
@@ -32,7 +32,7 @@ export interface PlanObject extends PlanElement {
 }
 export interface PlanInteractionHandler {
     init(reference: PlanInteractionHandler, zoomFactor: number, viewSnapDist: number, snapObjectsToWalls: boolean, shouldSnap: boolean, drawingType: any): PlanInteractionHandler;
-    getConfiguratorKernel(): KernelClass;
+    getConfiguratorKernel(): ConfiguratorKernelClass;
     loadPlanXML(xml: string): Plan;
     getPlan(): Plan;
     moveElementTo(planObjects: KernelObject, point: KernelVector3): void;

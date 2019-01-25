@@ -1,9 +1,10 @@
-import { Component, KernelEnum, KernelVector3 } from '../../../typings/kernel';
+import { KernelComponent, KernelEnum, KernelVector3 } from '../../../typings/kernel';
 import PlanViewModel from '../view-model/plan-view-model';
 import PlanObjectViewModel from '../view-model/plan-object-view-model';
 import { KernelObject, Plan, PlanElement, PlanInteractionHandler, PlanObject } from '../../../typings/planner';
 import CommonKernelAccess from '../../../common-core/src/services/common-kernel-access';
 import { ConfigurationString, RapiItem } from '../../../typings/rapi-types';
+import RoomlePlannerUiCallback from '../roomle-planner-ui-callback';
 export interface PlannerKernelCallbackI {
     handlerSwitchedPlans(planViewModel: PlanViewModel): void;
     planCompletelyLoaded(plan: Plan): void;
@@ -17,7 +18,7 @@ export interface ConfiguratorKernelCallbackI {
     Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number, isRootComponent: boolean): void;
     Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
-    updateComponentMetaInformation(component: Component): void;
+    updateComponentMetaInformation(component: KernelComponent): void;
     Editor3dBeginConstruction(componentId: number): void;
     Editor3dComponentDocked(componentId: number, parentId: number, componentPosition: KernelVector3, componentRotation: KernelVector3): void;
     Editor3dGeometryNotReady(id: number): void;
@@ -26,6 +27,7 @@ export interface ConfiguratorKernelCallbackI {
 }
 export default class PlannerKernelAccess extends CommonKernelAccess {
     private _kernelCallback;
+    private _roomlePlannerUiCallback;
     private _planInteractionHandler;
     private _plannerKernelCallbackListener;
     private _configuratorKernelCallbackListener;
@@ -33,11 +35,13 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     constructor(creator: string);
     private _loadSuccess;
     private _loadError;
+    private _createPlanInteractionHandler;
     addPlannerListener(listener: PlannerKernelCallbackI): void;
     removePlannerListener(listener: PlannerKernelCallbackI): void;
     addConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     removeConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     isReady(): void;
+    readonly callbacks: RoomlePlannerUiCallback;
     readonly planInteractionHandler: PlanInteractionHandler;
     readonly planModelViewHelper: any;
     catalogItemLoaded(catalogItem: RapiItem): void;
@@ -104,7 +108,7 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     Editor3dUpdatePlanComponentTransform(): void;
     Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
-    elementDeleted(element: PlanElement): void;
+    planElementRemoved(element: PlanElement): void;
     handlerSwitchedPlans(fromPlan: Plan, toPlan: Plan): void;
     planBoundsChanged(): void;
     planCleared(): void;

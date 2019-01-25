@@ -7,8 +7,6 @@ export default class CameraControlFirstPerson extends CameraControl {
     private _cameraRotation;
     private _position;
     private _downPosition;
-    private _downTime;
-    private _longDownTimer;
     private _rotationSpeed;
     private _keyMap;
     private _listenerLoopAnimationFrame;

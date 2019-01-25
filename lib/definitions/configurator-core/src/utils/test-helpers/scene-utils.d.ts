@@ -4,5 +4,5 @@ export default class SceneUtils {
     static getPreviewComponentOfRoomleComponent(): PreviewComponent;
     static getScreenCoordsOfComponent(rmlChild: RoomleComponent): any;
     static getCurrentFullPartList(): any;
-    static getHashOfPlanComponent(id: number): any;
+    static getHashOfConfiguration(id: number): any;
 }

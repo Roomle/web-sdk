@@ -22,20 +22,14 @@ export interface PlanObjectEventInfo {
 }
 export default class PlannerSceneEventHandler extends EventDispatcher<SceneEventInfo> {
     private _plannerSelectionHandler;
-    private _plannerKernelAccess;
-    private _planViewModel;
     private _raycastHelper;
     private _debug;
     private _draggedObject;
     private _hoveredObject;
-    private _dragStartPosition;
     constructor(scene: THREE.Scene, camera: THREE.Camera, inputManager: InputManager);
     addPlanObjectHandlers(planObjectViewModel: PlanObjectViewModel): void;
     private _addPlanObjectHandlers;
     private _clickComponent;
-    private _dragStart;
-    private _drag;
-    private _dragEnd;
     private _hoverOn;
     private _hoverOff;
     private _setCursor;

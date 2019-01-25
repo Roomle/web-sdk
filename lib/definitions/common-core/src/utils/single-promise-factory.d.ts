@@ -5,7 +5,8 @@ export declare const enum PROMISE_CATEGORY {
     OFFLINE_TPYE_CHANGE_TAG_SYNC = 2,
     START_HSC = 3,
     START_GLB = 4,
-    FETCH_SCRIPT = 5
+    FETCH_SCRIPT = 5,
+    ASSIGN_MATERIAL = 6
 }
 export default class SinglePromiseFactory implements Context {
     _creator_: string;

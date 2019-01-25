@@ -48,7 +48,7 @@ export interface KernelPossibleChild {
     possible: boolean;
 }
 export interface KernelPartList {
-    originPart: Component;
+    originPart: KernelComponent;
     fullList: KernelPart[];
 }
 export interface KernelPart {
@@ -147,7 +147,7 @@ export interface EmscriptenList {
     size: () => number;
     length: number;
 }
-export interface Component {
+export interface KernelComponent {
     id: number;
     bounds: KernelVector3;
     boxForMeasurement: KernelCube;
@@ -162,7 +162,94 @@ export interface AddOnSpot {
     position: KernelVector3;
     mask: string;
 }
-export interface KernelClass {
+export interface KernelContainer {
+    wasmBinaryFile: string;
+    print: (msg: string) => void;
+    printErr: (msg: string) => void;
+    quit: (msg: string) => void;
+    thisProgram: string;
+    reallocBuffer: (size: string) => void;
+    InternalError: InternalError;
+    BindingError: BindingError;
+    UnboundTypeError: UnboundTypeError;
+    wasmTableSize: number;
+    wasmMaxTableSize: number;
+    run: (a: any) => void;
+    abort: (msg: string) => void;
+    noExitRuntime: boolean;
+    usingWasm: boolean;
+    calledRun: boolean;
+    setExternalHelpers: (kernelIo: any, utils: any) => void;
+    registerConfiguratorCallback: (callbacksObject: any) => void;
+    unregisterConfiguratorCallback: (callbacksObject: any) => void;
+}
+export interface KernelDockPairToPoint {
+    parentId: number;
+    parentDockId: number;
+    childId: number;
+    childDockId: number;
+    position: KernelVector3f;
+    rotation: KernelVector3f;
+}
+export interface KernelVector2f {
+    x: number;
+    y: number;
+    vectorInRoomleSpace(): KernelVector2f;
+    vectorInKernelSpace(): KernelVector2f;
+    convertToRoomleSpace(): void;
+    convertToKernelSpace(): void;
+}
+export interface KernelVector3f {
+    x: number;
+    y: number;
+    z: number;
+}
+export interface KernelDockPairToLine {
+    parentId: number;
+    parentDockId: number;
+    childId: number;
+    childDockId: number;
+    position: KernelVector3f;
+    rotation: KernelVector3f;
+    positionFrom: KernelVector3f;
+    positionTo: KernelVector3f;
+    lineFrom: KernelVector3f;
+    lineTo: KernelVector3f;
+}
+export interface KernelVariable {
+    key: string;
+    type: string;
+    value: string;
+}
+export interface KernelParameterValue {
+    value: string;
+    label: string;
+    thumbnail: string;
+}
+export interface KernelConfiguration {
+    componentId: string;
+    parameters: Map<string, string>;
+    dockParent: string;
+    dockPosition: string;
+    children: KernelConfiguration[];
+}
+export interface KernelAddOnSpot {
+    mask: string;
+    position: KernelVector3f;
+}
+export interface KernelParamKeyValuePair {
+    parameterKey: string;
+    parameterValue: string;
+}
+export interface KernelVariant {
+    componentId: string;
+    articleNr: string;
+    customerPrice: number;
+    retailPrice: number;
+    currencySymbol: string;
+    parameterValues: KernelParameterValue[];
+}
+export interface ConfiguratorKernelClass {
     useHDGeometry(requestUseHDGeometry: boolean): void;
     clearScene(): void;
     clearAll(): void;
@@ -186,7 +273,7 @@ export interface KernelClass {
     setPlanObjectParameter(planObjectId: number, parameterKey: string, value: string): void;
     dockComponent(parentId: number, parentDockId: number, childId: number, childDockId: number): void;
     dockComponentWithPosition(parentId: number, parentDockId: number, childId: number, childDockId: number, position: KernelVector3): void;
-    getComponent(componentId: number): Component;
+    getComponent(componentId: number): KernelComponent;
     getComponentId(componentId: number): RapiId;
     getPlanObject(planObjectId: number): PlanObject;
     getPlanComponentPossibleChildren(componentId: number): KernelPossibleChild[];
@@ -194,7 +281,7 @@ export interface KernelClass {
     getRootPlanComponentIdFromObjectId(planObjectId: number): number;
     getFullPartList(): KernelPartList;
     getSerializedConfiguration(planObjectOrComponentId: number): ConfigurationString;
-    getHashOfPlanComponent(aPlanObjectOrComponentId: number): ConfigurationHash;
+    getHashOfConfiguration(aPlanObjectOrComponentId: number): ConfigurationHash;
     getPartList(getPartList: number): KernelPartList;
     getCommonPlanComponentParameters(componentIds: any): {
         parameters: KernelParameter[];
@@ -202,6 +289,7 @@ export interface KernelClass {
     };
     loadComponentDefinition(conversationId: number, component: string): void;
     syncPlanObjectToView(conversationId: number, planObjectId: number): void;
+    addMeshCorto(meshId: string, quality: number, data: Uint8Array): void;
 }
 export interface PlanObjectPtrList {
     size(): void;

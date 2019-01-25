@@ -1,10 +1,10 @@
-import { ConfigurationObject, KernelClass } from '../../../typings/kernel';
 import RapiAccess from '../rapi-access';
 import ScriptLoader from '../script-loader';
 import DataSyncer from './data-syncer';
 import { RapiId } from '../../../typings/rapi-types';
 import { LifeCycleCallbacks } from '../life-cycle-manager';
 import { Context } from '../di/context';
+import { ConfiguratorKernelClass, ConfigurationObject } from '../../../typings/kernel';
 export declare const enum KERNEL_TYPE {
     PLANNER = 0,
     CONFIGURATOR = 1
@@ -41,7 +41,7 @@ export default abstract class CommonKernelAccess implements LifeCycleCallbacks, 
      * !!!WARNING!!!
      *
      */
-    protected _kernelInstance: KernelClass;
+    protected _kernelInstance: ConfiguratorKernelClass;
     protected _kernelContainer: any;
     protected _subComponentsWaiters: Map<RapiId, SubComponentWaiter[]>;
     protected _shouldWait: boolean;

@@ -17,7 +17,7 @@ export default class WebGl implements Context {
     private _scriptLoader;
     private _eventHandler;
     private _rapiAccess;
-    private _memoryManager;
+    private _threeLoader;
     private _sceneHelper;
     private _needsSync;
     private _updatedOffset;

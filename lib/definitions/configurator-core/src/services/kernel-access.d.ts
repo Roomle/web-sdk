@@ -5,6 +5,7 @@ export default class KernelAccess extends CommonKernelAccess {
     private _eventHandler;
     private _unitFormatter;
     private _memoryManager;
+    muteKernelCallbacks: boolean;
     constructor(creator: string);
     private _loadSuccess;
     private _loadError;
@@ -104,4 +105,6 @@ export default class KernelAccess extends CommonKernelAccess {
     Editor3dUpdatePlanComponentTransform(): void;
     Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
+    getRuntimeComponentIdOfRootComponent(planObjectId: number): number;
+    resume(): void;
 }

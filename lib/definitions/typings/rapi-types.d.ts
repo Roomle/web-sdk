@@ -4,6 +4,10 @@ export declare type ConfigurationString = string;
 export declare type ConfigurationHash = string;
 export declare type Base64String = string;
 export declare type RapiServerUrlType = 'live' | 'test';
+export declare type HexColorString = string;
+export interface LinksCollection {
+    [key: string]: string;
+}
 export interface RoomleSortable {
     sort?: number;
 }
@@ -17,10 +21,11 @@ export interface RapiMeta {
     [key: string]: string | number;
 }
 export interface RapiJson {
-    id?: RapiId;
+    id?: RapiId | number;
     isLocally?: boolean;
     __rapi_path__?: string;
     [key: string]: any;
+    links?: LinksCollection;
 }
 export interface RapiPackage extends RapiJson {
     components: RapiComponent[];
@@ -35,6 +40,7 @@ export interface RapiBaseColor {
 }
 export interface RapiMesh extends RapiJson {
     catalog: RapiId;
+    id: RapiId;
 }
 export interface RapiMeshData {
     format: string;
@@ -51,9 +57,12 @@ export interface RapiMaterialShading {
     specularity: number;
     basecolor: RapiBaseColor;
     roughness: number;
-    [key: string]: number | RapiBaseColor;
+    doubleSided: boolean;
+    alphaCutoff?: number;
+    [key: string]: number | boolean | RapiBaseColor;
 }
 export interface RapiMaterial extends RapiJson {
+    id: RapiId;
     name: string;
     externalIdentifier: string;
     group: string;
@@ -63,13 +72,13 @@ export interface RapiMaterial extends RapiJson {
     label: string;
     textures: number[];
     shading: RapiMaterialShading;
-    [key: string]: string | RapiMaterialShading | AssetUrl | RapiId | number[] | boolean;
+    [key: string]: string | RapiMaterialShading | AssetUrl | RapiId | number[] | boolean | number | LinksCollection;
 }
 export interface RapiMaterialGroup extends RapiJson {
     id: RapiId;
     label: string;
     materials: RapiMaterial[];
-    [key: string]: string | RapiMaterial[] | RapiId | boolean;
+    [key: string]: string | RapiMaterial[] | RapiId | boolean | LinksCollection;
 }
 export interface RapiTexture extends RapiJson {
     mapping: string;
@@ -81,9 +90,10 @@ export interface RapiTexture extends RapiJson {
     mmWidth: number;
     tileable: boolean;
     material: RapiId;
-    [key: string]: string | number | boolean | AssetUrl | RapiId;
+    [key: string]: string | number | boolean | AssetUrl | RapiId | LinksCollection;
 }
 export interface RapiCatalog extends RapiJson {
+    id: RapiId;
     name: string;
     featuredImage: string;
     externalIdentifier: string;
@@ -256,6 +266,7 @@ export interface RapiPlanSetting extends RapiJson {
 export interface RapiRetailer extends RapiJson {
 }
 export interface RapiConfiguration extends RapiJson {
+    id: RapiId;
     created: string;
     lastAccess: string;
     configuration: ConfigurationString;
@@ -270,13 +281,14 @@ export interface RapiConfiguration extends RapiJson {
     height: number;
     depth: number;
     catalog?: RapiId;
-    [key: string]: string | number | boolean | AssetUrl | RapiId;
+    [key: string]: string | number | boolean | AssetUrl | RapiId | LinksCollection;
 }
 export interface RapiConfigurationEnhanced extends RapiConfiguration {
     label: string;
 }
 export interface RapiElement extends RapiJson, RoomleSortable {
-    configuration: ConfigurationString;
+    id: RapiId;
+    configuration?: ConfigurationString;
     label: string;
     perspectiveImage: AssetUrl;
     description: string;
@@ -284,7 +296,7 @@ export interface RapiElement extends RapiJson, RoomleSortable {
     externalIdentifier: string;
     created: string;
     tags: RapiId[];
-    [key: string]: string | number | boolean | AssetUrl | RapiId | RapiId[];
+    [key: string]: string | number | boolean | AssetUrl | RapiId | RapiId[] | LinksCollection;
 }
 export interface RapiComponent extends RapiElement {
     active: boolean;
@@ -306,14 +318,14 @@ export interface RapiItem extends RapiElement {
     scaleable: boolean;
     meta: string;
     hidden: boolean;
-    link: string;
+    link?: string;
     colorable: boolean;
     layer: number;
     language: string;
     type: string;
     detailType: string;
-    currencySymbol: string;
-    customerPrice: number;
+    currencySymbol?: string;
+    customerPrice?: number;
     sort: number;
     orderable: boolean;
     requestable: boolean;
@@ -352,9 +364,10 @@ export interface RapiTagGeneric extends RapiJson {
     catalog: RapiId;
     tags: RapiId[];
     parents: RapiId[];
-    [key: string]: string | number | boolean | AssetUrl | RapiId | RapiId[] | RapiElement[] | RapiMaterial[];
+    [key: string]: string | number | boolean | AssetUrl | RapiId | RapiId[] | RapiElement[] | RapiMaterial[] | LinksCollection;
 }
 export interface RapiTag extends RapiTagGeneric {
+    id: RapiId;
     items: RapiId[];
     materials: RapiId[];
 }

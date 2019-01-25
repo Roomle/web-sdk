@@ -1,4 +1,4 @@
-import Environment from './environment';
+import Environment from '../../../../common-core/src/environment/environment';
 export default class BasicEnvironment extends Environment {
     private _color;
     private _oldBackground;

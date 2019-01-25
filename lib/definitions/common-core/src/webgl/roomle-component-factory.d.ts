@@ -10,6 +10,7 @@ export interface RoomleComponent extends THREE.Object3D {
     roomlePosition: KernelVector3;
     roomleRotation: KernelVector3;
     addMesh(mesh: THREE.Mesh, transform?: Float32Array): void;
+    removeMesh(mesh: THREE.Mesh): void;
     removeAllMeshes(): void;
     changeMaterialOfMesh(id: number, material: THREE.Material): void;
     select(): void;
@@ -46,6 +47,7 @@ export interface PreviewLineComponent extends PreviewComponent {
     roomleLineTo: KernelVector3;
     roomlePositionFrom: KernelVector3;
     roomlePositionTo: KernelVector3;
+    docklineRotation: THREE.Euler;
     lineMesh: THREE.Mesh;
     boundingLineMesh: THREE.Mesh;
     clonePreviewLine(numberOfDuplication: number): PreviewLineComponent;

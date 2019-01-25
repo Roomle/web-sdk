@@ -7,17 +7,19 @@ import LightSetting from '../lightsetting/light-setting';
 import { CAMERA_TYPE } from '../../../planner-core/src/roomle-planner-ui-callback';
 import { Context } from '../di/context';
 import { LifeCycleCallbacks } from '../life-cycle-manager';
+import { SceneSettings } from '../scene-settings-loader';
+import Environment from '../environment/environment';
+import { QualitySetting } from '../dynamic-quality-setting-loader';
 export default abstract class SceneManager implements Context, LifeCycleCallbacks, EventListenerObject {
     _creator_: string;
     protected _domHelper: DomHelper;
-    private _environmentLoader;
     protected _scriptLoader: ScriptLoader;
     private _lifeCycleManager;
     private _staticItemLoader;
-    private _backstack;
     protected _scene: THREE.Scene;
     protected _cameraControl: CameraControl;
     protected _lightSetting: LightSetting;
+    protected _environment: Environment;
     protected _renderer: THREE.WebGLRenderer;
     private _clock;
     private _delta;
@@ -25,7 +27,7 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     protected _renderLoopFunction: () => void;
     protected _renderListener: () => void;
     protected _stopRendering: boolean;
-    protected _pixotron: any;
+    protected _pixotron: Pixotron;
     private _forceRender;
     private _lastChange;
     private _running;
@@ -37,6 +39,7 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     protected abstract createCameraControl(mode: CAMERA_TYPE): void;
     protected abstract _getInputManager(): InputManager;
     abstract sceneChanged(): void;
+    abstract getPixotronParams(): any;
     protected onBeforeRender(): void;
     protected _onAfterRender: () => void;
     constructor(creator: string, offset: CanvasOffset, canvasID: string, mode?: CAMERA_TYPE, transparent?: boolean);
@@ -54,9 +57,9 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     cleanUp(): void;
     clearScene(): void;
     enableHD(): void;
+    protected _addGroundShadows(): void;
     protected _loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
-    private _calculateBoundingBoxOfAllMeshes;
-    protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
+    protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
     private _setCamera;
     showGUI(): void;
     private _guiLoaded;
@@ -68,4 +71,7 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     resume(): void;
     destroy(): void;
     handleEvent(evt: Event): void;
+    loadSceneSettings(sceneSetting: SceneSettings): Promise<void>;
+    protected _setEnvironment(environment: Environment): void;
+    loadQualitySetting(qualitySetting: QualitySetting): void;
 }

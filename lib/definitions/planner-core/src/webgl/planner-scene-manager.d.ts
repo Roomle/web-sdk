@@ -14,15 +14,13 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     private _plannerMeshGenerator;
     private _plannerInputManager;
     private _roomlePlannerUiCallback;
+    private _localStorageHelper;
     private _outlinePass;
     private _plannerSceneEventHandler;
     private _planViewModel;
-    private _componentFactory;
     private _roomlePlannerCallback;
     private _sky;
     private _bounds;
-    private _savedState;
-    private _last3DState;
     private _planId;
     private _preloadScene;
     private _wallGroup;
@@ -65,4 +63,6 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     protected _onKeyUp(event: KeyboardEvent): void;
     setMode(mode: CAMERA_TYPE): void;
     private _highlight;
+    destroy(): void;
+    getPixotronParams(): any;
 }

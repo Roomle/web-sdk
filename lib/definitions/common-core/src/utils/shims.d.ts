@@ -44,6 +44,10 @@ export interface ConfiguratorInitData {
     ls?: string;
     floorMaterialsTag?: RapiId;
     cameraRestriction?: number;
+    minVerticalCameraAngle?: number;
+    maxVerticalCameraAngle?: number;
+    minHorizontalCameraAngle?: number;
+    maxHorizontalCameraAngle?: number;
 }
 export interface PlannerInitData {
     mode?: CAMERA_TYPE;

@@ -1,6 +1,9 @@
 import { Base64Image, Position3 } from '../../common-core/src/common-interfaces';
 import { GlobalAPI } from '../../common-core/src/main';
 import { Context } from '../../common-core/src/di/context';
+import { SceneSettings } from '../../common-core/src/scene-settings-loader';
+import { QualitySetting } from '../../common-core/src/dynamic-quality-setting-loader';
+import { InitData } from '../../common-core/src/utils/shims';
 interface RenderCameraInformation {
     fieldOfView: number;
     rotation: Position3;
@@ -15,16 +18,30 @@ export default class RoomleGLBViewer implements GlobalAPI, Context {
     private _domHelper;
     private _scriptLoader;
     private _lifeCycleManager;
+    private _threeLoader;
     private _sceneManager;
     constructor(creator: string);
     init(element: HTMLElement): Promise<void>;
     private _initPromiseCallback;
     enableHD(): Promise<void>;
     loadGLB(url: string): Promise<void>;
+    /**
+     * Loads a SceneSettings object, currently it can can contain a light setting definition
+     * (see {@link loadDynamicLightSetting}) and an environment definition (see {@link EnvironmentSetting}).
+     * @param sceneSettings
+     */
+    loadSceneSetting(sceneSettings: SceneSettings): Promise<void>;
+    /**
+     * Loads a QualitySetting object (see {@link QualitySetting}).
+     * @param qualitySetting
+     */
+    loadQualitySetting(qualitySetting: QualitySetting): void;
     preparePerspectiveImage(): Promise<Base64Image>;
     processRenderList(jsonString: string, width?: number, height?: number): void;
+    setOverrides(options: InitData): void;
     updateSize(): void;
     resumeTest(element: HTMLElement): void;
     pauseTest(): void;
+    showGUI(): void;
 }
 export {};

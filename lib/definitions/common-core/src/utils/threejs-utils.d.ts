@@ -25,6 +25,7 @@ export declare const checkGLB: (glb: import("three/three-core").Object3D, url: s
 export declare const dispose: (object: import("three/three-core").Object3D) => void;
 export declare const disposeObject: (object: import("three/three-core").Object3D) => void;
 export declare const disposeMesh: (mesh: import("three/three-core").Mesh) => void;
+export declare const disposeGeometry: (geometry: import("three/three-core").Geometry) => void;
 export declare const disposeMaterial: (material: import("three/three-core").MeshStandardMaterial) => void;
 export declare const getBoundingBoxMaterial: () => import("three/three-core").MeshBasicMaterial;
 export declare const getSelectionGeometry: (position: import("three/three-core").Vector3, size: import("three/three-core").Vector3) => import("three/three-core").Geometry;

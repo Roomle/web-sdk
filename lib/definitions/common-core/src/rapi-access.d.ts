@@ -1,9 +1,10 @@
 import { Base64Image } from './common-interfaces';
 import { SHORT_TYPES } from './utils/url-shortener';
-import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, RapiComponent, RapiPackage, RapiConfiguration, RapiItem, RapiTag, RapiTexture, RapiCatalog, RapiMeshData, RapiMaterial, RapiPlan, RapiMaterialGroup, RapiShortId } from '../../typings/rapi-types';
+import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, RapiComponent, RapiPackage, RapiConfiguration, RapiItem, RapiTag, RapiTexture, RapiCatalog, RapiMeshData, RapiMaterial, RapiPlan, RapiMaterialGroup, RapiShortId, RapiSkin } from '../../typings/rapi-types';
 export declare const MAX_URL_LENGTH = 1500;
 export declare const MESH_DEFAULT_FORMAT = "crt";
 export declare const MESH_DEFAULT_QUALITY = 50;
+export declare const RAPI_PATH_KEY = "__rapi_path__";
 export declare const enum RAPI_PATHS {
     COMPONENTS = "components",
     TEXTURES = "textures",
@@ -17,7 +18,10 @@ export declare const enum RAPI_PATHS {
     SHORT_IDS = "shortIds",
     CATALOGS = "catalogs",
     PLANS = "plans",
-    ITEM_ADDITIONAL_CONTENTS = "itemAdditionalContents"
+    ITEM_ADDITIONAL_CONTENTS = "itemAdditionalContents",
+    TENANT_ME = "tenants/me",
+    TENANT = "tenants",
+    SKIN = "skins"
 }
 export default class RapiAccess {
     private _formDataUtil;
@@ -84,10 +88,13 @@ export default class RapiAccess {
     private _getCache;
     private _getErrorCache;
     private _getCacheFrom;
+    private _setCache;
     private _prepareData;
     private _getRelationsCacheFor;
     private _prepareGroups;
     private _handleError;
     private _getRelationData;
     private _notifyWaiters;
+    private _tenantMe;
+    getCurrentSkin(): Promise<RapiSkin>;
 }

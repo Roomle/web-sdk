@@ -1,4 +1,4 @@
-import Environment from './environment';
+import Environment from '../../../../common-core/src/environment/environment';
 export default class GltfEnvironment extends Environment {
     private _backgroundMesh;
     private _backgroundMaterial;

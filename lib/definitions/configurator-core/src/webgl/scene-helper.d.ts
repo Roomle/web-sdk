@@ -1,7 +1,7 @@
 import { RoomleComponent } from '../../../common-core/src/webgl/roomle-component-factory';
 import { SELECTION_MODE } from '../utils/selection-handler';
 import { Base64Image, CanvasOffset } from '../../../common-core/src/common-interfaces';
-import { Component, DockLine, DockPair, KernelVector3, PlanObject } from '../../../typings/kernel';
+import { DockLine, DockPair, KernelComponent, KernelVector3, PlanObject } from '../../../typings/kernel';
 import { DynamicLightSettingSource } from '../../../common-core/src/lightsetting/dynamic-light-setting-loader';
 import { SceneSettings } from '../../../common-core/src/scene-settings-loader';
 import { RapiMaterial } from '../../../typings/rapi-types';
@@ -15,12 +15,9 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _scriptLoader;
     private _configuratorInputManager;
     private _eventHandler;
-    private _dataSyncer;
-    private _errorHandler;
     private _configuratorMeshGenerator;
     private _memoryManager;
     private _lifeCycleManager;
-    private _backstack;
     private _pixotron;
     private _composer;
     private _outlinePass;
@@ -45,7 +42,6 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _lightSetting;
     private _components;
     private _previews;
-    private _materialCache;
     private _texture;
     private _componentFactory;
     private _previewMaterial;
@@ -72,12 +68,12 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     addPreview(componentId: number, previewId: number): void;
     setPreviewAssociations(previewId: number, dockPairs: DockPair[]): void;
     setPreviewLineAssociations(previewId: number, dockLines: DockLine[]): void;
-    updateComponent(componentId: number, component: Component): void;
+    updateComponent(componentId: number, component: KernelComponent): void;
     deleteComponent(componentId: number): void;
     sceneCleared(): void;
     componentConstructionBegin(componentId: number): void;
-    componentConstructionDone(componentId: number, kernelComponent: Component): void;
-    configurationLoaded(planObjectId: number, componentId: number, kernelComponent: Component): void;
+    componentConstructionDone(componentId: number, kernelComponent: KernelComponent): void;
+    configurationLoaded(planObjectId: number, componentId: number, kernelComponent: KernelComponent): void;
     componentGeometryNotReady(componentId: number): void;
     private _display;
     private _removeComponent;
@@ -85,7 +81,6 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     debugScene(): import("three/three-core").Scene;
     private _printObjectGraph;
     dockComponent(componentId: number, parentId: number, componentPosition: KernelVector3, componentRotation: KernelVector3): void;
-    private _assignMaterial;
     clearScene(): void;
     planObjectUpdate(planObject: PlanObject, shouldUpdateToBounds: boolean): void;
     planObjectConstructionDone(planObject: PlanObject): void;

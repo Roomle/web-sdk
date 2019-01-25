@@ -3,6 +3,9 @@ import { MainThreadToWorker } from '../../workers/src/communication-interface';
 export interface GlobalAPI {
     updateSize(): void;
 }
+export interface KernelUtilityForUi {
+    getRuntimeComponentIdOfRootComponent(planObjectId?: number): number;
+}
 export default abstract class Main implements LifeCycleCallbacks {
     protected _context: string;
     protected mainThreadToWorker: MainThreadToWorker;
@@ -20,6 +23,6 @@ export default abstract class Main implements LifeCycleCallbacks {
     protected lookup<T>(specifier: string, context?: string): T;
     teardown(): void;
     pause(): void;
-    resume(): void;
+    resume(element?: HTMLElement): void;
     destroy(): void;
 }

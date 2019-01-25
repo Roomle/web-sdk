@@ -19,6 +19,11 @@ export declare const getProductionConfig: () => {
                 language: string;
                 device: number;
                 token: string;
+                platform: string;
+            };
+            itemHeaders: {
+                assetRevision: string;
+                assetFileFormat: string;
             };
         };
         WASM: {

@@ -1,4 +1,4 @@
-import Environment from './environment';
+import Environment from '../../../../common-core/src/environment/environment';
 import { RapiMaterial } from '../../../../typings/rapi-types';
 export default class FloorEnvironment extends Environment {
     private _rapiAccess;

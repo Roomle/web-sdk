@@ -9,7 +9,6 @@ export default class GLBRenderWorker {
     private _sceneManager;
     private _entries;
     private _resolve;
-    private _reject;
     private _prefix;
     private _renderer;
     private _width;

@@ -18,7 +18,6 @@ export default class AddonHelper {
     private _addOnSpotIcons;
     private _onAddonClick;
     private _textMaterial;
-    private _textMaterialSelected;
     private _plusText;
     private _plusTextGeometry;
     private _addOnSpotsVisible;
