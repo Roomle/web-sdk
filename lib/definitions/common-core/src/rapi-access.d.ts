@@ -21,7 +21,8 @@ export declare const enum RAPI_PATHS {
     ITEM_ADDITIONAL_CONTENTS = "itemAdditionalContents",
     TENANT_ME = "tenants/me",
     TENANT = "tenants",
-    SKIN = "skins"
+    SKIN = "skins",
+    CATALOG_MESHES = "catalogMeshes"
 }
 export default class RapiAccess {
     private _formDataUtil;
@@ -85,6 +86,7 @@ export default class RapiAccess {
     private _fetchJson;
     private _createHeaders;
     private _handleJson;
+    private _prepareEmbeddedData;
     private _getCache;
     private _getErrorCache;
     private _getCacheFrom;
@@ -94,6 +96,7 @@ export default class RapiAccess {
     private _prepareGroups;
     private _handleError;
     private _getRelationData;
+    private _prepareRelationalData;
     private _notifyWaiters;
     private _tenantMe;
     getCurrentSkin(): Promise<RapiSkin>;

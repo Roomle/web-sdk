@@ -35,6 +35,7 @@ export interface CommonInitData {
     enableHSC?: boolean;
     stats?: boolean;
     _measureTraffic?: boolean;
+    alwaysUseCache?: boolean;
 }
 export interface ConfiguratorInitData {
     addOnSpots?: boolean;

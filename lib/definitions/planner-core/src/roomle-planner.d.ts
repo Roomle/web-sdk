@@ -20,6 +20,7 @@ export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCall
     private _lifeCycleManager;
     private _backstack;
     private _threeLoader;
+    private _dataSyncer;
     private _overrides;
     private _planInteractionHandler;
     private _plannerSceneManager;
@@ -71,4 +72,5 @@ export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCall
      * @hidden
      */
     pauseTest(): void;
+    syncCatalog(catalogId: string): Promise<void>;
 }

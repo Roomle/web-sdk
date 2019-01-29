@@ -1,6 +1,8 @@
 import { WORKER_MESSAGE, CommunicationInterfaceCallback } from '../../../workers/src/communication-interface';
 import { RapiId, AssetUrl } from '../../../typings/rapi-types';
-export default class DataSyncer implements CommunicationInterfaceCallback {
+import { Context } from '../di/context';
+export default class DataSyncer implements Context, CommunicationInterfaceCallback {
+    _creator_: string;
     private _rapiAccess;
     private _eventHandler;
     private _singlePromiseFactory;
@@ -10,6 +12,8 @@ export default class DataSyncer implements CommunicationInterfaceCallback {
     private _bootCallbacks;
     private _isStarted;
     private _isStarting;
+    private _alwaysUseCache;
+    constructor(creator: string);
     start(catalogId: RapiId): Promise<void>;
     syncCatalog(catalogId: RapiId): Promise<void>;
     syncFloorTag(tagId: RapiId): Promise<any>;
@@ -30,4 +34,5 @@ export default class DataSyncer implements CommunicationInterfaceCallback {
     private _assetUrlToBase64;
     private _softReject;
     requestAsset(url: string, urlAsFallback?: boolean): AssetUrl;
+    setAlwaysUseCache(alwaysUseCache: boolean): void;
 }
