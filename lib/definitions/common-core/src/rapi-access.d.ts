@@ -34,11 +34,13 @@ export default class RapiAccess {
     private _overrideCountry;
     private _configuratorId;
     private _overrideRapi;
+    private _customApiUrl;
     constructor();
     overrideTenant(tenant: number): void;
     setConfiguratorId(configuratorId: RapiId): void;
     overrideCountry(country: string): void;
     overrideRapi(type: RapiServerUrlType): void;
+    setCustomApiUrl(customApiUrl: string): void;
     getPreloadForItem(id: RapiId): Promise<void>;
     getPreloadForConfiguration(id: RapiId): Promise<void>;
     private _getPreload;

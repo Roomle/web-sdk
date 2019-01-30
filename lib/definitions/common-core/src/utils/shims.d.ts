@@ -36,6 +36,7 @@ export interface CommonInitData {
     stats?: boolean;
     _measureTraffic?: boolean;
     alwaysUseCache?: boolean;
+    customApiUrl?: string;
 }
 export interface ConfiguratorInitData {
     addOnSpots?: boolean;
