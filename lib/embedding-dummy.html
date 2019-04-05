@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Embedding Dummy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<style>
+    .plan {
+        border: 1px dotted grey;
+        width: 534px;
+        height: 300px;
+    }
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+<p>Interaction</p>
+<div>
+    
+    <button id="init-plan1">Start Plan 1</button>
+    <button id="init-plan2">Start Plan 2</button>
+
+    <button id="area-plan1" disabled>Total floor area plan 1</button>
+    <button id="area-plan2" disabled>Total floor area plan 2</button>
+
+    <button id="planObjects-plan1" disabled>Plan objects plan 1</button>
+    <button id="planObjects-plan2" disabled>Plan objects plan 2</button>
+
+    <button id="clear">Clear results</button>
+
+</div>
+<p>Result</p>
+<div id="result"></div>
+<hr>
+<p>Plan 1</p>
+<div id="plan1" class="plan"></div>
+<hr>
+<p>Plan 2</p>
+<div id="plan2" class="plan"></div>
+<hr>
+
+<script>
+    var appjsLoaded = async function (event) {
+        console.log('ON LOAD DONE');
+        const initPlanner = async (id, planId)=> {
+            document.getElementById('init-' + id).disabled = true;
+            window[id] = await RoomleEmbedding.initPlanner('embedding_id', document.getElementById(id));
+            await window[id].loadPlan(planId);
+            document.getElementById('area-' + id).disabled = false;
+            document.getElementById('planObjects-' + id).disabled = false;
+            document.getElementById('init-' + id).style.display = 'none';
+        };
+
+        const getTotalFloorArea = async (id)=> {
+            const area = await window[id].getTotalFloorArea();
+            document.getElementById('result').innerText = 'Area in mm2: ' + area;
+        };
+
+        const getPlanObjects = async (id)=> {
+            const objects = await window[id].getPlanObjects();
+            let string = '<div>';
+            objects.forEach((object)=>string += object.id + '<br>');
+            string += '</div>';
+            document.getElementById('result').innerHTML = '<strong>Objects</strong>: ' + string;
+        };
+
+        document.getElementById('init-plan1').addEventListener('click', ()=> initPlanner('plan1', '8a7080835a17a313015a22d290924436'));
+        document.getElementById('init-plan2').addEventListener('click', ()=> initPlanner('plan2', 'f0tirbdakqokfgabbqtmko2kfusn4me'));
+
+        document.getElementById('area-plan1').addEventListener('click', ()=> getTotalFloorArea('plan1'));
+        document.getElementById('area-plan2').addEventListener('click', ()=> getTotalFloorArea('plan2'));
+
+        document.getElementById('planObjects-plan1').addEventListener('click', ()=> getPlanObjects('plan1'));
+        document.getElementById('planObjects-plan2').addEventListener('click', ()=> getPlanObjects('plan2'));
+        document.getElementById('clear').addEventListener('click', ()=> document.getElementById('result').innerHTML = '');
+
+    };
+</script>
+<script src="roomle-embedding.js" id="appjs" type="module" onload="appjsLoaded();"></script>
+</body>
+</html>

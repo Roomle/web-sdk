@@ -10,6 +10,7 @@ export default class PlannerLightSetting extends LightSetting {
     addToScene(): void;
     removeFromScene(): void;
     reload(): void;
-    setBounds(bounds: THREE.Box3): void;
+    needsBounds(): boolean;
+    updateBounds(bounds: THREE.Box3): void;
     showGUI(): void;
 }

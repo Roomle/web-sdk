@@ -17,4 +17,5 @@ export default class DynamicLightSetting extends LightSetting {
     private _addRectAreaLightToGUI;
     private _addSpotLightToGUI;
     private _addAmbientLightToGUI;
+    private _addDirectionalLightToGUI;
 }

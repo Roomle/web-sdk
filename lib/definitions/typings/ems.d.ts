@@ -1,4 +1,4 @@
-declare class EmsArray<T> {
+export declare class EmsArray<T> {
     get(index: number): T;
     push_back(element: T): void;
     resize(from: number, to: number): void;
@@ -10,17 +10,17 @@ declare class EmsArray<T> {
     isAliasOf(index: number): boolean;
     isDeleted(index: number): boolean;
 }
-declare class EmsList<T> {
+export declare class EmsList<T> {
     push_back(element: T): void;
     size(): number;
 }
-declare class EmsSet<T> {
+export declare class EmsSet<T> {
     insert(element: T): void;
     size(): number;
 }
-declare class InternalError {
+export declare class InternalError {
 }
-declare class BindingError {
+export declare class BindingError {
 }
-declare class UnboundTypeError {
+export declare class UnboundTypeError {
 }

@@ -16,7 +16,7 @@ export interface CommunicationInterfaceCallback {
     onCommand(command: WORKER_MESSAGE, conversationId: number, data: any): void;
 }
 export declare const resetConversationIds: () => void;
-declare abstract class CommunicationInterface {
+export declare abstract class CommunicationInterface {
     private _callbacks;
     protected eventListener: any;
     private _eventPoster;
@@ -27,14 +27,3 @@ declare abstract class CommunicationInterface {
     setEventPoster(eventPoster: any): void;
     handleEvent(e: MessageEvent): void;
 }
-export declare class WorkerToMainThread extends CommunicationInterface {
-    constructor(callback: CommunicationInterfaceCallback, eventListener?: Worker);
-    sendToMainThread(command: WORKER_MESSAGE, conversationId: number, data: any): void;
-}
-export declare class MainThreadToWorker extends CommunicationInterface {
-    private _promiseCallbacks;
-    constructor(callback: CommunicationInterfaceCallback, eventListener: Worker | ServiceWorker | ServiceWorkerContainer);
-    sendToWorker(command: WORKER_MESSAGE, data?: any, resolve?: (...args: any[]) => void, reject?: (...args: any[]) => void): void;
-    resolvePromises(conversationId: number, data: any[]): void;
-}
-export {};

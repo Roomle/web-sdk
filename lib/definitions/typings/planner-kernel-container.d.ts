@@ -1,5 +1,6 @@
 import { KernelVector2f, KernelDockPairToPoint, KernelDockPairToLine, KernelComponent, KernelVariable, KernelRange, KernelParameterValue, KernelParameter, KernelParameterGroup, KernelPartListParameter, KernelConfiguration, KernelPart, KernelPossibleChild, KernelAddOnSpot, KernelParamKeyValuePair, KernelVariant, ConfiguratorKernelClass, KernelVector3f } from './kernel';
 import { PlanInteractionHandler } from './planner';
+import { EmsList, EmsSet, EmsArray } from './ems';
 export declare class PlanObjectList extends EmsList<PlanObjectPtr> {
 }
 declare class ConstructionObjectSet extends EmsSet<ConstructionObject> {

@@ -1,3 +1,4 @@
+import { Pixotron } from '../../typings/pixotron';
 export interface SAOPass {
     enabled?: boolean;
     smoothTransition?: boolean;

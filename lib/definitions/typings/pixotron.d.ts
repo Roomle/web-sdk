@@ -15,14 +15,14 @@ declare interface ShadowPass {
     numSamples?: number;
     setShadowRecieverBBox(box: THREE.Box3): void;
 }
-declare interface ShadowPlanePass {
+export declare interface ShadowPlanePass {
     enable?: boolean;
     smoothTransition?: boolean;
     numSamples?: number;
     numSamplesPerFrame?: number;
     getShadowPlane(): THREE.Object3D;
 }
-declare class Pixotron {
+export declare class Pixotron {
     enableAA: boolean;
     needsUpdate: boolean;
     autoShadowsClear: boolean;
@@ -38,3 +38,4 @@ declare class Pixotron {
     updateShadowPlane(object: THREE.Object3D): void;
     blit(): void;
 }
+export {};

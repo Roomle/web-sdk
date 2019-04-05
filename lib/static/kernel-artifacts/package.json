@@ -1,28 +1,28 @@
 {
-  "_from": "http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz",
-  "_id": "roomle-core-hsc@2.9.2",
+  "_from": "https://www.roomle.com/t/external/core/62/hsc.tar.gz",
+  "_id": "roomle-core-hsc@2.12.1",
   "_inBundle": false,
-  "_integrity": "sha512-S2qnujlnLifLatNJmCJe3bpdu8TpKNWRbIB8Mk7vDCiRf0hFvK6S0Oy+7za1Cgc7CKCTRaZDHNsYkLytr+BiGA==",
+  "_integrity": "sha512-MzrueDTTvt0UdeE0jOlmw921y4O5MkISUifFIHVKGLIVV5IlTelmIQA/AjDhDwUceKCPniI3LCupVlYqeGlR3g==",
   "_location": "/roomle-core-hsc",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "roomle-core-hsc@http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz",
+    "raw": "roomle-core-hsc@https://www.roomle.com/t/external/core/62/hsc.tar.gz",
     "name": "roomle-core-hsc",
     "escapedName": "roomle-core-hsc",
-    "rawSpec": "http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz",
-    "saveSpec": "http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz",
-    "fetchSpec": "http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz"
+    "rawSpec": "https://www.roomle.com/t/external/core/62/hsc.tar.gz",
+    "saveSpec": "https://www.roomle.com/t/external/core/62/hsc.tar.gz",
+    "fetchSpec": "https://www.roomle.com/t/external/core/62/hsc.tar.gz"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
-  "_resolved": "http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz",
-  "_shasum": "de053b073e9469ea60fad4db3b5ccb9904f05890",
-  "_spec": "roomle-core-hsc@http://build.roomle.local/job/KernelEmscriptenRelease/48/artifact/dist/hsc.tar.gz",
+  "_resolved": "https://www.roomle.com/t/external/core/62/hsc.tar.gz",
+  "_shasum": "1c8a4449b08fa09299788beb1a5f8161771137b0",
+  "_spec": "roomle-core-hsc@https://www.roomle.com/t/external/core/62/hsc.tar.gz",
   "_where": "/data/jenkins/jobs/Roomle_Web_SDK/workspace/source",
   "bundleDependencies": false,
   "deprecated": false,
   "name": "roomle-core-hsc",
-  "version": "2.9.2"
+  "version": "2.12.1"
 }

@@ -1,3 +1,4 @@
+import '../../../typings/stats';
 export default class StatsHelper {
     private _scriptLoader;
     private _statPanels;

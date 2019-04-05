@@ -28,12 +28,16 @@ export default class DimensioningHelper {
     private _hoverOnTime;
     private _delayDuration;
     private _dimensionsVisible;
+    private _topDimensions;
     constructor(camera: THREE.PerspectiveCamera, formatter: UnitFormatter);
     private _loaded;
     private _performUpdate;
+    private _updateText;
     private _updateWidth;
+    private _updateWidthForTop;
     private _updateHeight;
     private _updateDepth;
+    private _updateDepthForTop;
     updateBounds(boxForMeasurements: KernelCube): void;
     update(force?: boolean): void;
     addToScene(scene: THREE.Scene, uiScene: THREE.Scene): void;
@@ -45,6 +49,8 @@ export default class DimensioningHelper {
     onLoaded(handler: () => void): void;
     onDimensionsVisibilityChanged(handler: (visible: boolean) => void): void;
     onHover(touch?: boolean): void;
+    enableTopDimensions(): void;
+    disableTopDimensions(): void;
     disableDimensions(): void;
     areDimensionsEnabled(): boolean;
     private _visibilityChangedCallback;

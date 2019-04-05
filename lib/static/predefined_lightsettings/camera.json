@@ -1,0 +1,33 @@
+{
+  "lights": [
+    {
+      "type": "directional",
+      "name": "camera",
+      "intensity": 0.5,
+      "color": "#ffffff",
+      "position": {
+        "x": 0,
+        "y": 6,
+        "z": 0
+      },
+      "target": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "movesWithCamera": true,
+      "castShadow": false
+    },
+    {
+      "type": "ambient",
+      "name": "ambient",
+      "intensity": 0.5,
+      "color": "#ffffff",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ]
+}

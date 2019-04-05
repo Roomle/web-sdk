@@ -4,10 +4,13 @@ export declare const PREDEFINED_LIGHTSETTING: {
     SOFA: string;
     SHELF: string;
     SHELF_FRONT: string;
+    BAKED: string;
+    CAMERA: string;
+    EQUAL: string;
 };
 /**
  * Description of fields:
- - type: 'ambient'/'rectarea'/'spot'
+ - type: 'ambient'/'rectarea'/'spot'/'directional'
  - name: set a name for this light to identify it more easily
  - intensity: light intensity/brightness
  - color: light color as hex ('#ffffff')
@@ -46,5 +49,6 @@ export default class DynamicLightSettingLoader {
     private _parseAmbientLight;
     private _parseRectAreaLight;
     private _parseSpotLight;
+    private _parseDirectionalLight;
     private _parseCommon;
 }

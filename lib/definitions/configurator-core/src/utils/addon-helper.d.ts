@@ -10,7 +10,7 @@ export declare const enum ADDON_STATE {
     PREVIEWS = 5
 }
 export default class AddonHelper {
-    private _eventHandler;
+    private _configuratorUiCallbacks;
     private _camera;
     private _font;
     private _plusButton;
@@ -27,7 +27,7 @@ export default class AddonHelper {
     constructor(camera: THREE.PerspectiveCamera, scriptLoader: ScriptLoader);
     private _onPlusButtonLoaded;
     private _performUpdate;
-    addAddOnSpots(rootComponent: RoomleComponent, component: RoomleComponent, addOnSpots: AddOnSpot[]): void;
+    addAddOnSpots(component: RoomleComponent, addOnSpots: AddOnSpot[]): void;
     deleteAddonPointsForComponent(componentId: number): void;
     private getPositionForAddOnPosition;
     update(force?: boolean): void;

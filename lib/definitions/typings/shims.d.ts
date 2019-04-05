@@ -4,3 +4,8 @@ export interface ExternalEnv {
     initData?: InitData;
     locale?: string;
 }
+declare global {
+    interface Window {
+        __RML__ENV__: ExternalEnv;
+    }
+}

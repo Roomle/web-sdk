@@ -1,18 +1,19 @@
-import { KernelCallbackI } from './services/kernel-callback';
 import RoomlePlannerUiCallback from './roomle-planner-ui-callback';
 import { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main';
 import { Configurator } from '../../configurator-core/src/configurator';
 import { InitData } from '../../common-core/src/utils/shims';
 import { BackstackCallbacks } from './services/backstack';
 import { Context } from '../../common-core/src/di/context';
+import { PlanInteractionHandler } from '../../typings/planner';
+import { KernelAccessCallbackI } from '../../common-core/src/kernel-access-callback';
 export interface RoomlePlannerCallback {
     switchToHsc: (planObjectId: number) => Promise<void>;
 }
-export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCallback, GlobalAPI, BackstackCallbacks, Context, KernelUtilityForUi {
+export default class RoomlePlanner implements KernelAccessCallbackI, RoomlePlannerCallback, GlobalAPI, BackstackCallbacks, Context, KernelUtilityForUi {
     _creator_: string;
     private _domHelper;
     private _scriptLoader;
-    private _kernelCallback;
+    private _kernelAccessCallback;
     private _plannerKernelAccess;
     private _rapiAccess;
     private _singlePromiseFactory;
@@ -73,4 +74,6 @@ export default class RoomlePlanner implements KernelCallbackI, RoomlePlannerCall
      */
     pauseTest(): void;
     syncCatalog(catalogId: string): Promise<void>;
+    loadError(error?: any): void;
+    getPlanInteractionHandler(): Promise<PlanInteractionHandler>;
 }

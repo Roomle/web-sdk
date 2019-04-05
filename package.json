@@ -11,9 +11,9 @@
   "types": "lib/definitions/common-core/src/roomle-sdk.d.ts",
   "devDependencies": {
     "@types/dat.gui": "0.7.1",
-    "@types/jest": "23.1.5",
+    "@types/jest": "23.3.13",
     "@types/jszip": "3.1.4",
-    "@types/three": "0.92.0",
+    "@types/three": "0.93.26",
     "@types/tween.js": "16.9.0"
   }
 }

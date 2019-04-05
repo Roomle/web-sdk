@@ -1,6 +1,7 @@
 import { PARAMETER_KERNEL_TYPE, PARAMETER_UNIT_TYPES } from '../common-core/src/utils/parameter-types';
 import { ConfigurationHash, ConfigurationString, RapiElement, RapiId, RapiJson, RapiTag } from './rapi-types';
 import { KernelObject } from './planner';
+import { BindingError, InternalError, UnboundTypeError } from './ems';
 export interface WasmDbEntry {
     key: string;
     wasmVersion: string;
@@ -149,6 +150,7 @@ export interface EmscriptenList {
 }
 export interface KernelComponent {
     id: number;
+    hash: string;
     bounds: KernelVector3;
     boxForMeasurement: KernelCube;
     position: KernelVector3;
@@ -156,7 +158,24 @@ export interface KernelComponent {
     childIds: EmscriptenList;
     addOnSpots: AddOnSpot[];
     parameterGroups: KernelParameterGroup[];
+    dimensionings: Dimensioning[];
     [key: string]: any;
+}
+export declare const enum DIMENSIONING_TYPE {
+    X = 0,
+    Y = 1,
+    Z = 2
+}
+export interface Dimensioning {
+    type: {
+        value: DIMENSIONING_TYPE;
+    };
+    from: number;
+    to: number;
+    label: string;
+    level: number;
+    visible: boolean;
+    maxLevel: number;
 }
 export interface AddOnSpot {
     position: KernelVector3;

@@ -1,6 +1,6 @@
-import { KernelComponent, KernelEnum, KernelVector3 } from '../../../typings/kernel';
+import { KernelEnum, KernelVector3 } from '../../../typings/kernel';
 import PlanViewModel from '../view-model/plan-view-model';
-import PlanObjectViewModel from '../view-model/plan-object-view-model';
+import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import { KernelObject, Plan, PlanElement, PlanInteractionHandler, PlanObject } from '../../../typings/planner';
 import CommonKernelAccess from '../../../common-core/src/services/common-kernel-access';
 import { ConfigurationString, RapiItem } from '../../../typings/rapi-types';
@@ -13,24 +13,13 @@ export interface PlannerKernelCallbackI {
     endPlanConstruction(plan: Plan): void;
     addPlanObjectToScene(object3D: THREE.Object3D): void;
     planElementChanged(plan: Plan, planObject: PlanObjectViewModel): void;
-}
-export interface ConfiguratorKernelCallbackI {
-    Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number, isRootComponent: boolean): void;
-    Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
-    Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
-    updateComponentMetaInformation(component: KernelComponent): void;
-    Editor3dBeginConstruction(componentId: number): void;
-    Editor3dComponentDocked(componentId: number, parentId: number, componentPosition: KernelVector3, componentRotation: KernelVector3): void;
-    Editor3dGeometryNotReady(id: number): void;
-    componentDeleted(componentId: number): void;
-    sceneCleared(): void;
+    planObjectConfigurationLoaded(plan: Plan, element: PlanElement, success: boolean): void;
 }
 export default class PlannerKernelAccess extends CommonKernelAccess {
-    private _kernelCallback;
+    private _kernelAccessCallback;
     private _roomlePlannerUiCallback;
     private _planInteractionHandler;
     private _plannerKernelCallbackListener;
-    private _configuratorKernelCallbackListener;
     readonly kernelContainer: any;
     constructor(creator: string);
     private _loadSuccess;
@@ -38,8 +27,6 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     private _createPlanInteractionHandler;
     addPlannerListener(listener: PlannerKernelCallbackI): void;
     removePlannerListener(listener: PlannerKernelCallbackI): void;
-    addConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
-    removeConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     isReady(): void;
     readonly callbacks: RoomlePlannerUiCallback;
     readonly planInteractionHandler: PlanInteractionHandler;
@@ -51,25 +38,17 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     componentDefinitionLoadingError(conversationId: number, errorMessage: string): void;
     configurationLoadingError(): void;
     componentConfigurationUpdated(componentId: number): void;
-    componentMetaUpdated(componentId: number): void;
     componentParameters(): void;
-    componentDeleted(componentId: number): void;
     requestComponentDimensions(): void;
     planObjectCreated(conversationId: number, planObjectId: number): void;
     planObjectUpdated(planObjectId: number): void;
     planObjectConfigurationUpdated(planObjectId: number, configuration: ConfigurationString, hash: string): void;
     planObjectDeleted(): void;
     requestPlanObjectDimensions(): void;
-    sceneCleared(): void;
     cleanUpCallbacks(): void;
     registerCallbacks(): void;
     requestExternalMesh(meshId: string, quality: number): Promise<{}>;
-    Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number): void;
     Editor3dRootComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number): void;
-    Editor3dBeginConstruction(id: number): void;
-    Editor3dEndConstruction(id: number): void;
-    Editor3dGeometryReady(id: number): void;
-    Editor3dGeometryNotReady(id: number): void;
     Editor3dPlanObjectConstructionDone(planObjectId: number): void;
     Editor3dBeginGroup(): void;
     Editor3dEndGroup(): void;
@@ -99,15 +78,12 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     Editor3dAddFittingLine(): void;
     Editor3dSelectObject(): void;
     Editor3dCopy(): void;
-    Editor3dComponentDocked(componentId: number, parentId: number, componentPosition: KernelVector3, componentRotation: KernelVector3): void;
     Editor3dUpdatePlanObjectPosition(): void;
     Editor3dUpdatePlanObjectRotation(): void;
     Editor3dUpdatePlanObjectTransform(): void;
     Editor3dUpdatePlanComponentPosition(): void;
     Editor3dUpdatePlanComponentRotation(): void;
     Editor3dUpdatePlanComponentTransform(): void;
-    Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
-    Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     planElementRemoved(element: PlanElement): void;
     handlerSwitchedPlans(fromPlan: Plan, toPlan: Plan): void;
     planBoundsChanged(): void;

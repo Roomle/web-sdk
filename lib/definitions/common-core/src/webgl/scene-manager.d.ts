@@ -1,15 +1,17 @@
 import { CanvasOffset } from '../common-interfaces';
 import DomHelper from '../utils/dom-helper';
 import InputManager from '../input/input-manager';
+import { GUI } from 'dat.gui';
 import ScriptLoader from '../script-loader';
 import CameraControl from '../cameracontrol/camera-control';
 import LightSetting from '../lightsetting/light-setting';
-import { CAMERA_TYPE } from '../../../planner-core/src/roomle-planner-ui-callback';
+import { CAMERA_TYPE } from '../cameracontrol/camera-type';
 import { Context } from '../di/context';
 import { LifeCycleCallbacks } from '../life-cycle-manager';
 import { SceneSettings } from '../scene-settings-loader';
 import Environment from '../environment/environment';
 import { QualitySetting } from '../dynamic-quality-setting-loader';
+import { Pixotron } from '../../../typings/pixotron';
 export default abstract class SceneManager implements Context, LifeCycleCallbacks, EventListenerObject {
     _creator_: string;
     protected _domHelper: DomHelper;
@@ -31,7 +33,6 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     private _forceRender;
     private _lastChange;
     private _running;
-    protected _gltfLoader: any;
     protected _width: number;
     protected _height: number;
     private _statsHelper;
@@ -62,8 +63,9 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
     private _setCamera;
     showGUI(): void;
-    private _guiLoaded;
-    private _addGUIListener;
+    protected _guiLoaded(): void;
+    protected _addGUIListener(gui: GUI): void;
+    protected _guiParamChanged(): void;
     showStats(): void;
     protected _onKeyDown(event: KeyboardEvent): void;
     protected _onKeyUp(event: KeyboardEvent): void;

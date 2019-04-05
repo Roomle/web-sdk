@@ -1,0 +1,31 @@
+import { Dimensioning } from '../../../typings/kernel';
+import { Position2 } from '../../../common-core/src/common-interfaces';
+export default class ComponentDimensioning extends THREE.Object3D {
+    private _cacheHolder;
+    private _unitFormatter;
+    private _dimensioning;
+    private _center;
+    private _size;
+    private _origin;
+    private _font;
+    private _level;
+    private _line;
+    private _text;
+    private _plane;
+    private _lineMaterial;
+    private _planeMaterial;
+    private _textMaterial;
+    private _cameraPosition;
+    constructor(dimensioning: Dimensioning, boundingBox: THREE.Box3, font: THREE.Font, cameraPosition: Position2);
+    private _initMaterials;
+    private _init;
+    private _getXEdge;
+    private _addXEdgeSideLines;
+    private _getZEdge;
+    private _addZEdgeSideLines;
+    private _getYEdge;
+    private _addYEdgeSideLines;
+    private _addLine;
+    private _addText;
+    private _getXSign;
+}

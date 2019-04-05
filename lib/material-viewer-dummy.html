@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HSP Dummy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div>
+    <textarea rows="10" cols="50" type="text" id="input-xml">{
+    "basecolor": {
+        "b": 0.96,
+        "g": 0.96,
+        "r": 0.96
+    },
+    "roughness": 0.85,
+    "metallic": 0,
+    "alpha": 0.5,
+    "alphaCutoff": 0.5,
+    "doubleSided": true,
+    "specular": 0
+}</textarea>
+    <button id="load-material-shading" disabled="disabled">Load Shading</button>
+    <button id="load-material" disabled="disabled">Load Material</button>
+    <button id="load-material-id" disabled="disabled">Load Material ID</button>
+</div>
+<script>
+    var appjsLoaded = function load(event) {
+        console.log('ON LOAD DONE');
+        const script = document.createElement('script');
+        script.src = 'material-viewer-dummy-app.js';
+        document.body.appendChild(script);
+    };
+</script>
+<div id="roomle-material-viewer" style="height: 100vh; width: 100%; background-color: deeppink; border: solid 1px gray"></div>
+<script src="material-viewer-main.js" id="appjs" type="module" onload="appjsLoaded();"></script>
+</body>
+</html>

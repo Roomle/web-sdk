@@ -2,6 +2,7 @@ import EventDispatcher, { Listener } from '../../../configurator-core/src/utils/
 import DomHelper from '../utils/dom-helper';
 import InputManager, { InputEvent } from '../input/input-manager';
 import { Context } from '../di/context';
+import { Position2 } from '../common-interfaces';
 export interface CameraParameter {
     yaw: number;
     pitch: number;
@@ -52,5 +53,6 @@ export default abstract class CameraControl extends EventDispatcher<any> impleme
     unlock(): void;
     getTargetPosition(): THREE.Vector3;
     protected _saveYawAndPitch(): void;
+    getInputPosition(position: Position2): import("three").Vector3;
     protected abstract _update(overrideTarget?: THREE.Vector3): void;
 }

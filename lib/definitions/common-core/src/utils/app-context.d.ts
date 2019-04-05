@@ -11,5 +11,6 @@ export default class AppContext {
     static kernelContainer: any;
     static planObjectId: number;
     static init(appState?: AppState): void;
+    static cleanUp(): void;
 }
 export {};

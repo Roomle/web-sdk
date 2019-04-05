@@ -1,5 +1,5 @@
 import { LifeCycleCallbacks } from './life-cycle-manager';
-import { MainThreadToWorker } from '../../workers/src/communication-interface';
+import { MainThreadToWorker } from '../../workers/src/main-thread-to-worker';
 export interface GlobalAPI {
     updateSize(): void;
 }

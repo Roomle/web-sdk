@@ -4,6 +4,7 @@ export declare const CANVAS_ID: {
     HSC: string;
     HSP: string;
     GLB: string;
+    RMV: string;
 };
 export declare const CONTAINER_CSS_CLASS = "rml-threejs-canvas-container";
 export default class DomHelper implements LifeCycleCallbacks, Context {

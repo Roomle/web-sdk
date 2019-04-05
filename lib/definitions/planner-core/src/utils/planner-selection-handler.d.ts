@@ -1,4 +1,4 @@
-import PlanObjectViewModel from '../view-model/plan-object-view-model';
+import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import EventDispatcher from '../../../configurator-core/src/utils/event-dispatcher';
 export declare const enum SELECTION_MODE {
     STANDARD = "standard",

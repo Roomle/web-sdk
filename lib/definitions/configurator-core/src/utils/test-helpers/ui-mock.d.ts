@@ -1,3 +1,5 @@
+import { UiPossibleChild, KernelParameter } from '../../../../typings/kernel';
+import { RapiId } from '../../../../typings/rapi-types';
 export default class UIMock {
     private _element;
     private _possibleChildren;
@@ -10,6 +12,6 @@ export default class UIMock {
     initAndLoadId(id: RapiId): Promise<{}>;
     possibleChildrenUpdate(): Promise<{}>;
     parametersUpdate(): Promise<{}>;
-    getParameterByKey(id: string): any;
-    getPossibleChild(id: RapiId): any;
+    getParameterByKey(id: string): KernelParameter;
+    getPossibleChild(id: RapiId): UiPossibleChild;
 }

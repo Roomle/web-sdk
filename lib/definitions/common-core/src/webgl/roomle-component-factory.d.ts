@@ -9,10 +9,11 @@ export interface RoomleComponent extends THREE.Object3D {
     loadingMesh: THREE.Mesh;
     roomlePosition: KernelVector3;
     roomleRotation: KernelVector3;
+    hash: string;
+    replaceMeshes(meshes: THREE.Mesh[]): void;
     addMesh(mesh: THREE.Mesh, transform?: Float32Array): void;
     removeMesh(mesh: THREE.Mesh): void;
     removeAllMeshes(): void;
-    changeMaterialOfMesh(id: number, material: THREE.Material): void;
     select(): void;
     deselect(): void;
     hoverOn(): void;

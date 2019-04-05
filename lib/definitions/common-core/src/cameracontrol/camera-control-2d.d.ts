@@ -6,11 +6,13 @@ export default class CameraControl2D extends CameraControl {
     private _state;
     private _size;
     private _center;
+    private _raycaster;
     private _lastPosition;
     private _zoomPosition;
     private _lastZoom;
     private _zoomSpeed;
     private _cameraZoom;
+    private _plane;
     constructor(creator: string, inputManager: InputManager, initialCameraPosition?: THREE.Vector3);
     protected _getCamera(): THREE.Camera;
     private _initCamera;

@@ -1,4 +1,4 @@
-import { KernelComponent, KernelPart, UiKernelParameter, UiPossibleChild, UiPossibleChildTag, ConfiguratorKernelClass } from '../../../typings/kernel';
+import { ConfiguratorKernelClass, KernelComponent, KernelPart, UiKernelParameter, UiPossibleChild, UiPossibleChildTag } from '../../../typings/kernel';
 import { UIIntersection } from '../utils/ui-intersection-helper';
 import { RAPI_PATHS } from '../../../common-core/src/rapi-access';
 import { RapiTagForUi } from '../../../typings/rapi-types';
@@ -141,9 +141,17 @@ export default class ConfiguratorUiCallbacks extends UiCallback {
      */
     onAddonPlusHover: () => void;
     /**
+     * When user hovers over an addon plus symbol
+     */
+    onAddonPlusHoverOff: () => void;
+    /**
      * When all addon plus symbols are shown in the user interface
      */
     onAddonPlusShown: () => void;
+    /**
+     * When all addon plus symbols are hidden in the user interface
+     */
+    onAddonPlusHidden: () => void;
     /**
      * When an asset could not be loaded (for example an image or texture). See paths or ids to identify the problem.
      * @param data
@@ -204,4 +212,5 @@ export default class ConfiguratorUiCallbacks extends UiCallback {
      * @param kernelInstance
      */
     onConfiguratorKernelIsReady: (kernelContainer: ConfiguratorKernelContainer | PlannerKernelContainer, kernelInstance: ConfiguratorKernelClass) => void;
+    constructor(creator: string);
 }

@@ -4,7 +4,9 @@ import DataSyncer from './data-syncer';
 import { RapiId } from '../../../typings/rapi-types';
 import { LifeCycleCallbacks } from '../life-cycle-manager';
 import { Context } from '../di/context';
-import { ConfiguratorKernelClass, ConfigurationObject } from '../../../typings/kernel';
+import { ConfigurationObject, ConfiguratorKernelClass, KernelVector3 } from '../../../typings/kernel';
+import { ConfiguratorKernelCallbackI } from '../kernel-access';
+import ConfiguratorUiCallbacks from '../../../configurator-core/src/services/configurator-ui-callback';
 export declare const enum KERNEL_TYPE {
     PLANNER = 0,
     CONFIGURATOR = 1
@@ -20,12 +22,15 @@ export default abstract class CommonKernelAccess implements LifeCycleCallbacks, 
     private _kernelIo;
     protected _dataSyncer: DataSyncer;
     private _lifeCycleManager;
+    protected _configuratorUiCallbacks: ConfiguratorUiCallbacks;
+    protected _configuratorKernelCallbackListener: Set<ConfiguratorKernelCallbackI>;
     /**
      *
      * !!!WARNING!!!
      *
      * @todo check if this can become a problem if we tell
      *       the minifier to mangle properties stargin with _
+     *       see the discussion at https://gitlab.com/roomle/roomle-threejs/merge_requests/401#note_143575143
      *
      * not sure if we can prefix protected methods with _
      * the leading _ was done for minification purpose, because
@@ -51,6 +56,7 @@ export default abstract class CommonKernelAccess implements LifeCycleCallbacks, 
     protected abstract onLoadComponentError(error: Error): void;
     constructor(creator: string, kernelType: KERNEL_TYPE);
     readonly kernelContainer: any;
+    readonly kernelInstance: ConfiguratorKernelClass;
     private _setupKernelPaths;
     private _setupEmsModule;
     private _passSubComponentsToKernel;
@@ -60,7 +66,22 @@ export default abstract class CommonKernelAccess implements LifeCycleCallbacks, 
     protected addDebugInfo(): void;
     loadComponent(conversationId: number, configuration: ConfigurationObject, parentId: number): void;
     loadSubComponent(parentId: number, partId: number, componentId: string): void;
-    protected cleanUpCallbacks(): void;
+    requestDeleteComponent(componentId: number): void;
+    dockComponentWithPosition(parentId: number, parentDockId: number, childId: number, childDockId: number, position: KernelVector3): void;
+    Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
+    Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
+    Editor3dBeginConstruction(id: number): void;
+    Editor3dEndConstruction(id: number): void;
+    Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number): void;
+    Editor3dComponentDocked(componentId: number, parentId: number, componentPosition: KernelVector3, componentRotation: KernelVector3): void;
+    Editor3dGeometryReady(id: number): void;
+    Editor3dGeometryNotReady(id: number): void;
+    componentDeleted(componentId: number): void;
+    componentMetaUpdated(componentId: number): void;
+    sceneCleared(): void;
+    addConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
+    removeConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
+    cleanUpCallbacks(): void;
     protected registerCallbacks(): void;
     pause(): void;
     resume(): void;

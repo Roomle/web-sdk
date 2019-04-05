@@ -1,13 +1,13 @@
 import { CanvasOffset } from '../../../common-core/src/common-interfaces';
 import { PlannerKernelCallbackI } from '../services/planner-kernel-access';
-import { Plan } from '../../../typings/planner';
+import { Plan, PlanElement } from '../../../typings/planner';
 import PlanViewModel from '../view-model/plan-view-model';
 import SceneManager from '../../../common-core/src/webgl/scene-manager';
 import { KernelEnum } from '../../../typings/kernel';
 import { RoomlePlannerCallback } from '../roomle-planner';
-import PlanObjectViewModel from '../view-model/plan-object-view-model';
+import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import InputManager from '../../../common-core/src/input/input-manager';
-import { CAMERA_TYPE } from '../roomle-planner-ui-callback';
+import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
 export default class PlannerSceneManager extends SceneManager implements PlannerKernelCallbackI {
     private _plannerKernelAccess;
     private _rapiAccess;
@@ -65,4 +65,5 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     private _highlight;
     destroy(): void;
     getPixotronParams(): any;
+    planObjectConfigurationLoaded(plan: Plan, element: PlanElement, success: boolean): void;
 }

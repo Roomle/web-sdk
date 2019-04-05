@@ -67,6 +67,7 @@ export default class RapiAccess {
     peekComponent(id: RapiId): RapiComponent;
     getMaterials(ids: RapiId[]): Promise<RapiMaterial[]>;
     getPlan(id: RapiId): Promise<RapiPlan>;
+    static clearCaches(): void;
     cleanUp(): void;
     getMaterialsByGroup(groupIdsToCheck: RapiId[]): Promise<RapiMaterialGroup[]>;
     private _flushOfflineQueue;

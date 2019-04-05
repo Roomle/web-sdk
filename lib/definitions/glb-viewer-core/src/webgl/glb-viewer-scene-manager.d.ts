@@ -2,9 +2,10 @@ import SceneManager from '../../../common-core/src/webgl/scene-manager';
 import { Base64Image, CanvasOffset } from '../../../common-core/src/common-interfaces';
 import { GLBRenderWorkerListener } from '../services/glb-render-worker';
 import InputManager from '../../../common-core/src/input/input-manager';
-import { CAMERA_TYPE } from '../../../planner-core/src/roomle-planner-ui-callback';
+import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
 export default class GLBViewerSceneManager extends SceneManager implements GLBRenderWorkerListener {
     private _glbInputManager;
+    private _currentGLB;
     private _standardSceneBackgroundColor;
     private _itemsCount;
     constructor(creator: string, offset: CanvasOffset);
@@ -16,6 +17,7 @@ export default class GLBViewerSceneManager extends SceneManager implements GLBRe
     onStart(count: number): void;
     onElementFinished(itemsFinished: number): void;
     onFinished(zip: any): void;
+    clearScene(): void;
     enableHD(): void;
     sceneChanged(): void;
     getPixotronParams(): any;

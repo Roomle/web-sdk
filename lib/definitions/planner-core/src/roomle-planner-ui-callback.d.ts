@@ -3,12 +3,9 @@ import { UiCallback } from '../../common-core/src/utils/ui-callback';
 import { PlanInteractionHandler } from '../../typings/planner';
 import { ConfiguratorKernelClass } from '../../typings/kernel';
 import { PlannerKernelContainer } from '../../typings/planner-kernel-container';
-export declare const enum CAMERA_TYPE {
-    CAMERA_2D = "2D",
-    CAMERA_3D = "3D",
-    CAMERA_FP = "FP"
-}
+import { CAMERA_TYPE } from '../../common-core/src/cameracontrol/camera-type';
 export default class RoomlePlannerUiCallback extends UiCallback {
+    constructor(creator: string);
     onCompletelyLoaded: () => void;
     onItemsLoaded: () => void;
     onSwitchToHSCFinished: (hscInstance: Configurator) => void;

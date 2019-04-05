@@ -1,10 +1,11 @@
 import { KernelVector3 } from '../../../typings/kernel';
-export declare const convertToTHREE: (vector: KernelVector3) => import("three/three-core").Vector3;
-export declare const convertToEuler: (vector: KernelVector3) => import("three/three-core").Euler;
-export declare const convertToThreeDimensions: (vector: KernelVector3) => import("three/three-core").Vector3;
-export declare const convertToKernel: (vector: import("three/three-core").Vector3) => KernelVector3;
+export declare const convertToTHREE: (vector: KernelVector3) => import("three").Vector3;
+export declare const convertToThreeLength: (length: number) => number;
+export declare const convertToEuler: (vector: KernelVector3) => import("three").Euler;
+export declare const convertToThreeDimensions: (vector: KernelVector3) => import("three").Vector3;
+export declare const convertToKernel: (vector: import("three").Vector3) => KernelVector3;
 export declare const utilityStringToUTF16: (str: string) => string;
 export declare const convertCObject: (obj: any) => any;
 export declare const utilityToArray: (obj: any) => any[];
-export declare const convertKernelMatrixCoordsToThree: (matrix: import("three/three-core").Matrix4) => import("three/three-core").Matrix4;
-export declare const convertToThreeMatrix: (transform: Float32Array) => import("three/three-core").Matrix4;
+export declare const convertKernelMatrixCoordsToThree: (matrix: import("three").Matrix4) => import("three").Matrix4;
+export declare const convertToThreeMatrix: (transform: Float32Array) => import("three").Matrix4;

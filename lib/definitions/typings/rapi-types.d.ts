@@ -54,7 +54,7 @@ export interface RapiMeshData {
 export interface RapiMaterialShading {
     alpha: number;
     metallic: number;
-    specularity: number;
+    specularity?: number;
     basecolor: RapiBaseColor;
     roughness: number;
     doubleSided: boolean;

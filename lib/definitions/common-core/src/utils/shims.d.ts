@@ -1,7 +1,7 @@
 import { CanvasOffset } from '../common-interfaces';
 import { ROOMLE_COLORS } from './common-utils';
-import { CAMERA_TYPE } from '../../../planner-core/src/roomle-planner-ui-callback';
 import { RapiId, RapiServerUrlType } from '../../../typings/rapi-types';
+import { CAMERA_TYPE } from '../cameracontrol/camera-type';
 export declare const enum WINDOW_EVENT {
     RESIZE = "resize",
     KEY_DOWN = "keydown",
@@ -37,6 +37,8 @@ export interface CommonInitData {
     _measureTraffic?: boolean;
     alwaysUseCache?: boolean;
     customApiUrl?: string;
+    gammaIO?: boolean;
+    debug?: boolean;
 }
 export interface ConfiguratorInitData {
     addOnSpots?: boolean;

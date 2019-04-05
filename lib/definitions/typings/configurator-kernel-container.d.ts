@@ -1,5 +1,6 @@
 import { KernelDockPairToPoint, KernelDockPairToLine, KernelComponent, KernelVariable, KernelRange, KernelParameterValue, KernelParameter, KernelParameterGroup, KernelPartListParameter, KernelConfiguration, KernelPart, KernelPossibleChild, KernelAddOnSpot, KernelParamKeyValuePair, KernelVariant, ConfiguratorKernelClass } from './kernel';
 import { PlanObjectList } from './planner-kernel-container';
+import { EmsArray } from './ems';
 declare class DockPairToPointArray extends EmsArray<KernelDockPairToPoint> {
 }
 declare class DockPairToLineArray extends EmsArray<KernelDockPairToLine> {

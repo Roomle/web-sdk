@@ -4,9 +4,9 @@ import { Context } from '../di/context';
 export default class DataSyncer implements Context, CommunicationInterfaceCallback {
     _creator_: string;
     private _rapiAccess;
-    private _eventHandler;
     private _singlePromiseFactory;
     private _errorHandler;
+    private _configuratorUiCallbacks;
     private _worker;
     private _mainThreadToWorker;
     private _bootCallbacks;
@@ -35,4 +35,5 @@ export default class DataSyncer implements Context, CommunicationInterfaceCallba
     private _softReject;
     requestAsset(url: string, urlAsFallback?: boolean): AssetUrl;
     setAlwaysUseCache(alwaysUseCache: boolean): void;
+    preFillAssetCache(key: string, url: string): void;
 }
