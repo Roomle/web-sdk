@@ -55,4 +55,5 @@ export default class DimensioningHelper {
     areDimensionsEnabled(): boolean;
     private _visibilityChangedCallback;
     clear(): void;
+    getBoundingBox(): THREE.Box3;
 }

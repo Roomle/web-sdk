@@ -62,6 +62,7 @@ export default class InputManager extends EventDispatcher<InputEvent> implements
     private _getTouchPosition;
     private _getTouchPositionRelative;
     private _getMousePosition;
+    private _getFireFoxMousePosition;
     private _getMousePositionRelative;
     private _getDelta;
     setDragEnabled(enabled: boolean): void;

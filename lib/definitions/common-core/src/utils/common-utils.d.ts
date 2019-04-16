@@ -1,4 +1,5 @@
 import '../../../typings/global-definitions';
+import { RapiMaterial, RapiTexture } from '../../../typings/rapi-types';
 export declare const enum CURSOR_STYLE {
     HOVER = "pointer",
     DEFAULT = "default",
@@ -24,3 +25,7 @@ export declare const uuid: (a?: string) => string;
 export declare const setEnumerable: (target: any, property: string, isEnumerable: boolean) => void;
 export declare const setWriteable: (target: any, property: string, isWritable: boolean) => void;
 export declare const setDescriptor: (target: any, property: string, options: PropertyDescriptor) => void;
+export declare const setPropertiesFromOptions: (target: any, options: any, writeable?: true) => void;
+export declare const createBenchmarkMaterial: (materialId: string) => RapiMaterial;
+export declare const createBenchmarkTexture: (materialId: string) => RapiTexture;
+export declare const createBenchmarkUrl: (materialId: string, size?: number) => string;

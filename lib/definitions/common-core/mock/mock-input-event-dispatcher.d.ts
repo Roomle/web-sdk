@@ -3,7 +3,7 @@ export default class MockInputEventDispatcher {
     private _element;
     constructor(element: HTMLElement);
     dispatchTouchEvent(type: string, { x, y }: Position2): void;
-    dispatchMouseEvent(type: string, { x, y }: Position2, payload?: any): void;
+    dispatchMouseEvent(type: string, { x, y }: Position2, options?: any): void;
     dispatchGenericEvent(type: string, { x, y }: Position2): void;
-    dispatchEvent(event: Event): void;
+    dispatchEvent(event: Event, options?: any): void;
 }

@@ -4,5 +4,7 @@ export default class NetworkLayer {
     private _pendingRequests;
     private _nextSlot;
     private _fetch;
-    fetch(request: Request | AssetUrl): Promise<any>;
+    fetch(request: Request | AssetUrl, options?: {
+        [key: string]: string;
+    }): Promise<any>;
 }

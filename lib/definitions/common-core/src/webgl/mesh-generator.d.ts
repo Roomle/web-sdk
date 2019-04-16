@@ -22,6 +22,7 @@ export default class MeshGenerator implements Context {
     protected _generateGeometry(meshId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): THREE.Geometry;
     changeMaterialOfMesh(mesh: THREE.Mesh, material: THREE.Material): void;
     protected _createMaterial(materialId: string, resolve: () => void, reject: (error: Error) => void, width?: number, height?: number): void;
+    private _loadBenchmarkTextures;
     protected _loadTextures(rapiMaterial: RapiMaterial, material: THREE.MeshPhysicalMaterial, width?: number, height?: number): Promise<void>;
     protected _loadMaterial(materialId: string, width?: number, height?: number): Promise<THREE.Material>;
     protected _assignMaterial(mesh: THREE.Mesh, materialId: string): Promise<void>;
