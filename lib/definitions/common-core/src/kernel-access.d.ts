@@ -1,5 +1,5 @@
 import ConfiguratorContext from './webgl/configurator-context';
-import { KernelParameter, KernelPart, KernelVector3, PlanObject } from '../../typings/kernel';
+import { KernelParameter, KernelPart, KernelVector3, PlanObject, VariantsList } from '../../typings/kernel';
 import CommonKernelAccess from './services/common-kernel-access';
 import { ConfigurationHash, ConfigurationString } from '../../typings/rapi-types';
 import { CommonConfiguratorKernelCallbackI } from './common-configurator-kernel-callback';
@@ -117,5 +117,8 @@ export default class KernelAccess extends CommonKernelAccess {
     Editor3dUpdatePlanComponentTransform(): void;
     getRuntimeComponentIdOfRootComponent(planObjectId: number): number;
     resume(): void;
+    requestMaterialsInGroup(groups: string[]): void;
+    listOfVariants: (componentId: string, list: VariantsList) => void;
+    listOfVariantsError: () => void;
 }
 export declare function logKernelCall(target: any, propertyName: string): void;

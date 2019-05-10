@@ -283,6 +283,7 @@ export interface ConfiguratorKernelClass {
     loadedSubComponent(parentId: number, partId: number, componentId: string, configuration: ConfigurationString): void;
     requestPlanObjectConstruction(planObjectId: number): void;
     requestPlanComponentConstruction(componentId: number): void;
+    requestPlanComponentConstructionRecursive(componentId: number): void;
     requestPreviewGeometry(componentId: number, planObjectId: number): void;
     getComponentParameters(componentId: number): KernelParameter[];
     setComponentParameter(componentId: number, parameterKey: string, value: string): void;
@@ -309,8 +310,18 @@ export interface ConfiguratorKernelClass {
     loadComponentDefinition(conversationId: number, component: string): void;
     syncPlanObjectToView(conversationId: number, planObjectId: number): void;
     addMeshCorto(meshId: string, quality: number, data: Uint8Array): void;
+    setMaterialsInGroup(groups: string[], materialIds: string[]): void;
 }
 export interface PlanObjectPtrList {
     size(): void;
     push_back(object: KernelObject): void;
+}
+export interface ParamterKeyValue {
+    parameterKey: string;
+    parameterValue: string;
+}
+export interface VariantsList {
+    componentId: string;
+    parameterValues: ParamterKeyValue[];
+    parts: KernelPart[];
 }

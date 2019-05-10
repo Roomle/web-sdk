@@ -32,6 +32,8 @@ export default class SideBar extends Component {
     readonly isSelectionCancelable: boolean;
     readonly parameters: any[];
     private _closeAddonsOnNext;
+    private _debounce;
+    private _isAnimationInProgress;
     constructor(object: object);
     private _onUpdateParameters;
     private _onLoadConfiguration;
