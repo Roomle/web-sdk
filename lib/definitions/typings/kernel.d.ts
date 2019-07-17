@@ -93,10 +93,6 @@ export interface KernelParameterGroup {
 export interface KernelEnum {
     value: number;
 }
-export declare const enum PLAN_VIEW_MODEL_TYPE {
-    WALL = 1,
-    CEILING = 7
-}
 export interface UiKernelParameter extends KernelParameter {
     uiType: string;
     validRangeLabels?: UiKernelRange;
@@ -310,9 +306,9 @@ export interface ConfiguratorKernelClass {
     loadComponentDefinition(conversationId: number, component: string): void;
     syncPlanObjectToView(conversationId: number, planObjectId: number): void;
     addMeshCorto(meshId: string, quality: number, data: Uint8Array): void;
-    setMaterialsInGroup(groups: string[], materialIds: string[]): void;
+    setMaterialsInGroup(groupId: string, materialIds: string[]): void;
 }
-export interface PlanObjectPtrList {
+export interface KernelObjectPtrList {
     size(): void;
     push_back(object: KernelObject): void;
 }

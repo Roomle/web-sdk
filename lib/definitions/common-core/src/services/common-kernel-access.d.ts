@@ -79,6 +79,7 @@ export default abstract class CommonKernelAccess implements LifeCycleCallbacks, 
     componentDeleted(componentId: number): void;
     componentMetaUpdated(componentId: number): void;
     sceneCleared(): void;
+    requestMaterialsInGroup(groupId: string): void;
     addConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     removeConfiguratorListener(listener: ConfiguratorKernelCallbackI): void;
     cleanUpCallbacks(): void;

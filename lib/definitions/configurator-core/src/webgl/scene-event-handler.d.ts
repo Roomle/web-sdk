@@ -10,10 +10,11 @@ export declare const enum SCENE_EVENT {
     HOVER_OFF = 2,
     CLICK_OUTSIDE = 3,
     DRAG_START = 4,
-    DRAG_END = 5,
-    CLICK_PREVIEW = 6,
-    SELECT_COMPONENT = 7,
-    DESELECT_COMPONENT = 8
+    DRAG_MOVE = 5,
+    DRAG_END = 6,
+    CLICK_PREVIEW = 7,
+    SELECT_COMPONENT = 8,
+    DESELECT_COMPONENT = 9
 }
 export declare class SceneEventInfo {
     component: RoomleComponent;

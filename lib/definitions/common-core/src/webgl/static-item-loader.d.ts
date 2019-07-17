@@ -8,7 +8,7 @@ export default abstract class StaticItemLoader implements Context {
     _creator_: string;
     private _gltfLoader;
     constructor(creator: string);
-    loadGLB(url: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
-    loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
+    loadGLB(url: string, position?: THREE.Vector3, rotation?: number, size?: THREE.Vector3, scaling?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
+    loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, size?: THREE.Vector3, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
     private _handleGLTFScene;
 }

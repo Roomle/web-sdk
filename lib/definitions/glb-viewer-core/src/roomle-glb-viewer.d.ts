@@ -24,7 +24,12 @@ export default class RoomleGLBViewer implements GlobalAPI, Context {
     init(element: HTMLElement): Promise<void>;
     private _initPromiseCallback;
     enableHD(): Promise<void>;
-    loadGLB(url: string): Promise<void>;
+    /**
+     * Loads the GLB from the given URL Param
+     * @param url
+     * @param scaling defaults to 1
+     */
+    loadGLB(url: string, scaling?: number): Promise<void>;
     /**
      * Loads a SceneSettings object, currently it can can contain a light setting definition
      * (see {@link loadDynamicLightSetting}) and an environment definition (see {@link EnvironmentSetting}).

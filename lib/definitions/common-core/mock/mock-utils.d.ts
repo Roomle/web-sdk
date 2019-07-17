@@ -1,3 +1,4 @@
+import { RoomleComponent } from '../src/webgl/roomle-component-factory';
 /**
  * usage: await sleep(1);
  * will block execution only in this thread
@@ -12,3 +13,5 @@ export declare function unmuteConsole(): void;
  * @param type
  */
 export declare function numberOfObjectsWithType(objects: THREE.Object3D[], type: string): number;
+export declare function setupTHREELoaders(): void;
+export declare function createMockRoomleComponent(): RoomleComponent;

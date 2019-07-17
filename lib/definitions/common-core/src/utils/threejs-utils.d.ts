@@ -1,5 +1,6 @@
-import { Dimensioning, KernelCube } from '../../../typings/kernel';
+import { Dimensioning, KernelCube, KernelEnum } from '../../../typings/kernel';
 import { RapiMaterial, RapiMaterialShading, RapiTexture } from '../../../typings/rapi-types';
+import EnvironmentLoader from '../services/environment-loader';
 export declare const PREVIEW_MATERIAL_OPACITY = 0.6;
 export declare const PREVIEW_LINE_MATERIAL_OPACITY = 0.4;
 export declare const PREVIEW_MATERIAL_COLOR = "#FFFFFF";
@@ -13,7 +14,7 @@ export declare const setShadows: (object: import("three").Object3D, receiveShado
 export declare const position3VectorsAreEqual: (a: import("three").Vector3, b: import("three").Vector3) => boolean;
 export declare const rotationQuaternionsAreEqual: (a: import("three").Quaternion, b: import("three").Quaternion) => boolean;
 export declare const position2VectorsAreEqual: (a: import("three").Vector2, b: import("three").Vector2) => boolean;
-export declare const createMaterial: (material: RapiMaterial, envMap?: import("three").Texture) => import("three").MeshPhysicalMaterial;
+export declare const createMaterial: (material: RapiMaterial, environmentLoader?: EnvironmentLoader) => import("three").MeshPhysicalMaterial;
 export declare const getMaterialShading: (material: import("three").MeshPhysicalMaterial) => RapiMaterialShading;
 export declare const logColor: (color: import("three").Color) => void;
 export declare const createTexture: (texture: import("three").Texture, rapiTexture: RapiTexture, width: number, height: number, maxAnisotropy: number) => import("three").Texture;
@@ -33,3 +34,4 @@ export declare const disposeMaterial: (material: import("three").MeshStandardMat
 export declare const getBoundingBoxMaterial: () => import("three").MeshBasicMaterial;
 export declare const getSelectionGeometry: (position: import("three").Vector3, size: import("three").Vector3) => import("three").Geometry;
 export declare const vectorIsZero: (vector: import("three").Vector3) => boolean;
+export declare const getMaterialId: (material: any, type?: KernelEnum) => string;

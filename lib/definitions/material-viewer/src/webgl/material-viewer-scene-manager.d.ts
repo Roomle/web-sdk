@@ -5,7 +5,6 @@ import { RapiId, RapiMaterial, RapiMaterialShading } from '../../../typings/rapi
 import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
 export default class MaterialViewerSceneManager extends SceneManager {
     private _inputManager;
-    private _environmentLoader;
     private _configuratorMeshGenerator;
     private _roomleMaterialViewerUiCallback;
     private _guiGeometryFolder;

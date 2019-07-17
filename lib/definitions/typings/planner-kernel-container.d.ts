@@ -1,4 +1,4 @@
-import { KernelVector2f, KernelDockPairToPoint, KernelDockPairToLine, KernelComponent, KernelVariable, KernelRange, KernelParameterValue, KernelParameter, KernelParameterGroup, KernelPartListParameter, KernelConfiguration, KernelPart, KernelPossibleChild, KernelAddOnSpot, KernelParamKeyValuePair, KernelVariant, ConfiguratorKernelClass, KernelVector3f } from './kernel';
+import { KernelVector2f, KernelDockPairToPoint, KernelDockPairToLine, KernelComponent, KernelVariable, KernelRange, KernelParameterValue, KernelParameter, KernelParameterGroup, KernelPartListParameter, KernelConfiguration, KernelPart, KernelPossibleChild, KernelAddOnSpot, KernelParamKeyValuePair, KernelVariant, ConfiguratorKernelClass, KernelVector3f, KernelEnum } from './kernel';
 import { PlanInteractionHandler } from './planner';
 import { EmsList, EmsSet, EmsArray } from './ems';
 export declare class PlanObjectList extends EmsList<PlanObjectPtr> {
@@ -115,12 +115,12 @@ declare abstract class Floor extends PlanElement {
     getNumberOfTriangles(): number;
     getRandomPointInside(): KernelVector3f;
 }
-declare abstract class BaseMaterial {
+export declare abstract class BaseMaterial {
     catalogItemId: string;
     materialId: string;
     rgbValue: number;
     getCatalogItemId(): string;
-    getSourceType(): MaterialSourceType;
+    getSourceType(): KernelEnum;
 }
 declare abstract class FloorMaterial extends BaseMaterial {
     uvScale(): KernelVector3f;
@@ -168,10 +168,10 @@ export declare const enum PlanElementType {
     WALL = 1,
     OBJECT = 2,
     FLOOR = 3,
-    CEILING = 4,
-    TEXT = 5,
-    MEASURE = 6,
-    IMAGE = 7
+    TEXT = 4,
+    MEASURE = 5,
+    IMAGE = 6,
+    CEILING = 7
 }
 export declare const enum PlanObjectSide {
     Back = 0,

@@ -15,6 +15,7 @@ export default class ActionbarX extends Component {
         isFullscreen: boolean;
         isHd: boolean;
         isMultiselect: boolean;
+        isMeasurementVisible: boolean;
         showAr: boolean;
         showFullscreen: boolean;
         showHd: boolean;
@@ -29,6 +30,7 @@ export default class ActionbarX extends Component {
         toastHeading: string;
         toastMsg: string;
         indicateSave: boolean;
+        showMeasurements: boolean;
     };
     readonly showTagChanger: boolean;
     readonly hasSavedConfigurations: boolean;
@@ -42,9 +44,11 @@ export default class ActionbarX extends Component {
     private _fullscreenChangeFromOutside;
     private _onSelectionCancel;
     private _onConfigurationHasChildren;
+    private _onDimensionVisibilityChanged;
     toggleFullscreen(): void;
     resetCamera(): void;
     toggleHd(): void;
+    toggleMeasurements(): void;
     toggleMultiselect(): void;
     onSave(): void;
     onLoad(): void;

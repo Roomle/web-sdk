@@ -12,12 +12,14 @@ import { SceneSettings } from '../scene-settings-loader';
 import Environment from '../environment/environment';
 import { QualitySetting } from '../dynamic-quality-setting-loader';
 import { Pixotron } from '../../../typings/pixotron';
+import EnvironmentLoader from '../services/environment-loader';
 export default abstract class SceneManager implements Context, LifeCycleCallbacks, EventListenerObject {
     _creator_: string;
     protected _domHelper: DomHelper;
     protected _scriptLoader: ScriptLoader;
     private _lifeCycleManager;
     private _staticItemLoader;
+    protected _environmentLoader: EnvironmentLoader;
     protected _scene: THREE.Scene;
     protected _cameraControl: CameraControl;
     protected _lightSetting: LightSetting;
@@ -59,8 +61,8 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     clearScene(): void;
     enableHD(): void;
     protected _addGroundShadows(): void;
-    protected _loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
-    protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
+    protected _loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, size?: THREE.Vector3, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
+    protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, size?: THREE.Vector3, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
     private _setCamera;
     showGUI(): void;
     protected _guiLoaded(): void;

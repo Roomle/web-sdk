@@ -5,6 +5,7 @@ declare interface SAOPass {
     intensity?: number;
     bias?: number;
     numSamples?: number;
+    setDownscaleLevel(level: number): void;
 }
 declare interface ShadowPass {
     enabled?: boolean;
@@ -14,13 +15,14 @@ declare interface ShadowPass {
     shadowBiasMultiplier?: number;
     numSamples?: number;
     setShadowRecieverBBox(box: THREE.Box3): void;
+    setDownscaleLevel(level: number): void;
 }
 export declare interface ShadowPlanePass {
     enable?: boolean;
     smoothTransition?: boolean;
     numSamples?: number;
     numSamplesPerFrame?: number;
-    getShadowPlane(): THREE.Object3D;
+    getShadowPlane(): THREE.Mesh;
 }
 export declare class Pixotron {
     enableAA: boolean;
@@ -29,6 +31,7 @@ export declare class Pixotron {
     autoSAOClear: boolean;
     constructor(params?: any);
     render(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, renderTarget?: THREE.WebGLRenderTarget): void;
+    renderFrame(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, renderTarget?: THREE.WebGLRenderTarget): void;
     setSize(width: number, height: number): void;
     getSAOPass(): SAOPass;
     getShadowPass(): ShadowPass;
@@ -37,5 +40,7 @@ export declare class Pixotron {
     highlightObjects(objects: THREE.Object3D[]): void;
     updateShadowPlane(object: THREE.Object3D): void;
     blit(): void;
+    dispose(): void;
+    isSuperSamplingConverged(): boolean;
 }
 export {};

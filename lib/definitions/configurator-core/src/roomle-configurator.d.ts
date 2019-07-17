@@ -242,15 +242,6 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
      */
     formatValueToUnitString(value: number, parameter: KernelParameter): string | number;
     /**
-     * Used for test puprose only
-     * @hidden
-     * @param url
-     * @param width
-     * @param height
-     * @param repeatable
-     */
-    setFloorMaterial(url: string, width: number, height: number, repeatable: boolean): Promise<void>;
-    /**
      * Get tag for a given tag id
      *
      * @param tagId

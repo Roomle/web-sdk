@@ -30,6 +30,10 @@
     <button id="area-plan1" disabled>Total floor area plan 1</button>
     <button id="area-plan2" disabled>Total floor area plan 2</button>
 
+    <button id="overview-plan1" disabled>Plan overview 1</button>
+    <button id="overview-plan2" disabled>Plan overview 2</button>
+
+
     <button id="planObjects-plan1" disabled>Plan objects plan 1</button>
     <button id="planObjects-plan2" disabled>Plan objects plan 2</button>
 
@@ -55,6 +59,7 @@
             await window[id].loadPlan(planId);
             document.getElementById('area-' + id).disabled = false;
             document.getElementById('planObjects-' + id).disabled = false;
+            document.getElementById('overview-' + id).disabled = false;
             document.getElementById('init-' + id).style.display = 'none';
         };
 
@@ -71,11 +76,20 @@
             document.getElementById('result').innerHTML = '<strong>Objects</strong>: ' + string;
         };
 
+        const getPlanOverview = async (id)=> {
+            const objects = await window[id].getPlanOverview();
+            console.log(objects);
+        };
+
         document.getElementById('init-plan1').addEventListener('click', ()=> initPlanner('plan1', '8a7080835a17a313015a22d290924436'));
         document.getElementById('init-plan2').addEventListener('click', ()=> initPlanner('plan2', 'f0tirbdakqokfgabbqtmko2kfusn4me'));
 
         document.getElementById('area-plan1').addEventListener('click', ()=> getTotalFloorArea('plan1'));
         document.getElementById('area-plan2').addEventListener('click', ()=> getTotalFloorArea('plan2'));
+
+        document.getElementById('overview-plan1').addEventListener('click', ()=> getPlanOverview('plan1'));
+        document.getElementById('overview-plan2').addEventListener('click', ()=> getPlanOverview('plan2'));
+
 
         document.getElementById('planObjects-plan1').addEventListener('click', ()=> getPlanObjects('plan1'));
         document.getElementById('planObjects-plan2').addEventListener('click', ()=> getPlanObjects('plan2'));

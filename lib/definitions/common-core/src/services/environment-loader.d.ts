@@ -1,6 +1,7 @@
 export default class EnvironmentLoader {
-    private _environmentMapBlurred;
     private _environmentMap;
-    getEnvironmentMap(): THREE.Texture;
-    getEnvironmentMapBlurred(): THREE.Texture;
+    private _iblEnvironmentMap;
+    getEnvironmentMap(): Promise<THREE.Texture>;
+    private _generateEnvironmentMapAsync;
+    private _generateIblEnvironmentMap;
 }

@@ -1,5 +1,5 @@
 import { RapiId, RapiSkin } from '@roomle-web-utils/typings/rapi-types';
-import { PlanInteractionHandler } from '@roomle-web-utils/typings/planner';
+import { PlanInteractionHandler, PlanOverview } from '@roomle-web-utils/typings/planner';
 export interface RoomlePlannerCallbacks {
     onCameraChanged: () => void;
 }
@@ -12,5 +12,6 @@ export interface RoomlePlanner {
     switchToFirstPerson(): Promise<void>;
     getCurrentSkin(): Promise<RapiSkin>;
     getPlanInteractionHandler(): Promise<PlanInteractionHandler>;
+    getPlanModelViewHelper(): Promise<PlanOverview>;
 }
 export {};

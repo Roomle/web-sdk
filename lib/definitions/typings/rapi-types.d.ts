@@ -5,6 +5,8 @@ export declare type ConfigurationHash = string;
 export declare type Base64String = string;
 export declare type RapiServerUrlType = 'live' | 'test';
 export declare type HexColorString = string;
+export declare type PriceId = string;
+export declare type ArticleNumber = string;
 export interface LinksCollection {
     [key: string]: string;
 }
@@ -383,4 +385,9 @@ export interface RapiShortId {
     created: string;
     lastAccess: string;
     [key: string]: string | number;
+}
+export interface RapiPrice {
+    priceId: PriceId;
+    price: number;
+    currencySymbol: string;
 }

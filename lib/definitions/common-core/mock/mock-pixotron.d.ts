@@ -5,12 +5,15 @@ export default class MockPixotron implements Pixotron {
     enableAA: boolean;
     needsUpdate: boolean;
     blit(): void;
+    dispose(): void;
     getHighLightPass(): any;
     getSAOPass(): any;
     getShadowPass(): any;
     getShadowPlanePass(): any;
     highlightObjects(objects: THREE.Object3D[]): void;
     render(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, renderTarget?: THREE.WebGLRenderTarget): void;
+    renderFrame(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, renderTarget?: THREE.WebGLRenderTarget): void;
     setSize(width: number, height: number): void;
     updateShadowPlane(object: THREE.Object3D): void;
+    isSuperSamplingConverged(): boolean;
 }

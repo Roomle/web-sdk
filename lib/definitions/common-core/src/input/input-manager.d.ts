@@ -13,7 +13,9 @@ export declare const enum INPUT_EVENT {
     CLICK = 5,
     MOVE = 6,
     ZOOM_IN = 7,
-    ZOOM_OUT = 8
+    ZOOM_OUT = 8,
+    ROTATE = 9,
+    ROTATE_END = 10
 }
 export declare const enum INPUT_EVENT_TYPE {
     UNKNOWN = 0,
@@ -24,7 +26,8 @@ export declare class InputEvent {
     position: Position2;
     positionRelative: Position2;
     type: INPUT_EVENT_TYPE;
-    constructor(position?: Position2, positionRelative?: Position2, type?: INPUT_EVENT_TYPE);
+    rotation: number;
+    constructor(position?: Position2, positionRelative?: Position2, type?: INPUT_EVENT_TYPE, rotation?: number);
 }
 export declare const MIN_MOVE_DISTANCE: number;
 export default class InputManager extends EventDispatcher<InputEvent> implements Context, EventListenerObject {
@@ -35,10 +38,12 @@ export default class InputManager extends EventDispatcher<InputEvent> implements
     private _positionRelative;
     private _downPosition;
     private _downPositionRelative;
+    private _elementHit;
     private _longClickTimer;
     private _delta;
     private _state;
     private _pinchDistance;
+    private _rotationAngle;
     private _firefoxDragPosition;
     private _lastMouseWheelEvent;
     private _lastTouchEvent;
@@ -78,4 +83,5 @@ export default class InputManager extends EventDispatcher<InputEvent> implements
     private _onTouchEnd;
     private _onContextMenu;
     protected _canDrag(type: INPUT_EVENT_TYPE): boolean;
+    onElementHit(): void;
 }

@@ -11,7 +11,7 @@ export default class GLBViewerSceneManager extends SceneManager implements GLBRe
     constructor(creator: string, offset: CanvasOffset);
     protected createCameraControl(mode: CAMERA_TYPE): void;
     protected _getInputManager(): InputManager;
-    loadGLB(url: string, automaticallyAdjustCamera?: boolean): Promise<void>;
+    loadGLB(url: string, automaticallyAdjustCamera: boolean, scaling: THREE.Vector3): Promise<void>;
     preparePerspectiveImage(renderer?: THREE.WebGLRenderer, width?: number, height?: number): Promise<Base64Image>;
     adjustCamera(position: THREE.Vector3, yaw: number, pitch: number, fov: number): void;
     onStart(count: number): void;

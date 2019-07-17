@@ -12,3 +12,6 @@ export declare const MOCK_INDICES: Int32Array;
 export declare const MOCK_UVCOORDS: Float32Array;
 export declare const MOCK_NORMALS: Float32Array;
 export declare const MOCK_RAPIMATERIAL: any;
+export declare const MOCK_PLANNER_SCENE_EVENT_HANDLER: {
+    addPlanObjectHandlers: () => void;
+};

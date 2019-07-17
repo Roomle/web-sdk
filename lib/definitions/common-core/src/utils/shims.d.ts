@@ -37,8 +37,8 @@ export interface CommonInitData {
     _measureTraffic?: boolean;
     alwaysUseCache?: boolean;
     customApiUrl?: string;
-    gammaIO?: boolean;
     debug?: boolean;
+    usePriceService?: boolean;
 }
 export interface ConfiguratorInitData {
     addOnSpots?: boolean;
@@ -55,6 +55,7 @@ export interface ConfiguratorInitData {
 }
 export interface PlannerInitData {
     mode?: CAMERA_TYPE;
+    edit?: boolean;
 }
 export interface InitData extends CommonInitData, ConfiguratorInitData, PlannerInitData {
 }

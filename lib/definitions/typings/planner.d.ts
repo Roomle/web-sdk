@@ -1,4 +1,4 @@
-import { ConfiguratorKernelClass, KernelCube, KernelVector3, PlanObjectPtrList } from './kernel';
+import { ConfiguratorKernelClass, KernelCube, KernelObjectPtrList, KernelVector3 } from './kernel';
 export interface EMSReference {
     jsObject: any;
     delete(): any;
@@ -16,6 +16,7 @@ export interface Plan extends KernelObject {
 export interface PlanElement extends KernelObject {
     getType(): any;
     getCenter(): KernelVector3;
+    getId(): number;
 }
 export interface PlanObject extends PlanElement {
     size: KernelVector3;
@@ -24,7 +25,6 @@ export interface PlanObject extends PlanElement {
     flipX: boolean;
     flipY: boolean;
     fixedZ: boolean;
-    getId(): number;
     hasConfiguration(): boolean;
     getCatalogItemId(): string;
     getConfigurationRuntimeId(): number;
@@ -35,7 +35,20 @@ export interface PlanInteractionHandler {
     getConfiguratorKernel(): ConfiguratorKernelClass;
     loadPlanXML(xml: string): Plan;
     getPlan(): Plan;
-    moveElementTo(planObjects: KernelObject, point: KernelVector3): void;
-    moveElementBy(planObjects: KernelObject, distance: KernelVector3): void;
-    moveObjectsBy(planObjects: PlanObjectPtrList, distance: KernelVector3): void;
+    moveElementTo(planObject: KernelObject, point: KernelVector3): void;
+    moveElementBy(planObject: KernelObject, distance: KernelVector3): void;
+    moveObjectsBy(planObjects: KernelObjectPtrList, distance: KernelVector3): void;
+    rotateObjectTo(planObject: KernelObject, angleInRad: number): void;
+    setObjectRotation(planObject: KernelObject, angleInRad: number): void;
+    addPlanObjects(list: KernelObjectPtrList): void;
+}
+export interface PlanOverview {
+    area: number;
+    bounds: KernelCube;
+    objects: PlanObject[];
+    outsideWalls: PlanElement[];
+    rooms: PlanElement[];
+}
+export interface PlanModelViewHelper {
+    getPlanOverview(planObject: KernelObject): PlanOverview;
 }

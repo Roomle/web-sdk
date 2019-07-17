@@ -29,3 +29,4 @@ export declare const setPropertiesFromOptions: (target: any, options: any, write
 export declare const createBenchmarkMaterial: (materialId: string) => RapiMaterial;
 export declare const createBenchmarkTexture: (materialId: string) => RapiTexture;
 export declare const createBenchmarkUrl: (materialId: string, size?: number) => string;
+export declare const isString: (value: unknown) => boolean;

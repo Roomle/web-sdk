@@ -1,6 +1,6 @@
 import { Base64Image } from './common-interfaces';
 import { SHORT_TYPES } from './utils/url-shortener';
-import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, RapiComponent, RapiPackage, RapiConfiguration, RapiItem, RapiTag, RapiTexture, RapiCatalog, RapiMeshData, RapiMaterial, RapiPlan, RapiMaterialGroup, RapiShortId, RapiSkin } from '../../typings/rapi-types';
+import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, RapiComponent, RapiPackage, RapiConfiguration, RapiItem, RapiTag, RapiTexture, RapiCatalog, RapiMeshData, RapiMaterial, RapiPlan, RapiMaterialGroup, RapiShortId, RapiSkin, PriceId, RapiPrice } from '../../typings/rapi-types';
 export declare const MAX_URL_LENGTH = 1500;
 export declare const MESH_DEFAULT_FORMAT = "crt";
 export declare const MESH_DEFAULT_QUALITY = 50;
@@ -22,6 +22,7 @@ export declare const enum RAPI_PATHS {
     TENANT_ME = "tenants/me",
     TENANT = "tenants",
     SKIN = "skins",
+    PRICE = "prices",
     CATALOG_MESHES = "catalogMeshes"
 }
 export default class RapiAccess {
@@ -103,4 +104,5 @@ export default class RapiAccess {
     private _notifyWaiters;
     private _tenantMe;
     getCurrentSkin(): Promise<RapiSkin>;
+    getPrices(pricesIds: PriceId[]): Promise<RapiPrice[]>;
 }

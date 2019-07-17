@@ -1,15 +1,11 @@
 import Environment from './environment';
 import { Pixotron } from '../../../typings/pixotron';
 export default class BakedShadowEnvironment extends Environment {
-    private _pixotron;
-    private _shadowPlane;
+    protected _pixotron: Pixotron;
+    protected _shadowPlane: THREE.Mesh;
     private _pixotronGuard;
     private _wasAAEnabled;
-    private readonly _oldBackground;
-    private readonly _color;
-    private readonly _canvas;
-    private readonly _style;
-    constructor(scene: THREE.Scene, oldEnvironment?: Environment, color?: THREE.Color, canvas?: HTMLCanvasElement, url?: string);
+    constructor(scene: THREE.Scene, oldEnvironment?: Environment);
     needsBounds(): boolean;
     needsCamera(): boolean;
     needsRotation(): boolean;

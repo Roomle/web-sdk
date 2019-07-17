@@ -1,14 +1,12 @@
 import Environment from '../../../../common-core/src/environment/environment';
 import { RapiMaterial } from '../../../../typings/rapi-types';
-export default class FloorEnvironment extends Environment {
+import BakedShadowEnvironment from '../../../../common-core/src/environment/baked-shadow-environment';
+export default class FloorEnvironment extends BakedShadowEnvironment {
     private _rapiAccess;
     private _dataSyncer;
     private _environmentLoader;
-    private _floorMesh;
-    private _wallVertices;
-    private _wallMeshes;
+    private _bakedShadowPlane;
     private _textureLoader;
-    private _size;
     private _longestSide;
     private _width;
     private _height;
@@ -16,7 +14,6 @@ export default class FloorEnvironment extends Environment {
     private _repeatable;
     private _floorMaterial;
     private _floorTexture;
-    private _wallTexture;
     private _fog;
     private _floorPromise;
     constructor(scene: THREE.Scene, oldEnvironment: Environment, fog?: boolean);
@@ -28,11 +25,8 @@ export default class FloorEnvironment extends Environment {
     private _update;
     private _updateFog;
     private _updateFloor;
-    private _updateWallVertices;
-    private _updateWalls;
     addToScene(): void;
     removeFromScene(): void;
-    private _getWallPromise;
     setFloorMaterial(url: string, width: number, height: number, repeatable: boolean): Promise<void>;
     changeFloorMaterial(rapiMaterial: RapiMaterial, maxAnisotropy?: number): Promise<void>;
     showGUI(): void;

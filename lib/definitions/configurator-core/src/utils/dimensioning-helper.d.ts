@@ -40,7 +40,8 @@ export default class DimensioningHelper {
     private _updateDepthForTop;
     updateBounds(boxForMeasurements: KernelCube): void;
     update(force?: boolean): void;
-    addToScene(scene: THREE.Scene, uiScene: THREE.Scene): void;
+    addToScene(uiScene: THREE.Scene, gizmoScene: THREE.Scene): void;
+    isVisible(): boolean;
     private _getWidthEdge;
     private _getDepthEdge;
     private _getHeightEdge;

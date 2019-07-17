@@ -1,4 +1,4 @@
-import { RapiBaseColor, RapiItem, RapiJson, RapiMaterial, RapiSkin, RapiTenant } from '../../typings/rapi-types';
+import { RapiBaseColor, RapiItem, RapiJson, RapiMaterial, RapiSkin, RapiTenant, RapiPrice } from '../../typings/rapi-types';
 export declare const cloneMockObject: (object: any) => any;
 export declare const MOCK_RAPI_BASE_COLOR: RapiBaseColor;
 export declare const MOCK_RAPI_TEXTURES_EMPTY: any[];
@@ -17,6 +17,7 @@ export declare const MOCK_RAPI_TEXTURE: {
     mmWidth: number;
     tileable: boolean;
 };
+export declare const MOCK_RAPI_PRICES: RapiPrice;
 export declare const wrapIntoRapiBox: (key: string, data: RapiJson | RapiJson[]) => {
     [x: string]: {};
     meta: {};

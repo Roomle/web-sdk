@@ -1,7 +1,7 @@
 import ConfiguratorContext from './webgl/configurator-context';
 import { KernelParameter, KernelPart, KernelVector3, PlanObject, VariantsList } from '../../typings/kernel';
 import CommonKernelAccess from './services/common-kernel-access';
-import { ConfigurationHash, ConfigurationString } from '../../typings/rapi-types';
+import { ConfigurationHash, ConfigurationString, RapiPrice, ArticleNumber } from '../../typings/rapi-types';
 import { CommonConfiguratorKernelCallbackI } from './common-configurator-kernel-callback';
 import { LoadOptions } from '../../configurator-core/src/roomle-configurator';
 export interface ConfiguratorKernelCallbackI extends CommonConfiguratorKernelCallbackI {
@@ -53,7 +53,7 @@ export default class KernelAccess extends CommonKernelAccess {
     requestDeleteComponents(componentIds: number[]): void;
     private _calcPrice;
     loadComponentIntoKernel(component: string): void;
-    requestPartList(hash?: ConfigurationHash): void;
+    requestPartListAndUpdatePricesOfParts(hash?: ConfigurationHash, prices?: Map<ArticleNumber, RapiPrice>): Promise<void>;
     addUiDataToPartList(partList: KernelPart[], hash: string): KernelPart[];
     requestSync(conversationId: number, planObjectId: number): void;
     getGlobalParameters(planObjectId: number, rootComponentParametersAsGlobal: boolean): Promise<KernelParameter[]>;
@@ -71,7 +71,7 @@ export default class KernelAccess extends CommonKernelAccess {
     requestComponentDimensions(): void;
     planObjectCreated(conversationId: number, planObjectId: number): void;
     planObjectUpdated(planObjectId: number): void;
-    planObjectConfigurationUpdated(planObjectId: number, configuration: ConfigurationString, hash: string): void;
+    planObjectConfigurationUpdated(planObjectId: number, configuration: ConfigurationString, hash: string): Promise<void>;
     private _onBoundsUpdate;
     planObjectDeleted(): void;
     requestPlanObjectDimensions(): void;
@@ -80,7 +80,10 @@ export default class KernelAccess extends CommonKernelAccess {
     Editor3dRootComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectId: number): void;
     Editor3dGeometryReady(id: number): void;
     Editor3dGeometryNotReady(id: number): void;
-    Editor3dPlanObjectConstructionDone(planObjectId: number): void;
+    Editor3dPlanObjectConstructionDone(planObjectId: number): Promise<{
+        totalSum: number;
+        partMap: Map<string, KernelPart>;
+    }>;
     Editor3dBeginGroup(): void;
     Editor3dEndGroup(): void;
     Editor3dSetMaterial(): void;
@@ -117,7 +120,6 @@ export default class KernelAccess extends CommonKernelAccess {
     Editor3dUpdatePlanComponentTransform(): void;
     getRuntimeComponentIdOfRootComponent(planObjectId: number): number;
     resume(): void;
-    requestMaterialsInGroup(groups: string[]): void;
     listOfVariants: (componentId: string, list: VariantsList) => void;
     listOfVariantsError: () => void;
 }

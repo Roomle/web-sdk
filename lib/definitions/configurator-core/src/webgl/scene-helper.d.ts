@@ -24,6 +24,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _configuratorViewModel;
     private _componentFactory;
     private _pixotron;
+    private _pixotronUtil;
     private _composer;
     private _outlinePass;
     private _forceRender;
@@ -31,6 +32,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _renderer;
     private _renderTarget;
     private _maxAnisotrophy;
+    private _retina;
     private _devicePixelRatio;
     private _clock;
     private _delta;
@@ -41,6 +43,8 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _addonHelper;
     private _scene;
     private _uiScene;
+    private _gizmoScene;
+    private _depthWriteMaterial;
     private _camera;
     private _environment;
     private _lightSetting;
@@ -53,6 +57,8 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _onHoverOn;
     private _onHoverOff;
     private _highlight;
+    private _shouldRenderGizmo;
+    private _renderGizmo;
     private _requestRender;
     private _checkLayers;
     private _animateCamera;
@@ -70,7 +76,6 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     planObjectConstructionDone(planObject: PlanObject): void;
     private _internalClearScene;
     preparePerspectiveImage(): Promise<Base64Image>;
-    private _placeCameraForPerspectiveImage;
     private _calculateBoundingBoxOfAllMeshes;
     prepareTopImage(showDimensions?: boolean): Promise<Base64Image>;
     enableDragIn(dragEvent: DragEvent): void;
@@ -93,7 +98,6 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     getScreenXY(position: THREE.Vector3): import("three").Vector3;
     cleanUp(): void;
     setSelectionMode(mode: SELECTION_MODE): void;
-    setFloorMaterial(url: string, width: number, height: number, repeatable: boolean): Promise<void>;
     changeFloorMaterial(material: RapiMaterial): Promise<void>;
     enableHD(source?: DynamicLightSettingSource): void;
     private reEnableHD;

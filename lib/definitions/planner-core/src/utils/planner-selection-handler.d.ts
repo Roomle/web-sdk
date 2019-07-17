@@ -1,23 +1,23 @@
-import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import EventDispatcher from '../../../configurator-core/src/utils/event-dispatcher';
+import PlanElementViewModel from '../../../common-core/src/view-model/plan-element-view-model';
 export declare const enum SELECTION_MODE {
     STANDARD = "standard",
     MULTISELECT = "multiselect"
 }
 export declare const enum SELECTION_EVENT {
-    SELECT_PLAN_OBJECT = 0,
-    DESELECT_PLAN_OBJECT = 1
+    SELECT_PLAN_ELEMENT = 0,
+    DESELECT_PLAN_ELEMENT = 1
 }
 export declare class PlannerSelectionHandlerEvent {
-    planObjectViewModel: PlanObjectViewModel;
+    planElementViewModel: PlanElementViewModel;
     constructor(data: {
-        planObjectViewModel?: PlanObjectViewModel;
+        planElementViewModel?: PlanElementViewModel;
     });
 }
 export default class PlannerSelectionHandler extends EventDispatcher<PlannerSelectionHandlerEvent> {
     private _selectionMode;
-    protected _selectedPlanObjectViewModels: Map<number, PlanObjectViewModel>;
-    check(component: PlanObjectViewModel): void;
+    protected _selectedPlanElementViewModels: Map<number, PlanElementViewModel>;
+    check(planElementViewModel: PlanElementViewModel): void;
     cancelSelection(): void;
     private _checkStandard;
     private _checkMulti;

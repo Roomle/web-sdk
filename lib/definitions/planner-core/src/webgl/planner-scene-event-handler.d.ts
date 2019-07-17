@@ -3,15 +3,16 @@ import InputManager from '../../../common-core/src/input/input-manager';
 import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import { SELECTION_MODE } from '../utils/planner-selection-handler';
 import PlanViewModel from '../view-model/plan-view-model';
+import PlanElementViewModel from '../../../common-core/src/view-model/plan-element-view-model';
 export declare const enum PLANNER_SCENE_EVENT {
-    SELECT_PLAN_OBJECT = 0,
-    DESELECT_PLAN_OBJECT = 1
+    SELECT_PLAN_ELEMENT = 0,
+    DESELECT_PLAN_ELEMENT = 1
 }
 export declare class SceneEventInfo {
-    planObjectViewModel: PlanObjectViewModel;
+    planElementViewModel: PlanElementViewModel;
     resetCamera: boolean;
     constructor(data: {
-        planObjectViewModel?: PlanObjectViewModel;
+        planElementViewModel?: PlanElementViewModel;
         resetCamera?: boolean;
     });
 }
@@ -22,16 +23,18 @@ export interface PlanObjectEventInfo {
 }
 export default class PlannerSceneEventHandler extends EventDispatcher<SceneEventInfo> {
     private _plannerSelectionHandler;
+    private _plannerKernelAccess;
+    private _planViewModel;
     private _raycastHelper;
     private _debug;
     private _draggedObject;
     private _hoveredObject;
     constructor(scene: THREE.Scene, camera: THREE.Camera, inputManager: InputManager);
     addPlanObjectHandlers(planObjectViewModel: PlanObjectViewModel): void;
-    addWallHandlers(mesh: THREE.Mesh): void;
+    addWallHandlers(planElementViewModel: PlanElementViewModel): void;
     private _addPlanObjectHandlers;
-    private _addWallHandlers;
-    private _clickComponent;
+    private _addPlanElementHandlers;
+    private _clickElement;
     private _hoverOn;
     private _hoverOff;
     private _setCursor;
@@ -40,4 +43,8 @@ export default class PlannerSceneEventHandler extends EventDispatcher<SceneEvent
     getSelectedIds(): number[];
     setSelectionMode(selectionMode: SELECTION_MODE): void;
     setPlanViewModel(planViewModel: PlanViewModel): void;
+    private _dragStart;
+    private _drag;
+    private _dragEnd;
+    private _rotate;
 }

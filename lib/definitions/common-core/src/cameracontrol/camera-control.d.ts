@@ -54,5 +54,6 @@ export default abstract class CameraControl extends EventDispatcher<any> impleme
     getTargetPosition(): THREE.Vector3;
     protected _saveYawAndPitch(): void;
     getInputPosition(position: Position2): import("three").Vector3;
+    addLightContainer(container: THREE.Object3D): void;
     protected abstract _update(overrideTarget?: THREE.Vector3): void;
 }

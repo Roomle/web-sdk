@@ -7,6 +7,7 @@ export default class StaticPlanObjectViewModel extends PlanObjectViewModel {
     constructor(planObject: PlanObject);
     setRapiItem(rapiItem: RapiItem): Promise<void>;
     private _addStaticItem;
+    needsRapiItem(): boolean;
     private _getGLBUrl;
     getGLBUrl(): string;
 }

@@ -6,5 +6,6 @@ export default class BottomBar extends Component {
     };
     readonly noPrice: boolean;
     didInsertElement(): void;
+    didUpdate(): void;
     openInfo(): void;
 }

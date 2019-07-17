@@ -11,4 +11,5 @@ export default class EmbeddingInterface {
         id: RapiId;
     }>>;
     getTotalFloorArea(): Promise<any>;
+    getPlanOverview(): Promise<{}>;
 }

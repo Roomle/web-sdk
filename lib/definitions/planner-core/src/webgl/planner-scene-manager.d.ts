@@ -8,6 +8,7 @@ import { RoomlePlannerCallback } from '../roomle-planner';
 import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import InputManager from '../../../common-core/src/input/input-manager';
 import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
+import PlanElementViewModel from '../../../common-core/src/view-model/plan-element-view-model';
 export default class PlannerSceneManager extends SceneManager implements PlannerKernelCallbackI {
     private _plannerKernelAccess;
     private _rapiAccess;
@@ -23,8 +24,6 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     private _bounds;
     private _planId;
     private _preloadScene;
-    private _wallGroup;
-    private _ceilingGroup;
     constructor(creator: string, offset: CanvasOffset, plannerCallback: RoomlePlannerCallback, mode?: CAMERA_TYPE);
     protected _setupScene(offset?: CanvasOffset, transparent?: boolean): void;
     zoomToPlanObject(planObject: PlanObjectViewModel): void;
@@ -45,7 +44,7 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     addPlanMesh(plan: Plan, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type: KernelEnum): void;
     endPlanConstruction(plan: Plan): void;
     addPlanObjectToScene(object3D: THREE.Object3D): void;
-    planElementChanged(plan: Plan, planObject: PlanObjectViewModel): void;
+    planElementChanged(plan: Plan, planObject: PlanElementViewModel): void;
     exportGLB(exportObjects?: THREE.Object3D[], id?: string): void;
     importGLB(url: string): void;
     clearScene(): void;
@@ -58,7 +57,6 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     private _switchToHSC;
     closeHSC(): void;
     switchToFirstPerson(): void;
-    private _getConstructionBounds;
     protected _onKeyDown(event: KeyboardEvent): void;
     protected _onKeyUp(event: KeyboardEvent): void;
     setMode(mode: CAMERA_TYPE): void;
@@ -66,4 +64,6 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     destroy(): void;
     getPixotronParams(): any;
     planObjectConfigurationLoaded(plan: Plan, element: PlanElement, success: boolean): void;
+    addMesh(planElement: PlanElement, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
+    private _updateBounds;
 }

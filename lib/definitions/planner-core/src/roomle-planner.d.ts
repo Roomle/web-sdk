@@ -2,9 +2,10 @@ import RoomlePlannerUiCallback from './roomle-planner-ui-callback';
 import { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main';
 import { Configurator } from '../../configurator-core/src/configurator';
 import { InitData } from '../../common-core/src/utils/shims';
+import { RapiItem } from '../../typings/rapi-types';
 import { BackstackCallbacks } from './services/backstack';
 import { Context } from '../../common-core/src/di/context';
-import { PlanInteractionHandler } from '../../typings/planner';
+import { PlanInteractionHandler, PlanModelViewHelper } from '../../typings/planner';
 import { KernelAccessCallbackI } from '../../common-core/src/kernel-access-callback';
 export interface RoomlePlannerCallback {
     switchToHsc: (planObjectId: number) => Promise<void>;
@@ -76,4 +77,10 @@ export default class RoomlePlanner implements KernelAccessCallbackI, RoomlePlann
     syncCatalog(catalogId: string): Promise<void>;
     loadError(error?: any): void;
     getPlanInteractionHandler(): Promise<PlanInteractionHandler>;
+    getPlanModelViewHelper(): Promise<PlanModelViewHelper>;
+    /**
+     * Inserts all of the items in the array into current plan
+     * @param itemList Array of items received from the Roomle API
+     */
+    insertItems(itemList: RapiItem[]): Promise<void>;
 }

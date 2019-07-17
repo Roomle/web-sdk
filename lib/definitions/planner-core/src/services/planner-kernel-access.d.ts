@@ -1,18 +1,19 @@
 import { KernelEnum, KernelVector3 } from '../../../typings/kernel';
 import PlanViewModel from '../view-model/plan-view-model';
-import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object-view-model';
 import { KernelObject, Plan, PlanElement, PlanInteractionHandler, PlanObject } from '../../../typings/planner';
 import CommonKernelAccess from '../../../common-core/src/services/common-kernel-access';
 import { ConfigurationString, RapiItem } from '../../../typings/rapi-types';
 import RoomlePlannerUiCallback from '../roomle-planner-ui-callback';
+import PlanElementViewModel from '../../../common-core/src/view-model/plan-element-view-model';
 export interface PlannerKernelCallbackI {
     handlerSwitchedPlans(planViewModel: PlanViewModel): void;
     planCompletelyLoaded(plan: Plan): void;
     beginPlanConstruction(plan: Plan): void;
+    addMesh(planElement: PlanElement, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     addPlanMesh(plan: Plan, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type: KernelEnum): void;
     endPlanConstruction(plan: Plan): void;
     addPlanObjectToScene(object3D: THREE.Object3D): void;
-    planElementChanged(plan: Plan, planObject: PlanObjectViewModel): void;
+    planElementChanged(plan: Plan, planObject: PlanElementViewModel): void;
     planObjectConfigurationLoaded(plan: Plan, element: PlanElement, success: boolean): void;
 }
 export default class PlannerKernelAccess extends CommonKernelAccess {
@@ -32,6 +33,8 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     readonly planInteractionHandler: PlanInteractionHandler;
     readonly planModelViewHelper: any;
     catalogItemLoaded(catalogItem: RapiItem): void;
+    insertItems(itemList: RapiItem[]): Promise<void>;
+    private _rapiItemToKernelItem;
     onLoadComponentError(error: Error): void;
     configurationLoaded(conversationId: number, objectId: number, componentId: number, hash: string, errors: any): void;
     componentDefinitionLoaded(conversationId: number, componentId: number): void;
@@ -89,7 +92,7 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     planBoundsChanged(): void;
     planCleared(): void;
     planCompletelyLoaded(plan: Plan): void;
-    planElement3dMeshChanged(plan: any, element: any): void;
+    planElement3dMeshChanged(plan: Plan, element: PlanElement): void;
     planElementAdded(plan: Plan, element: PlanElement): void;
     planElementChanged(plan: Plan, element: KernelObject): void;
     planHistoryStateChanged(): void;
@@ -100,7 +103,7 @@ export default class PlannerKernelAccess extends CommonKernelAccess {
     stoppedDrawing(): void;
     updateMesh2d(): void;
     beginConstruction(): void;
-    addMesh(): void;
+    addMesh(planElement: PlanElement, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     endConstruction(): void;
     beginPlanConstruction(plan: Plan): void;
     addPlanMesh(plan: Plan, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type: KernelEnum): void;
