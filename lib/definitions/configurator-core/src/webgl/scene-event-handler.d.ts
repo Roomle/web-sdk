@@ -65,6 +65,7 @@ export default class SceneEventHandler extends EventDispatcher<SceneEventInfo> i
     private _hoverMovePreviewLine;
     private _updatePositionForPreviewLine;
     private _hoverOffPreviewLine;
+    private _setDragComponentShadow;
     private _dragStart;
     private _drag;
     private _dragEnd;

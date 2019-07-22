@@ -13,6 +13,8 @@ import Environment from '../environment/environment';
 import { QualitySetting } from '../dynamic-quality-setting-loader';
 import { Pixotron } from '../../../typings/pixotron';
 import EnvironmentLoader from '../services/environment-loader';
+import PixotronUtil from './pixotron-util';
+import { DynamicLightSettingSource } from '../lightsetting/dynamic-light-setting-loader';
 export default abstract class SceneManager implements Context, LifeCycleCallbacks, EventListenerObject {
     _creator_: string;
     protected _domHelper: DomHelper;
@@ -32,6 +34,7 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     protected _renderListener: () => void;
     protected _stopRendering: boolean;
     protected _pixotron: Pixotron;
+    protected _pixotronUtil: PixotronUtil;
     private _forceRender;
     private _lastChange;
     private _running;
@@ -78,4 +81,5 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     loadSceneSettings(sceneSetting: SceneSettings): Promise<void>;
     protected _setEnvironment(environment: Environment): void;
     loadQualitySetting(qualitySetting: QualitySetting): void;
+    loadDynamicLightSetting(source: DynamicLightSettingSource): Promise<void>;
 }

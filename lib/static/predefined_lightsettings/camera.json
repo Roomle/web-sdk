@@ -2,7 +2,7 @@
     "lights": [
         {
             "type": "rectarea",
-            "name": "camera",
+            "name": "area light",
             "intensity": 80,
             "color": "#ffffff",
             "position": {
@@ -19,8 +19,8 @@
         },
         {
             "type": "directional",
-            "name": "dir",
-            "intensity": 1,
+            "name": "camera light",
+            "intensity": 0.4,
             "color": "#ffffff",
             "position": {
                 "x": 0,
