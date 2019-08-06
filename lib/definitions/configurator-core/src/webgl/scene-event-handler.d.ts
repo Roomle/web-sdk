@@ -21,11 +21,13 @@ export declare class SceneEventInfo {
     preview: PreviewComponent;
     resetCamera: boolean;
     type: INPUT_EVENT_TYPE;
+    forceRender: boolean;
     constructor(data: {
         component?: RoomleComponent;
         preview?: PreviewComponent;
         resetCamera?: boolean;
         type?: INPUT_EVENT_TYPE;
+        forceRender?: boolean;
     });
 }
 export interface ComponentEventInfo {
@@ -37,9 +39,11 @@ export default class SceneEventHandler extends EventDispatcher<SceneEventInfo> i
     _creator_: string;
     private _selectionHandler;
     private _debug;
+    private _cameraMoving;
     private _raycastHelper;
     private _inputManager;
     private _addonHelper;
+    private _hoveredComponent;
     private _hoveredPreview;
     private _draggedComponent;
     private _previewLineIntersection;
@@ -80,4 +84,5 @@ export default class SceneEventHandler extends EventDispatcher<SceneEventInfo> i
     setSelectionMode(mode: SELECTION_MODE): void;
     getSelectionMode(): SELECTION_MODE;
     getSelectedRuntimeComponentIds(): number[];
+    setCameraMoving(cameraMoving: boolean): void;
 }

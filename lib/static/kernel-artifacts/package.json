@@ -1,28 +1,28 @@
 {
-  "_from": "https://www.roomle.com/t/external/core/77/hsc.tar.gz",
-  "_id": "roomle-core-hsc@2.15.0",
+  "_from": "https://www.roomle.com/t/external/core/78/hsc.tar.gz",
+  "_id": "roomle-core-hsc@2.15.1",
   "_inBundle": false,
-  "_integrity": "sha512-zHP0MZSNyH2ayjxSwx0v+uoUuVA00z3vl6XfxRwf0G2f9OPtxvlqlj22noWZRTG3aaasw614snvVEROh355Fdw==",
+  "_integrity": "sha512-HUPwiGrvEaIkZdRVkgHE+Z1o6KkWc9eo7d0FmWdLEuQuIFwkjxJaK1/ZBv1L4zOyIyq/t5+ZqsBJghfaX7fwTQ==",
   "_location": "/roomle-core-hsc",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "roomle-core-hsc@https://www.roomle.com/t/external/core/77/hsc.tar.gz",
+    "raw": "roomle-core-hsc@https://www.roomle.com/t/external/core/78/hsc.tar.gz",
     "name": "roomle-core-hsc",
     "escapedName": "roomle-core-hsc",
-    "rawSpec": "https://www.roomle.com/t/external/core/77/hsc.tar.gz",
-    "saveSpec": "https://www.roomle.com/t/external/core/77/hsc.tar.gz",
-    "fetchSpec": "https://www.roomle.com/t/external/core/77/hsc.tar.gz"
+    "rawSpec": "https://www.roomle.com/t/external/core/78/hsc.tar.gz",
+    "saveSpec": "https://www.roomle.com/t/external/core/78/hsc.tar.gz",
+    "fetchSpec": "https://www.roomle.com/t/external/core/78/hsc.tar.gz"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
-  "_resolved": "https://www.roomle.com/t/external/core/77/hsc.tar.gz",
-  "_shasum": "15a939f7e38e56f27183050cec403ee1cea5b1f2",
-  "_spec": "roomle-core-hsc@https://www.roomle.com/t/external/core/77/hsc.tar.gz",
+  "_resolved": "https://www.roomle.com/t/external/core/78/hsc.tar.gz",
+  "_shasum": "430168bf891df5b35fd862d1d8ea6243e25beb88",
+  "_spec": "roomle-core-hsc@https://www.roomle.com/t/external/core/78/hsc.tar.gz",
   "_where": "/data/jenkins/jobs/Roomle_Web_SDK/workspace/source",
   "bundleDependencies": false,
   "deprecated": false,
   "name": "roomle-core-hsc",
-  "version": "2.15.0"
+  "version": "2.15.1"
 }

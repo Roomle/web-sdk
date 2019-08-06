@@ -15,3 +15,8 @@ export declare function unmuteConsole(): void;
 export declare function numberOfObjectsWithType(objects: THREE.Object3D[], type: string): number;
 export declare function setupTHREELoaders(): void;
 export declare function createMockRoomleComponent(): RoomleComponent;
+export declare function createMockRoomleComponents(): {
+    roomleComponent: RoomleComponent;
+    roomlePreviewComponent: import("../src/webgl/roomle-component-factory").PreviewComponent;
+    previewLineComponent: import("../src/webgl/roomle-component-factory").PreviewLineComponent;
+};

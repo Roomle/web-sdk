@@ -21,7 +21,7 @@ export default class RoomleGLBViewer implements GlobalAPI, Context {
     private _threeLoader;
     private _sceneManager;
     constructor(creator: string);
-    init(element: HTMLElement): Promise<void>;
+    init(element: HTMLElement, options?: InitData): Promise<void>;
     private _initPromiseCallback;
     enableHD(): Promise<void>;
     /**

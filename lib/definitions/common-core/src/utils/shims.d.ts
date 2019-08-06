@@ -39,6 +39,7 @@ export interface CommonInitData {
     customApiUrl?: string;
     debug?: boolean;
     usePriceService?: boolean;
+    gammaOutput?: boolean;
 }
 export interface ConfiguratorInitData {
     addOnSpots?: boolean;
