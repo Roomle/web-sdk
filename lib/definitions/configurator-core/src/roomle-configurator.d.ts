@@ -2,7 +2,7 @@ import { RAPI_PATHS } from '../../common-core/src/rapi-access';
 import { Base64Image, CanvasOffset } from '../../common-core/src/common-interfaces';
 import { KernelParameter, KernelParameterGroup, KernelPart, KernelPossibleChild, UiPossibleChild } from '../../typings/kernel';
 import { DynamicLightSettingSource } from '../../common-core/src/lightsetting/dynamic-light-setting-loader';
-import { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main';
+import Main, { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main';
 import { SceneSettings } from '../../common-core/src/scene-settings-loader';
 import { InitData } from '../../common-core/src/utils/shims';
 import ConfiguratorUiCallbacks from './services/configurator-ui-callback';
@@ -436,6 +436,13 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
      * changes in size
      */
     updateSize(): void;
+    /**
+     * Return the main class which has access to lifecycle events and RapiAccess.
+     * Hidden because it's only useful for embedding API.
+     * Has to be overridden by main class.
+     * @hidden
+     */
+    getMain(): Main;
     /**
      * Clears the scene and all components/meshes.
      * Also unregisters configurator callbacks in kernel.

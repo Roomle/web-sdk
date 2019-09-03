@@ -9,7 +9,9 @@ export default class StatsHelper {
     private _geometryPanel;
     private _texturePanel;
     private _materialPanel;
+    private _qualityPanel;
     constructor();
     private _init;
-    update(info: THREE.WebGLInfo): void;
+    updateRenderInfo(info: THREE.WebGLInfo): void;
+    updateQualityInfo(qualitySetting: any): void;
 }

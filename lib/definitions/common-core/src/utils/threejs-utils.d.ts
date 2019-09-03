@@ -1,11 +1,11 @@
 import { Dimensioning, KernelCube, KernelEnum } from '../../../typings/kernel';
 import { RapiMaterial, RapiMaterialShading, RapiTexture } from '../../../typings/rapi-types';
 import EnvironmentLoader from '../services/environment-loader';
-export declare const PREVIEW_MATERIAL_OPACITY = 0.6;
 export declare const PREVIEW_LINE_MATERIAL_OPACITY = 0.4;
-export declare const PREVIEW_MATERIAL_COLOR = "#FFFFFF";
+export declare const PREVIEW_MATERIAL_COLOR = "#DDDDDD";
 export declare const PREVIEW_MATERIAL_ROUGHNESS = 1;
-export declare const PREVIEW_MATERIAL_METALNESS = 0.5;
+export declare const PREVIEW_MATERIAL_METALNESS = 0;
+export declare const PREVIEW_MATERIAL_OPACITY = 1;
 export declare const getScreenXY: (obj: import("three").Vector3, camera: import("three").PerspectiveCamera, clientWidth: number, clientHeight: number) => import("three").Vector3;
 export declare const kernelBoxToThreeBox: (kernelCube: KernelCube, margin?: import("three").Vector3) => import("three").Box3;
 export declare const kernelDimensioningToThree: (dimensions: Dimensioning) => Dimensioning;
@@ -14,6 +14,7 @@ export declare const setShadows: (object: import("three").Object3D, receiveShado
 export declare const position3VectorsAreEqual: (a: import("three").Vector3, b: import("three").Vector3) => boolean;
 export declare const rotationQuaternionsAreEqual: (a: import("three").Quaternion, b: import("three").Quaternion) => boolean;
 export declare const position2VectorsAreEqual: (a: import("three").Vector2, b: import("three").Vector2) => boolean;
+export declare const createColorTexture: (red: number, green: number, blue: number, alpha: number) => import("three").DataTexture;
 export declare const createMaterial: (material: RapiMaterial, environmentLoader?: EnvironmentLoader) => import("three").MeshPhysicalMaterial;
 export declare const getMaterialShading: (material: import("three").MeshPhysicalMaterial) => RapiMaterialShading;
 export declare const logColor: (color: import("three").Color) => void;
@@ -35,3 +36,4 @@ export declare const getBoundingBoxMaterial: () => import("three").MeshBasicMate
 export declare const getSelectionGeometry: (position: import("three").Vector3, size: import("three").Vector3) => import("three").Geometry;
 export declare const vectorIsZero: (vector: import("three").Vector3) => boolean;
 export declare const getMaterialId: (material: any, type?: KernelEnum) => string;
+export declare const vectorIsEqual: (vector1: import("three").Vector3, vector2: import("three").Vector3, tolerance?: number) => boolean;

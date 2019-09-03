@@ -3,6 +3,7 @@ import { CanvasOffset } from '../../../common-core/src/common-interfaces';
 import InputManager from '../../../common-core/src/input/input-manager';
 import { RapiId, RapiMaterial, RapiMaterialShading } from '../../../typings/rapi-types';
 import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
+import { BakedShadowParams } from '../../../typings/pixotron';
 export default class MaterialViewerSceneManager extends SceneManager {
     private _inputManager;
     private _configuratorMeshGenerator;
@@ -24,6 +25,7 @@ export default class MaterialViewerSceneManager extends SceneManager {
     protected _getInputManager(): InputManager;
     sceneChanged(): void;
     getPixotronParams(): any;
+    getBakedShadowParams(): BakedShadowParams;
     protected _guiLoaded(): void;
     private _updateGUI;
     private _shadingChanged;

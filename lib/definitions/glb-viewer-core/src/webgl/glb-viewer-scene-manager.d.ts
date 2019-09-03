@@ -3,6 +3,7 @@ import { Base64Image, CanvasOffset } from '../../../common-core/src/common-inter
 import { GLBRenderWorkerListener } from '../services/glb-render-worker';
 import InputManager from '../../../common-core/src/input/input-manager';
 import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
+import { BakedShadowParams } from '../../../typings/pixotron';
 export default class GLBViewerSceneManager extends SceneManager implements GLBRenderWorkerListener {
     private _glbInputManager;
     private _currentGLB;
@@ -21,4 +22,5 @@ export default class GLBViewerSceneManager extends SceneManager implements GLBRe
     enableHD(): void;
     sceneChanged(): void;
     getPixotronParams(): any;
+    getBakedShadowParams(): BakedShadowParams;
 }

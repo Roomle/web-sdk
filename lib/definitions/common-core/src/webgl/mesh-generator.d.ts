@@ -28,10 +28,9 @@ export default class MeshGenerator implements Context {
     protected _assignMaterial(mesh: THREE.Mesh, materialId: string): Promise<void>;
     maxAnisotrophy: number;
     clear(): void;
-    getPreviewMaterial(): THREE.MeshStandardMaterial;
     protected _assignRGB(mesh: THREE.Mesh, rgbValue: number): Promise<void>;
     protected _assignItem(mesh: THREE.Mesh, catalogItemId: string): Promise<void>;
-    protected _generateMesh(meshId: string, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, newGeometryInstance?: boolean): THREE.Mesh;
+    protected _generateMesh(runtimeComponentId: number, meshId: string, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, newGeometryInstance?: boolean): THREE.Mesh;
     setMaterialLoadedListener(fun: () => void): void;
     removeMaterialLoadedListener(): void;
 }

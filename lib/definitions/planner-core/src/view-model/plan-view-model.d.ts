@@ -45,7 +45,7 @@ export default class PlanViewModel extends ConfiguratorViewModel implements Plan
     sceneCleared(): void;
     getStaticPlanObjectViewModels(): StaticPlanObjectViewModel[];
     getComponent(id: number): RoomleComponent;
-    protected _generateMesh(meshId: string, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type?: KernelEnum, newGeometryInstance?: boolean): THREE.Mesh;
+    protected _generateMesh(runtimeComponentId: number, meshId: string, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type?: KernelEnum, newGeometryInstance?: boolean): THREE.Mesh;
     protected _setMaterial(mesh: THREE.Mesh, material: any, type?: KernelEnum): void;
     Editor3dComponentCreated(id: number, position: KernelVector3, eulerAngles: KernelVector3, parentObjectRuntimeId: number, isRootComponent: boolean): void;
     addPlanObjectToScene(object3D: THREE.Object3D): void;

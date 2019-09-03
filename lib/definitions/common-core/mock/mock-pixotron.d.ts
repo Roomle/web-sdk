@@ -16,4 +16,5 @@ export default class MockPixotron implements Pixotron {
     setSize(width: number, height: number): void;
     updateShadowPlane(object: THREE.Object3D): void;
     isSuperSamplingConverged(): boolean;
+    setQualityAdapter(adapter: any): void;
 }

@@ -1,8 +1,8 @@
 import LightSetting from '../../../../common-core/src/lightsetting/light-setting';
 export default class PlannerLightSetting extends LightSetting {
+    private _hemiLight;
     private _ambientLight;
     private _mainDirLight;
-    private _secondDirLight;
     private _center;
     private _params;
     constructor(scene: THREE.Scene, oldLightSetting?: LightSetting);

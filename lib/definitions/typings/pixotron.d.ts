@@ -38,9 +38,44 @@ export declare class Pixotron {
     getHighLightPass(): THREE.OutlinePass;
     getShadowPlanePass(): ShadowPlanePass;
     highlightObjects(objects: THREE.Object3D[]): void;
-    updateShadowPlane(object: THREE.Object3D): void;
     blit(): void;
     dispose(): void;
     isSuperSamplingConverged(): boolean;
+    setQualityAdapter(qualityAdapter: any): void;
+}
+export declare class QualitySettings {
+    constructor(quality: number);
+}
+export declare class QualityAdapter {
+    constructor(pixotron: Pixotron);
+    onQualityChange(callback: any): void;
+}
+export declare class AutoQualityAdapter extends QualityAdapter {
+    addQuality(qualitySetting: any): void;
+    setDesiredFps(desiredFps: number): void;
+}
+export declare class ManualQualityAdapter extends QualityAdapter {
+}
+export declare interface BakedShadowParams {
+    enable: boolean;
+    shadowMapResolution?: number;
+    smoothTransition?: boolean;
+    numSamples?: number;
+    numSamplesPerFrame?: number;
+    bShadowMaterial?: boolean;
+    falloff?: number;
+    darkness?: number;
+    size?: number;
+    lightSolidAngle?: number;
+    yPosition?: number;
+    lightDirection?: THREE.Vector3;
+    onComplete?: () => void;
+    onProgress?: (value: number) => void;
+}
+export declare class PlaneShadowBakePass {
+    enable: boolean;
+    constructor(params?: BakedShadowParams);
+    startBake(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera): void;
+    getShadowPlane(): THREE.Mesh;
 }
 export {};

@@ -9,6 +9,7 @@ import PlanObjectViewModel from '../../../common-core/src/view-model/plan-object
 import InputManager from '../../../common-core/src/input/input-manager';
 import { CAMERA_TYPE } from '../../../common-core/src/cameracontrol/camera-type';
 import PlanElementViewModel from '../../../common-core/src/view-model/plan-element-view-model';
+import { BakedShadowParams } from '../../../typings/pixotron';
 export default class PlannerSceneManager extends SceneManager implements PlannerKernelCallbackI {
     private _plannerKernelAccess;
     private _rapiAccess;
@@ -24,6 +25,8 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     private _bounds;
     private _planId;
     private _preloadScene;
+    private _staticItemGuard;
+    private _configurableItemGuard;
     constructor(creator: string, offset: CanvasOffset, plannerCallback: RoomlePlannerCallback, mode?: CAMERA_TYPE);
     protected _setupScene(offset?: CanvasOffset, transparent?: boolean): void;
     zoomToPlanObject(planObject: PlanObjectViewModel): void;
@@ -40,6 +43,7 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     planXMLLoaded(plan: Plan): void;
     planCompletelyLoaded(plan: Plan): void;
     handlerSwitchedPlans(planViewModel: PlanViewModel): void;
+    private _itemsLoaded;
     beginPlanConstruction(plan: Plan): void;
     addPlanMesh(plan: Plan, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type: KernelEnum): void;
     endPlanConstruction(plan: Plan): void;
@@ -63,6 +67,7 @@ export default class PlannerSceneManager extends SceneManager implements Planner
     private _highlight;
     destroy(): void;
     getPixotronParams(): any;
+    getBakedShadowParams(): BakedShadowParams;
     planObjectConfigurationLoaded(plan: Plan, element: PlanElement, success: boolean): void;
     addMesh(planElement: PlanElement, material: any, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     private _updateBounds;

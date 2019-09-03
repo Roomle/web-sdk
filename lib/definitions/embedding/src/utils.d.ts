@@ -1,5 +1,9 @@
-export interface EmbeddingInstance {
+export interface EmbeddingCallbacks {
     [key: string]: (...args: any[]) => any;
+}
+export interface EmbeddingInstance {
+    callbacks?: EmbeddingCallbacks;
+    [key: string]: ((...args: any[]) => any) | any;
 }
 export interface EmbeddingCommand {
     message: string | EMBEDDING_EVENTS;

@@ -32,8 +32,6 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _renderer;
     private _renderTarget;
     private _maxAnisotrophy;
-    private _retina;
-    private _devicePixelRatio;
     private _clock;
     private _delta;
     private _dimensionHelper;
@@ -101,7 +99,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     changeFloorMaterial(material: RapiMaterial): Promise<void>;
     enableHD(source?: DynamicLightSettingSource): void;
     private reEnableHD;
-    private _addGroundShadows;
+    private _enableAutoQuality;
     disableHD(): void;
     loadDynamicLightSetting(source: DynamicLightSettingSource): Promise<void>;
     exportGLB(): void;
@@ -116,6 +114,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     setBackgroundColor(hex: string): void;
     setBackgroundImage(url: string): void;
     setBakedShadow(hex: string, url: string): void;
+    private _setEnvironment;
     handleEvent(evt: Event): void;
     private _updateCameraToBounds;
     private _requestDockingsPreview;

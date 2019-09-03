@@ -11,7 +11,7 @@ import { LifeCycleCallbacks } from '../life-cycle-manager';
 import { SceneSettings } from '../scene-settings-loader';
 import Environment from '../environment/environment';
 import { QualitySetting } from '../dynamic-quality-setting-loader';
-import { Pixotron } from '../../../typings/pixotron';
+import { BakedShadowParams, Pixotron } from '../../../typings/pixotron';
 import EnvironmentLoader from '../services/environment-loader';
 import PixotronUtil from './pixotron-util';
 import { DynamicLightSettingSource } from '../lightsetting/dynamic-light-setting-loader';
@@ -46,6 +46,7 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     protected abstract _getInputManager(): InputManager;
     abstract sceneChanged(): void;
     abstract getPixotronParams(): any;
+    abstract getBakedShadowParams(): BakedShadowParams;
     protected onBeforeRender(): void;
     protected _onAfterRender: () => void;
     constructor(creator: string, offset: CanvasOffset, canvasID: string, mode?: CAMERA_TYPE, transparent?: boolean);
@@ -63,7 +64,6 @@ export default abstract class SceneManager implements Context, LifeCycleCallback
     cleanUp(): void;
     clearScene(): void;
     enableHD(): void;
-    protected _addGroundShadows(): void;
     protected _loadGLTF(gltfJSON: string, position?: THREE.Vector3, rotation?: number, size?: THREE.Vector3, scale?: THREE.Vector3, color?: number): Promise<THREE.Object3D>;
     protected _loadGLB(url: string, position?: THREE.Vector3, rotation?: number, size?: THREE.Vector3, scale?: THREE.Vector3, color?: number, colorable?: boolean): Promise<THREE.Object3D>;
     private _setCamera;

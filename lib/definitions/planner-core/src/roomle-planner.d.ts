@@ -1,5 +1,5 @@
 import RoomlePlannerUiCallback from './roomle-planner-ui-callback';
-import { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main';
+import Main, { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main';
 import { Configurator } from '../../configurator-core/src/configurator';
 import { InitData } from '../../common-core/src/utils/shims';
 import { RapiItem } from '../../typings/rapi-types';
@@ -49,6 +49,13 @@ export default class RoomlePlanner implements KernelAccessCallbackI, RoomlePlann
     switchToGLB(url: string): Promise<void>;
     switchToPlanner(id: string): void;
     updateSize(): void;
+    /**
+     * Return the main class which has access to lifecycle events and RapiAccess.
+     * Hidden because it's only useful for embedding API.
+     * Has to be overridden by main class.
+     * @hidden
+     */
+    getMain(): Main;
     update(): void;
     callbacks: RoomlePlannerUiCallback;
     showStats(): void;

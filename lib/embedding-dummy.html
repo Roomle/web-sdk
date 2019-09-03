@@ -56,6 +56,17 @@
         const initPlanner = async (id, planId)=> {
             document.getElementById('init-' + id).disabled = true;
             window[id] = await RoomleEmbedding.initPlanner('embedding_id', document.getElementById(id));
+            window[id].callbacks.onCompletelyLoaded = async () => {
+                const planOverview = await window[id].getPlanOverview();
+                console.log(planOverview);
+                planOverview.rooms.forEach((room)=> {
+                    room.objects.forEach((object)=> {
+                        if(object.parts.fullList.length) {
+                            console.log('object has part list', {object, room});
+                        }
+                    });
+                });
+            }
             await window[id].loadPlan(planId);
             document.getElementById('area-' + id).disabled = false;
             document.getElementById('planObjects-' + id).disabled = false;
@@ -81,7 +92,7 @@
             console.log(objects);
         };
 
-        document.getElementById('init-plan1').addEventListener('click', ()=> initPlanner('plan1', '8a7080835a17a313015a22d290924436'));
+        document.getElementById('init-plan1').addEventListener('click', ()=> initPlanner('plan1', 'fjl0v1agco04478pbt17ajc5huo4oza6'));
         document.getElementById('init-plan2').addEventListener('click', ()=> initPlanner('plan2', 'f0tirbdakqokfgabbqtmko2kfusn4me'));
 
         document.getElementById('area-plan1').addEventListener('click', ()=> getTotalFloorArea('plan1'));

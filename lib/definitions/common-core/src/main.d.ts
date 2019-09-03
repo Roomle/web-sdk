@@ -1,7 +1,9 @@
 import { LifeCycleCallbacks } from './life-cycle-manager';
 import { MainThreadToWorker } from '../../workers/src/main-thread-to-worker';
+import RapiAccess from './rapi-access';
 export interface GlobalAPI {
     updateSize(): void;
+    getMain(): Main;
 }
 export interface KernelUtilityForUi {
     getRuntimeComponentIdOfRootComponent(planObjectId?: number): number;
@@ -25,4 +27,11 @@ export default abstract class Main implements LifeCycleCallbacks {
     pause(): void;
     resume(element?: HTMLElement): void;
     destroy(): void;
+    /**
+     * returns the instance of the rapi access so that
+     * the user of the SDK can fetch data from the Roomle backend
+     * @params none
+     * @return RapiAccess
+     */
+    getRapiAccess(): RapiAccess;
 }

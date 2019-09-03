@@ -14,4 +14,9 @@ export interface RoomlePlanner {
     getPlanInteractionHandler(): Promise<PlanInteractionHandler>;
     getPlanModelViewHelper(): Promise<PlanOverview>;
 }
+export interface Planner {
+    getRapiAccess(): any;
+    resume(): void;
+    pause(): void;
+}
 export {};

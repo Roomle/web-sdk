@@ -79,7 +79,7 @@ export default class ConfiguratorViewModel implements ConfiguratorKernelCallback
     setGeometriesMergedListener(fun: () => void): void;
     removeGeometriesMergedListener(): void;
     setMergeThreshold(threshold: number): void;
-    protected _generateMesh(meshId: string, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type?: KernelEnum, newGeometryInstance?: boolean): THREE.Mesh;
+    protected _generateMesh(runtimeComponentId: number, meshId: string, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type?: KernelEnum, newGeometryInstance?: boolean): THREE.Mesh;
     protected _setMaterial(mesh: THREE.Mesh, material: any, type?: KernelEnum): void;
     constructComponents(planObjectId: number): void;
 }

@@ -1,7 +1,18 @@
 import { Pixotron } from '../../../typings/pixotron';
+import { WebGLRenderer } from 'three';
 export default class PixotronUtil {
     private _pixotron;
+    private _autoQualityAdapter;
+    private _manualQualityAdapter;
+    private _currentQualityAdapter;
+    private _highestQualitySetting;
+    private _highPixelRatioQualitySetting;
+    private _highQualitySetting;
+    private _midQualitySetting;
+    private _lowQualitySetting;
+    private _lowestQualitySetting;
     private _sceneBoundingSphere;
+    private _currentQualitySetting;
     constructor(pixotron: Pixotron);
     getPixotronInstance(params?: any): Pixotron;
     showGUI(): void;
@@ -13,4 +24,17 @@ export default class PixotronUtil {
     private _getMaxSaoRadius;
     private _getMinSaoBias;
     private _getMaxSaoBias;
+    updatePixelRatio(renderer: WebGLRenderer): void;
+    getHighPixelRatioQualitySetting(): any;
+    getLowestQualitySetting(): any;
+    private _initializeQualitySettings;
+    private _initializeQualityAdapters;
+    onAutoQualityChange(qualityChangeCallback: any): void;
+    onManualQualityChange(qualityChangeCallback: any): void;
+    getAutoAdapter(): any;
+    lockAdapter(): void;
+    unLockAdapter(): void;
+    enablePixotronAutoQuality(): void;
+    movingCameraStarts(): void;
+    movingCameraStops(): void;
 }

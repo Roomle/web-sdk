@@ -20,7 +20,7 @@ export default class FloorEnvironment extends BakedShadowEnvironment {
     needsBounds(): boolean;
     needsCamera(): boolean;
     needsRotation(): boolean;
-    updateBounds(bounds: THREE.Vector3): void;
+    updateBounds(bounds: THREE.Vector3): boolean;
     updateCamera(camera: THREE.PerspectiveCamera): void;
     private _update;
     private _updateFog;

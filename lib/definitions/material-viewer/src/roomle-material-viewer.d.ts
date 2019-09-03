@@ -1,4 +1,4 @@
-import { GlobalAPI } from '../../common-core/src/main';
+import Main, { GlobalAPI } from '../../common-core/src/main';
 import { Context } from '../../common-core/src/di/context';
 import { SceneSettings } from '../../common-core/src/scene-settings-loader';
 import { QualitySetting } from '../../common-core/src/dynamic-quality-setting-loader';
@@ -35,6 +35,13 @@ export default class RoomleMaterialViewer implements GlobalAPI, Context {
     loadQualitySetting(qualitySetting: QualitySetting): void;
     setOverrides(options: InitData): void;
     updateSize(): void;
+    /**
+     * Return the main class which has access to lifecycle events and RapiAccess.
+     * Hidden because it's only useful for embedding API.
+     * Has to be overridden by main class.
+     * @hidden
+     */
+    getMain(): Main;
     resumeTest(element: HTMLElement): void;
     pauseTest(): void;
     showGUI(): void;

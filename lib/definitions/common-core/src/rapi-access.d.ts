@@ -4,6 +4,7 @@ import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, R
 export declare const MAX_URL_LENGTH = 1500;
 export declare const MESH_DEFAULT_FORMAT = "crt";
 export declare const MESH_DEFAULT_QUALITY = 50;
+export declare const LEGACY_GROUP_INDICATOR: string;
 export declare const RAPI_PATH_KEY = "__rapi_path__";
 export declare const enum RAPI_PATHS {
     COMPONENTS = "components",
@@ -49,6 +50,7 @@ export default class RapiAccess {
     getHSCPackage(id: RapiId): Promise<RapiPackage>;
     getComponent(id: RapiId): Promise<RapiComponent>;
     getConfiguration(id: RapiId): Promise<RapiConfiguration>;
+    getConfigurations(ids: RapiId[]): Promise<RapiConfiguration[]>;
     getItem(id: RapiId): Promise<RapiItem>;
     getComponents(ids: RapiId[]): Promise<RapiComponent[]>;
     getItems(ids: RapiId[]): Promise<RapiItem[]>;
@@ -81,7 +83,7 @@ export default class RapiAccess {
     private _saveConfigurationImage;
     private _markConfigurationAsLocally;
     private _save;
-    combineMaterialsToGroups(materials: RapiMaterial[]): RapiMaterialGroup[];
+    combineMaterialsToGroups(materials: RapiMaterial[]): Promise<RapiMaterialGroup[]>;
     private _getByIds;
     private _getByIdsPackets;
     private _getByIdsSingle;
