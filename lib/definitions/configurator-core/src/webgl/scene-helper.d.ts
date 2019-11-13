@@ -22,6 +22,8 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _kernelAccess;
     private _componentDimensioningHelper;
     private _configuratorViewModel;
+    private _environmentLoader;
+    private _pluginSystem;
     private _componentFactory;
     private _pixotron;
     private _pixotronUtil;
@@ -74,7 +76,9 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     planObjectConstructionDone(planObject: PlanObject): void;
     private _internalClearScene;
     preparePerspectiveImage(): Promise<Base64Image>;
+    preparePartImage(partId: number, size: number): Promise<any>;
     private _calculateBoundingBoxOfAllMeshes;
+    private _getCameraTargetForBBox;
     prepareTopImage(showDimensions?: boolean): Promise<Base64Image>;
     enableDragIn(dragEvent: DragEvent): void;
     private _getYRotationOfObject;
@@ -87,6 +91,8 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     changeOffset(offset: CanvasOffset): void;
     private _onWindowResize;
     updateSize(): void;
+    setCameraOffset(offset: CanvasOffset): void;
+    getCameraOffset(): CanvasOffset;
     private _onKeyDown;
     cancelPreviousDockings(): void;
     cancelSelection(resetCamera?: boolean): void;

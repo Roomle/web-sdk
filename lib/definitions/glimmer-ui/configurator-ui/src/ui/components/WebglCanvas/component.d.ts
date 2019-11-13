@@ -10,6 +10,7 @@ export default class WebglCanvas extends Component {
     private _embed;
     private _loadingScreen;
     private _gaInterface;
+    private _globalState;
     private _waitForConfigurationString;
     constructor(options: object);
     didInsertElement(): void;
@@ -17,6 +18,7 @@ export default class WebglCanvas extends Component {
     private _initEmbedding;
     private _generateImagesOfCurrentConfiguration;
     private _saveCurrentConfiguration;
+    private _requestAddToCart;
     private _getCurrentConfigurationId;
     private _init;
     private _onResize;

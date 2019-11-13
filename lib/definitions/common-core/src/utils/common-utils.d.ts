@@ -30,3 +30,4 @@ export declare const createBenchmarkMaterial: (materialId: string) => RapiMateri
 export declare const createBenchmarkTexture: (materialId: string) => RapiTexture;
 export declare const createBenchmarkUrl: (materialId: string, size?: number) => string;
 export declare const isString: (value: unknown) => boolean;
+export declare const objectArrayToMap: <K extends V[keyof V], V extends object>(arr: V[], key: keyof V) => Map<K, V>;

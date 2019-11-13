@@ -58,7 +58,7 @@ export default class KernelAccess extends CommonKernelAccess {
     requestSync(conversationId: number, planObjectId: number): void;
     getGlobalParameters(planObjectId: number, rootComponentParametersAsGlobal: boolean): Promise<KernelParameter[]>;
     getPartList(): Promise<{}>;
-    getConfigurationHash(context: ConfiguratorContext): Promise<{}>;
+    getConfigurationHash(context: ConfiguratorContext): Promise<ConfigurationHash>;
     requestPlanObjectConstruction(objectId: number): void;
     isReady(): void;
     onLoadComponentError(error: Error): void;
@@ -119,6 +119,7 @@ export default class KernelAccess extends CommonKernelAccess {
     Editor3dUpdatePlanComponentRotation(): void;
     Editor3dUpdatePlanComponentTransform(): void;
     getRuntimeComponentIdOfRootComponent(planObjectId: number): number;
+    getRuntimeComponentId(runtimeComponentId: number): string;
     resume(): void;
     listOfVariants: (componentId: string, list: VariantsList) => void;
     listOfVariantsError: () => void;

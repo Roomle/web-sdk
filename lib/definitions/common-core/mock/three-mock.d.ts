@@ -5,6 +5,9 @@ export declare class WebGLRendererMock {
     domElement: HTMLCanvasElement;
     clear: () => void;
     render: () => void;
+    extensions: {
+        get: () => boolean;
+    };
     capabilities: {
         getMaxAnisotropy: () => void;
         maxTextures: number;

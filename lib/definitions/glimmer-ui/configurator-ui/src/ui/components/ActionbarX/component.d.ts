@@ -8,6 +8,8 @@ export default class ActionbarX extends Component {
     private _scriptLoader;
     protected _i18n: I18n;
     private _localStorage;
+    private _gaInterface;
+    private _globalState;
     private _isOpeningAr;
     private _isSaving;
     private _hiddenButtons;

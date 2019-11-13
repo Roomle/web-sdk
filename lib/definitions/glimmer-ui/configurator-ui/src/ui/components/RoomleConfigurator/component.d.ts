@@ -9,6 +9,7 @@ export default class RoomleConfigurator extends Component {
     private _i18n;
     private _uiCore;
     private _gaInterface;
+    private _globalState;
     private _oneDockCompleted;
     private _isSaving;
     private _initSentToIframe;

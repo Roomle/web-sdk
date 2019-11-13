@@ -1,4 +1,4 @@
-import { ConfiguratorKernelClass, KernelComponent, KernelPart, UiKernelParameter, UiPossibleChild, UiPossibleChildTag } from '../../../typings/kernel';
+import { ConfiguratorKernelClass, KernelComponent, KernelPart, UiKernelParameter, UiPossibleChild, UiPossibleChildTag, KernelVector3 } from '../../../typings/kernel';
 import { UIIntersection } from '../utils/ui-intersection-helper';
 import { RAPI_PATHS } from '../../../common-core/src/rapi-access';
 import { RapiTagForUi } from '../../../typings/rapi-types';
@@ -134,8 +134,13 @@ export default class ConfiguratorUiCallbacks extends UiCallback {
     onTrackTiming: (category: string, label: string, time: number, meta: object) => void;
     /**
      * When a dock component call has been completed
+     * @param childDbId the database id of the component which is docked
+     * @param childDockId the number of the dock position
+     * @param parentDbId the database id of the component to which is docked
+     * @param parentDockId the number of the dock position to which is docked
+     * @param position vector where the dock is done can be null
      */
-    onUserInitiatedDockDone: () => void;
+    onUserInitiatedDockDone: (childDbId: string, childDockId: number, parentDbId: string, parentDockId: number, position: KernelVector3) => void;
     /**
      * When user hovers over an addon plus symbol
      */
@@ -212,5 +217,9 @@ export default class ConfiguratorUiCallbacks extends UiCallback {
      * @param kernelInstance
      */
     onConfiguratorKernelIsReady: (kernelContainer: ConfiguratorKernelContainer | PlannerKernelContainer, kernelInstance: ConfiguratorKernelClass) => void;
+    /**
+     * is called when the configuration is saved to our backend
+    */
+    onConfigurationSaved: (configurationHash: string) => void;
     constructor(creator: string);
 }

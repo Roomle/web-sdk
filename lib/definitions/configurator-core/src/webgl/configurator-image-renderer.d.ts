@@ -5,7 +5,7 @@ export interface CameraTarget {
     diagonal: number;
 }
 export default class ConfiguratorImageRenderer {
-    static preparePerspectiveImage(scene: THREE.Scene, camera: THREE.PerspectiveCamera, cameraTarget: CameraTarget): Promise<Base64Image>;
+    static preparePerspectiveImage(scene: THREE.Scene, camera: THREE.PerspectiveCamera, cameraTarget: CameraTarget, size?: number): Promise<Base64Image>;
     private static _placeCameraForPerspectiveImage;
     static prepareTopImage(scene: THREE.Scene, uiScene: THREE.Scene, cameraTarget: CameraTarget, showDimensions?: boolean): Promise<Base64Image>;
 }

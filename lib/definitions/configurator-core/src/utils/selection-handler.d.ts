@@ -27,4 +27,5 @@ export default class SelectionHandler extends EventDispatcher<SelectionHandlerEv
     getSelectionMode(): SELECTION_MODE;
     hasSelection(): boolean;
     getSelectedRuntimeComponentIds(): number[];
+    isSelected(component: RoomleComponent): boolean;
 }

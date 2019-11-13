@@ -15,6 +15,7 @@ export declare const position3VectorsAreEqual: (a: import("three").Vector3, b: i
 export declare const rotationQuaternionsAreEqual: (a: import("three").Quaternion, b: import("three").Quaternion) => boolean;
 export declare const position2VectorsAreEqual: (a: import("three").Vector2, b: import("three").Vector2) => boolean;
 export declare const createColorTexture: (red: number, green: number, blue: number, alpha: number) => import("three").DataTexture;
+export declare const createColorCubeTexture: (red: number, green: number, blue: number, alpha: number) => import("three").CubeTexture;
 export declare const createMaterial: (material: RapiMaterial, environmentLoader?: EnvironmentLoader) => import("three").MeshPhysicalMaterial;
 export declare const getMaterialShading: (material: import("three").MeshPhysicalMaterial) => RapiMaterialShading;
 export declare const logColor: (color: import("three").Color) => void;

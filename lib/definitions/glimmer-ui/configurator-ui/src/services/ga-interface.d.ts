@@ -30,10 +30,18 @@ export declare const GA_METRICS: {
     INIT_LOADING_SCREEN_CLOSE: string;
     PRELOADS_READY: string;
 };
+declare const enum GA_ACTION_TYPE {
+    EXCEPTION = "exception",
+    TIMING = "timing_complete"
+}
+declare const enum CUSTOM_ACTION_TYPE {
+    TRACK_TIMING = "track_timing"
+}
 export declare const enum GA_CATEGORY {
     ERROR = "Error",
     NAVIGATION_TIMING = "Navigation Timing",
-    TIMING = "Timing"
+    TIMING = "Timing",
+    INTERACTION = "Interaction"
 }
 export default class GAInterface extends Service {
     private _embed;
@@ -42,7 +50,7 @@ export default class GAInterface extends Service {
     readonly _trackingId: any;
     readonly _gtag: any;
     private _setObjectProperties;
-    private _trackEvent;
+    trackEvent(action: CUSTOM_ACTION_TYPE | GA_ACTION_TYPE | string, category: GA_CATEGORY, label: string, value?: number, fieldsObject?: object): void;
     private _trackException;
     trackTiming(category: GA_CATEGORY, label: any, value: number, fieldsObject?: object): void;
     private _trackErrors;
@@ -57,3 +65,4 @@ export default class GAInterface extends Service {
     private _sendNavigationTimingMetrics;
     private _getConfiguratorId;
 }
+export {};

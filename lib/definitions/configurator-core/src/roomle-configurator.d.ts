@@ -6,7 +6,7 @@ import Main, { GlobalAPI, KernelUtilityForUi } from '../../common-core/src/main'
 import { SceneSettings } from '../../common-core/src/scene-settings-loader';
 import { InitData } from '../../common-core/src/utils/shims';
 import ConfiguratorUiCallbacks from './services/configurator-ui-callback';
-import { AssetUrl, ConfigurationString, RapiAdditionalContent, RapiConfiguration, RapiConfigurationEnhanced, RapiId, RapiItem, RapiMaterial, RapiServerUrlType, RapiTagForUi } from '../../typings/rapi-types';
+import { AssetUrl, ConfigurationHash, ConfigurationString, RapiAdditionalContent, RapiConfiguration, RapiConfigurationEnhanced, RapiId, RapiItem, RapiMaterial, RapiServerUrlType, RapiTagForUi } from '../../typings/rapi-types';
 import { Context } from '../../common-core/src/di/context';
 import { ConfiguratorKernelAccessCallbackI } from './services/configurator-kernel-access-callback';
 export interface LoadOptions {
@@ -115,6 +115,13 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
      * Generates a perspective image (slightly from the side) and returns it as base 64
      */
     preparePerspectiveImage(): Promise<Base64Image>;
+    /**
+     * Generates an image of one part (slightly from the side) and returns it as base 64
+     * WARNING: It's only possible to render one sub part at a time
+     * * @param partId id of the sub part, received from part list
+     * * @param size size of the rendered image in pixel (default is 256), will render faster when size is smaller
+     */
+    preparePartImage(partId: number, size?: number): Promise<Base64Image>;
     /**
      * Saves the current configuration (parameters etc)
      * and returns a new configuration object including the configuration hash
@@ -437,6 +444,20 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
      */
     updateSize(): void;
     /**
+     * Sets the available screen space for our item
+     * Example 1: right 0.9 means 10% padding on the right side
+     * Example 2: bottom 0.2 means 20% padding on the bottom side
+     * default: {left: 0, top: 1, right: 1, bottom: 0}
+     * @param offset {@link CanvasOffset}
+     */
+    setCameraOffset(offset: CanvasOffset): void;
+    /**
+     * Gets the available screen space for our item
+     * default: {left: 0, top: 1, right: 1, bottom: 0}
+     * Returns {@link CanvasOffset}
+     */
+    getCameraOffset(): CanvasOffset;
+    /**
      * Return the main class which has access to lifecycle events and RapiAccess.
      * Hidden because it's only useful for embedding API.
      * Has to be overridden by main class.
@@ -477,6 +498,12 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
      * @return number the number of the runtime id of the root component
      */
     getRuntimeComponentIdOfRootComponent(): number;
+    /**
+     * returns the current configuration hash, this can be used for analytics or other stuff like caching etc
+     * @return string current configuration hash
+     */
+    getCurrentConfigurationHash(): Promise<ConfigurationHash>;
+    getCurrentSelection(): string[];
     enableHD(source?: DynamicLightSettingSource): Promise<void>;
     disableHD(): Promise<void>;
     isReady(): void;

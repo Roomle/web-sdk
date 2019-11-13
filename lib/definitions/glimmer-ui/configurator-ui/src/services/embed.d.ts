@@ -20,6 +20,7 @@ export declare const EMBED_EVENTS_INCOMING: {
     GET_CURRENT_CONFIGRUATION_ID: string;
     FULLSCREEN_CHANGE: string;
     OPEN_INFO: string;
+    REQUEST_ADD_TO_CART: string;
 };
 export default class Embed extends Service {
     private _interface;

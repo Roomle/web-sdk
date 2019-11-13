@@ -35,6 +35,7 @@ export default class CameraControl3D extends CameraControl {
     minAzimuthAngle: number;
     maxAzimuthAngle: number;
     private _orbitPosition;
+    private _userInteraction;
     private _currentZoomHash;
     constructor(creator: string, inputManager: InputManager, initialCameraPosition?: THREE.Vector3, camera?: THREE.PerspectiveCamera);
     protected _getCamera(): THREE.PerspectiveCamera;
@@ -43,7 +44,7 @@ export default class CameraControl3D extends CameraControl {
     animateCamera(delta: number): boolean;
     protected _initInputListener(): void;
     private _move;
-    setBounds(bounds: THREE.Vector3): void;
+    setBounds(boundingBox: THREE.Box3): void;
     updateToBounds(boundingBox: THREE.Box3, windowWidth: number, windowHeight: number, isPreview: boolean, changeCamera?: boolean, target?: THREE.Vector3): void;
     protected _setDistanceAndRangesBasedOnBounds(bounds: THREE.Vector3, windowWidth: number, windowHeight: number): number;
     reset(bounds: THREE.Vector3, windowWidth: number, windowHeight: number, target?: THREE.Vector3, yaw?: number, pitch?: number, animate?: boolean): void;
@@ -60,4 +61,5 @@ export default class CameraControl3D extends CameraControl {
     private _getCameraSphere;
     zoomIn(value?: number): void;
     zoomOut(value?: number): void;
+    clear(): void;
 }

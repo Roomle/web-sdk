@@ -4,6 +4,7 @@ import { RapiMaterial } from '../../../typings/rapi-types';
 export default class ConfiguratorMeshGenerator extends MeshGenerator {
     private _geometryComponentMaterialCache;
     private _configuratorPreviewMaterial;
+    constructor(creator: string);
     generateMesh(runtimeComponentId: number, meshId: string, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, newGeometryInstance?: boolean): THREE.Mesh;
     private _createMesh;
     private _getComponentMeshId;

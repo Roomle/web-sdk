@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 export default class PType extends Component {
     private _uiCore;
     private _i18n;
+    private _gaInterface;
     private _lastTagId;
     private _isWaiting;
     state: {

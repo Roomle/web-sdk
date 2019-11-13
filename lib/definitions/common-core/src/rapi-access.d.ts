@@ -1,6 +1,7 @@
 import { Base64Image } from './common-interfaces';
 import { SHORT_TYPES } from './utils/url-shortener';
 import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, RapiComponent, RapiPackage, RapiConfiguration, RapiItem, RapiTag, RapiTexture, RapiCatalog, RapiMeshData, RapiMaterial, RapiPlan, RapiMaterialGroup, RapiShortId, RapiSkin, PriceId, RapiPrice } from '../../typings/rapi-types';
+import { Context } from './di/context';
 export declare const MAX_URL_LENGTH = 1500;
 export declare const MESH_DEFAULT_FORMAT = "crt";
 export declare const MESH_DEFAULT_QUALITY = 50;
@@ -26,18 +27,20 @@ export declare const enum RAPI_PATHS {
     PRICE = "prices",
     CATALOG_MESHES = "catalogMeshes"
 }
-export default class RapiAccess {
+export default class RapiAccess implements Context {
+    _creator_: string;
     private _formDataUtil;
     private _errorHandler;
     private _dataSyncer;
     private _networkLayer;
     private _localStorage;
+    private _configuratorUiCallbacks;
     private _overrideTenant;
     private _overrideCountry;
     private _configuratorId;
     private _overrideRapi;
     private _customApiUrl;
-    constructor();
+    constructor(creator: string);
     overrideTenant(tenant: number): void;
     setConfiguratorId(configuratorId: RapiId): void;
     overrideCountry(country: string): void;

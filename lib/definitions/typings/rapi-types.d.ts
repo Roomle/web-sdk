@@ -61,6 +61,7 @@ export interface RapiMaterialShading {
     roughness: number;
     doubleSided: boolean;
     alphaCutoff?: number;
+    occlusion?: number;
     [key: string]: number | boolean | RapiBaseColor;
 }
 export interface RapiMaterial extends RapiJson {

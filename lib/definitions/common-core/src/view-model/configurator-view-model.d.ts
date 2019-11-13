@@ -4,6 +4,7 @@ import { KernelComponent, KernelEnum, KernelVector3, PlanObject } from '../../..
 import { ConfigurationString } from '../../../typings/rapi-types';
 import { Context } from '../di/context';
 import CommonKernelAccess from '../services/common-kernel-access';
+import { PromiseQueue } from '../utils/promise-queue';
 export declare const DOCKING_CONVERSATION_ID = 10;
 export declare const DEFAULT_CONVERSATION_ID = 9;
 export interface ConfiguratorViewModelCallbackI {
@@ -29,13 +30,16 @@ export default class ConfiguratorViewModel implements ConfiguratorKernelCallback
     private _componentsToMerge;
     private _mergeInProgress;
     private _geometriesMerged;
+    private _subPartObject;
+    private _subPartGuard;
     protected _components: Map<number, RoomleComponent>;
     private _previews;
     protected _componentFactory: RoomleComponentFactory;
     constructor(creator: string);
-    waitingForMaterials: Array<Promise<void>>;
+    readonly materialQueue: PromiseQueue<void>;
     protected _getKernelAccess(): CommonKernelAccess;
     clearReference(): void;
+    private _addMeshToSubPart;
     private _addMeshToComponent;
     tryToMergeComponents(): void;
     private _requestMergeComponents;
@@ -82,4 +86,5 @@ export default class ConfiguratorViewModel implements ConfiguratorKernelCallback
     protected _generateMesh(runtimeComponentId: number, meshId: string, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type?: KernelEnum, newGeometryInstance?: boolean): THREE.Mesh;
     protected _setMaterial(mesh: THREE.Mesh, material: any, type?: KernelEnum): void;
     constructComponents(planObjectId: number): void;
+    requestSubPartConstruction(partId: number): Promise<THREE.Mesh>;
 }

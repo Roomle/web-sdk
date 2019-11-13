@@ -5,9 +5,10 @@ import SinglePromiseFactory from '../utils/single-promise-factory';
 import { RapiMaterial } from '../../../typings/rapi-types';
 import CacheHolder from '../services/cache-holder';
 import { Context } from '../di/context';
+import { PromiseQueue } from '../utils/promise-queue';
 export default class MeshGenerator implements Context {
     _creator_: string;
-    waitingForMaterials: Array<Promise<void>>;
+    materialQueue: PromiseQueue<void>;
     protected _rapiAccess: RapiAccess;
     protected _environmentLoader: EnvironmentLoader;
     protected _dataSyncer: DataSyncer;

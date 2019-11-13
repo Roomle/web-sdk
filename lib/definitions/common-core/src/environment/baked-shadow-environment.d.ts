@@ -29,7 +29,7 @@ export default class BakedShadowEnvironment extends Environment {
     needsBounds(): boolean;
     needsCamera(): boolean;
     needsRotation(): boolean;
-    setPixotron(pixotron: Pixotron, renderer: THREE.WebGLRenderer, camera: THREE.Camera, params?: BakedShadowParams): void;
+    setPixotron(pixotron: Pixotron, renderer: THREE.WebGLRenderer, camera: THREE.Camera, params?: BakedShadowParams): Promise<void>;
     private _addGroundShadows;
     setLoadedCallback(callback: () => void): void;
     updateBounds(bounds: THREE.Vector3): boolean;

@@ -31,7 +31,8 @@ export declare const enum CORE_EVENTS {
     ON_CHANGE_TYPE_CHANGE_TAG = "onChangeTypeChangeTag",
     ON_CONFIGURATION_LABEL_CHANGE = "onConfigurationLabelChange",
     ON_REMOVE_TYPE_CHANGE_TAG = "onRemoveTypeChangeTag",
-    ON_DIMENSIONS_VISIBILITY_CHANGE = "onDimensionsVisibilityChange"
+    ON_DIMENSIONS_VISIBILITY_CHANGE = "onDimensionsVisibilityChange",
+    ON_CONFIGURATION_SAVED = "onConfigurationSaved"
 }
 export default class CoreEventHandler extends GenericEventHandler<CORE_EVENTS> {
     private _uiCore;

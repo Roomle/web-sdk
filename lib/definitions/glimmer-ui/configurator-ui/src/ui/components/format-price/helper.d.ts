@@ -1,1 +1,1 @@
-export default function formatPrice([currencySymbol, sum]: any[]): string;
+export default function formatPrice([currencySymbol, sum, fallbackCurrencySymbol]: any[]): string;
