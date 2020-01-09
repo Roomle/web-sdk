@@ -1,7 +1,7 @@
 import ConfiguratorContext from './webgl/configurator-context';
 import { KernelParameter, KernelPart, KernelVector3, PlanObject, VariantsList } from '../../typings/kernel';
 import CommonKernelAccess from './services/common-kernel-access';
-import { ConfigurationHash, ConfigurationString, RapiPrice, ArticleNumber } from '../../typings/rapi-types';
+import { ArticleNumber, ConfigurationHash, ConfigurationString, RapiPrice } from '../../typings/rapi-types';
 import { CommonConfiguratorKernelCallbackI } from './common-configurator-kernel-callback';
 import { LoadOptions } from '../../configurator-core/src/roomle-configurator';
 export interface ConfiguratorKernelCallbackI extends CommonConfiguratorKernelCallbackI {
@@ -66,7 +66,7 @@ export default class KernelAccess extends CommonKernelAccess {
     componentDefinitionLoaded(conversationId: number, componentId: number): void;
     componentDefinitionLoadingError(conversationId: number, errorMessage: string): void;
     configurationLoadingError(): void;
-    componentConfigurationUpdated(componentId: number): void;
+    componentConfigurationUpdated(componentId: number, geometryChanged: boolean): void;
     componentParameters(): void;
     requestComponentDimensions(): void;
     planObjectCreated(conversationId: number, planObjectId: number): void;

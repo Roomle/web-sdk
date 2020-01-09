@@ -10,6 +10,7 @@ export interface RoomleComponent extends THREE.Object3D {
     roomlePosition: KernelVector3;
     roomleRotation: KernelVector3;
     hash: string;
+    geometryChanged: boolean;
     replaceMeshes(meshes: THREE.Mesh[]): void;
     addMesh(mesh: THREE.Mesh, transform?: Float32Array): void;
     removeMesh(mesh: THREE.Mesh): void;

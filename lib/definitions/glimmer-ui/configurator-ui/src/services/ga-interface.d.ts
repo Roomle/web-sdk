@@ -47,8 +47,10 @@ export default class GAInterface extends Service {
     private _embed;
     private _scriptLoader;
     private _settings;
+    private _queue;
     readonly _trackingId: any;
     readonly _gtag: any;
+    private _send;
     private _setObjectProperties;
     trackEvent(action: CUSTOM_ACTION_TYPE | GA_ACTION_TYPE | string, category: GA_CATEGORY, label: string, value?: number, fieldsObject?: object): void;
     private _trackException;
@@ -57,6 +59,7 @@ export default class GAInterface extends Service {
     private _trackErrorEvent;
     trackError(message: string): void;
     trackContentError(message: string): void;
+    loadLibScript(): Promise<void>;
     constructor(options: object);
     setDimension(dimension: string, value: any): void;
     setDimensions(dimensions: object): void;

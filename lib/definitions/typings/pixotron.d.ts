@@ -35,7 +35,7 @@ export declare class Pixotron {
     setSize(width: number, height: number): void;
     getSAOPass(): SAOPass;
     getShadowPass(): ShadowPass;
-    getHighLightPass(): THREE.OutlinePass;
+    getHighLightPass(): any;
     getShadowPlanePass(): ShadowPlanePass;
     highlightObjects(objects: THREE.Object3D[]): void;
     blit(): void;

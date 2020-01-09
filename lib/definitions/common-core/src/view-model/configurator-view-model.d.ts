@@ -10,7 +10,7 @@ export declare const DEFAULT_CONVERSATION_ID = 9;
 export interface ConfiguratorViewModelCallbackI {
     componentUpdated(component: RoomleComponent, kernelComponent: KernelComponent): void;
     componentDeleted(component: RoomleComponent): void;
-    planObjectUpdated(planObject: PlanObject): void;
+    planObjectUpdated(planObject: PlanObject, geometryChanged: boolean): void;
     planObjectConstructionDone(planObject: PlanObject): void;
     previewConstructionDone(component: RoomleComponent, hasPreviews: boolean): void;
     configurationLoaded(component: RoomleComponent, isFreeFlying: boolean): void;
@@ -66,6 +66,8 @@ export default class ConfiguratorViewModel implements ConfiguratorKernelCallback
     Editor3dSetPreviewPointAssociations(dockPairs: any, previewId: number): void;
     componentDeleted(componentId: number): void;
     componentMetaUpdated(kernelComponent: KernelComponent): void;
+    componentConfigurationUpdated(runtimeComponentId: number, geometryChanged: boolean): void;
+    private _getRuntimeComponent;
     configurationLoaded(conversationId: number, objectId: number, componentId: number, hash: string, errors: any): void;
     finishParameterChange(resolve: () => void, reject: () => void): void;
     planObjectConfigurationUpdated(planObjectId: number, configuration: ConfigurationString, hash: string): void;

@@ -130,7 +130,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _onSelectedRuntimeComponentChange;
     requestDeleteSelectedComponent(): void;
     componentUpdated(component: RoomleComponent, kernelComponent: KernelComponent): void;
-    planObjectUpdated(planObject: PlanObject): void;
+    planObjectUpdated(planObject: PlanObject, geometryChanged: boolean): void;
     componentDeleted(component: RoomleComponent): void;
     previewConstructionDone(component: RoomleComponent, hasPreviews: boolean): void;
     configurationLoaded(component: RoomleComponent, isFreeFlying: boolean): void;

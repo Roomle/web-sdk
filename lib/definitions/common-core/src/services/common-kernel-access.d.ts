@@ -24,6 +24,8 @@ export default abstract class CommonKernelAccess implements LifeCycleCallbacks, 
     private _lifeCycleManager;
     protected _configuratorUiCallbacks: ConfiguratorUiCallbacks;
     protected _configuratorKernelCallbackListener: Set<ConfiguratorKernelCallbackI>;
+    protected _cachedGroupIds: string[];
+    protected _waitingForGroups: boolean;
     /**
      *
      * !!!WARNING!!!

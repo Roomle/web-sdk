@@ -9,6 +9,6 @@ export default abstract class Environment {
     abstract removeFromScene(): void;
     abstract showGUI(): void;
     reload(): void;
-    updateBounds(bounds: THREE.Vector3): void;
+    updateBounds(bounds: THREE.Vector3, force?: boolean): void;
     cleanUp(): void;
 }

@@ -4,6 +4,7 @@ export interface CommonConfiguratorKernelCallbackI {
     Editor3dAddBakedMesh(runtimeComponentId: number, materialId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     Editor3dAddNamedMesh(runtimeComponentId: number, meshId: string, materialId: string, transform: Float32Array, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array): void;
     componentMetaUpdated(kernelComponent: KernelComponent): void;
+    componentConfigurationUpdated(runtimeComponentId: number, geometryChanged: boolean): void;
     Editor3dBeginConstruction(componentId: number): void;
     Editor3dEndConstruction(id: number): void;
     Editor3dComponentDocked(componentId: number, parentId: number, componentPosition: KernelVector3, componentRotation: KernelVector3): void;
