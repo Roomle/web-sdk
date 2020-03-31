@@ -26,18 +26,34 @@
 </div>
 <div class="dummy-buttons">
 
-    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="sitzfeldt:Panama_L_version_rechts">Sitzfeldt Sofa</button>
+    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="sitzfeldt:Panama_L_version_rechts">Sitzfeldt
+        Sofa
+    </button>
     <button disabled="disabled" class="loadConfigurableItem" data-rml-id="koinor:Formia_11710052">Formia Sofa</button>
     <button disabled="disabled" class="loadConfigurableItem" data-rml-id="joka:Arte_Bed">Joka Bed</button>
     <button disabled="disabled" class="loadConfigurableItem" data-rml-id="moormann:FNP2">Moormann Shelf</button>
     <button disabled="disabled" class="loadConfigurableItem" data-rml-id="team7:RilettoBed">Team7 Bed</button>
-    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="strasser:ST-ONEUnitL244">Strasser Kitchen</button>
+    <button disabled="disabled" class="loadConfigurableItem" data-rml-id="strasser:ST-ONEUnitL244">Strasser Kitchen
+    </button>
 
-    <button disabled="disabled" class="loadConfiguration" data-rml-id="venjakob:Turn:3941E6FE3112C540CB94152649A6F6512BDABA6322BBC7372B8D89EA5A44F5D5">Venkajob Chair</button>
-    <button disabled="disabled" class="loadConfiguration" data-rml-id="biohort:Highline_Master:E4A40F90869CFB913BF9BC68A4CE6407C2602FEC1C386F1CAECA2A142766F871">Biohort</button>
-    <button disabled="disabled" class="loadConfiguration" data-rml-id="usm:frame:FA92430853C0E886C163F12A7DEAEB4609CD3EAC30AA9AC2B6601E6273EB3130">USM conf from RAPI</button>
-    <button disabled="disabled" class="loadConfiguration" data-rml-id="KIKA:Consul:01D1C44477E66A4F12A98E6834A496C8A95FA99492FEC6380087F479F5B709EB">Kika conf from RAPI</button>
-    <button disabled="disabled" class="loadConfiguration" data-rml-id="ikea:PAX_Wardrobe:61B46FE6B3C405B706F67FAA093092C2DFB9C691052AFC72F9B941BA81BB0C44">Ikea conf from RAPI</button>
+    <button disabled="disabled" class="loadConfiguration"
+            data-rml-id="venjakob:Turn:3941E6FE3112C540CB94152649A6F6512BDABA6322BBC7372B8D89EA5A44F5D5">Venkajob Chair
+    </button>
+    <button disabled="disabled" class="loadConfiguration"
+            data-rml-id="biohort:Highline_Master:E4A40F90869CFB913BF9BC68A4CE6407C2602FEC1C386F1CAECA2A142766F871">
+        Biohort
+    </button>
+    <button disabled="disabled" class="loadConfiguration"
+            data-rml-id="usm:frame:FA92430853C0E886C163F12A7DEAEB4609CD3EAC30AA9AC2B6601E6273EB3130">USM conf from RAPI
+    </button>
+    <button disabled="disabled" class="loadConfiguration"
+            data-rml-id="KIKA:Consul:01D1C44477E66A4F12A98E6834A496C8A95FA99492FEC6380087F479F5B709EB">Kika conf from
+        RAPI
+    </button>
+    <button disabled="disabled" class="loadConfiguration"
+            data-rml-id="ikea:PAX_Wardrobe:61B46FE6B3C405B706F67FAA093092C2DFB9C691052AFC72F9B941BA81BB0C44">Ikea conf
+        from RAPI
+    </button>
 
     <button disabled="disabled" id="load-configuration-sofa">KIKA Sofa</button>
     <button disabled="disabled" id="load-configuration-string-big">USM from String (big)</button>
@@ -57,7 +73,7 @@
     <button disabled="disabled" id="camera-reset">Reset Camera</button>
     <button disabled="disabled" id="pause">Pause</button>
     <button disabled="disabled" id="resume">Resume</button>
-
+    <button disabled="disabled" id="component-info">Component Info</button>
 </div>
 <script>
     window.performance.mark('load_app_js_start');
@@ -65,12 +81,13 @@
         console.log('ON LOAD DONE');
         window.performance.mark('load_app_js_end');
         window.performance.measure('load_app_js', 'load_app_js_start', 'load_app_js_end');
-        const script = document.createElement("script");
-        script.src = "configurator-dummy-app.js";
+        const script = document.createElement('script');
+        script.src = 'configurator-dummy-app.js';
         document.body.appendChild(script);
     };
 </script>
-<div id="roomle-configurator" style="height: 100vh; width: 100%; background-color: deeppink; border: solid 1px gray"></div>
+<div id="roomle-configurator"
+     style="height: 100vh; width: 100%; background-color: deeppink; border: solid 1px gray"></div>
 <script src="configurator-main.js" id="appjs" type="module" onload="appjsLoaded();"></script>
 </body>
 </html>

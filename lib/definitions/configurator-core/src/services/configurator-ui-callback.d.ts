@@ -1,15 +1,32 @@
-import { ConfiguratorKernelClass, KernelComponent, KernelPart, UiKernelParameter, UiPossibleChild, UiPossibleChildTag, KernelVector3 } from '../../../typings/kernel';
+import { ConfiguratorKernelClass, KernelComponent, KernelPart, KernelVector3, UiKernelParameter, UiPossibleChild, UiPossibleChildTag } from '../../../typings/kernel';
 import { UIIntersection } from '../utils/ui-intersection-helper';
 import { RAPI_PATHS } from '../../../common-core/src/rapi-access';
 import { RapiTagForUi } from '../../../typings/rapi-types';
 import { UiCallback } from '../../../common-core/src/utils/ui-callback';
 import { ConfiguratorKernelContainer } from '../../../typings/configurator-kernel-container';
 import { PlannerKernelContainer } from '../../../typings/planner-kernel-container';
+export declare type ComponentAction = 'edit' | 'add';
+export declare type ComponentType = 'preview' | 'component';
+export interface UIComponentInfo {
+    id: number;
+    position: {
+        x: number;
+        y: number;
+        z: number;
+    };
+    type: ComponentType;
+    actions: ComponentAction[];
+}
 export default class ConfiguratorUiCallbacks extends UiCallback {
     /**
      * When kernel initialization is complete
      */
     onKernelIsReady: () => void;
+    /**
+     * gets called when the screen position of components/previews changes
+     * @param positions
+     */
+    onComponentPositionsUpdated: (positions: UIComponentInfo[]) => void;
     /**
      * When component parameters are changed/updated, this event is triggered
      * on start up and when a configuration changes
@@ -219,7 +236,11 @@ export default class ConfiguratorUiCallbacks extends UiCallback {
     onConfiguratorKernelIsReady: (kernelContainer: ConfiguratorKernelContainer | PlannerKernelContainer, kernelInstance: ConfiguratorKernelClass) => void;
     /**
      * is called when the configuration is saved to our backend
-    */
+     */
     onConfigurationSaved: (configurationHash: string) => void;
+    /**
+     * called when camera position starts to change or is changing at the moment
+     */
+    onCameraPositionChanges: () => void;
     constructor(creator: string);
 }

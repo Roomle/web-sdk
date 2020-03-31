@@ -16,7 +16,7 @@ export default class MeshGenerator implements Context {
     protected _cacheHolder: CacheHolder;
     private _plannerMeshGenerator;
     protected _materialLoaded: () => void;
-    protected _maxAnisotrophy: number;
+    protected _maxAnisotropy: number;
     protected _textureLoader: import("three").TextureLoader;
     protected _previewMaterial: THREE.MeshStandardMaterial;
     constructor(creator: string);
@@ -27,7 +27,7 @@ export default class MeshGenerator implements Context {
     protected _loadTextures(rapiMaterial: RapiMaterial, material: THREE.MeshPhysicalMaterial, width?: number, height?: number): Promise<void>;
     protected _loadMaterial(materialId: string, width?: number, height?: number): Promise<THREE.Material>;
     protected _assignMaterial(mesh: THREE.Mesh, materialId: string): Promise<void>;
-    maxAnisotrophy: number;
+    maxAnisotropy: number;
     clear(): void;
     protected _assignRGB(mesh: THREE.Mesh, rgbValue: number): Promise<void>;
     protected _assignItem(mesh: THREE.Mesh, catalogItemId: string): Promise<void>;

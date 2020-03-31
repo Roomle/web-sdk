@@ -20,7 +20,8 @@ export declare const enum INPUT_EVENT {
 export declare const enum INPUT_EVENT_TYPE {
     UNKNOWN = 0,
     MOUSE = 1,
-    TOUCH = 2
+    TOUCH = 2,
+    AUTO = 3
 }
 export declare class InputEvent {
     position: Position2;

@@ -5,15 +5,6 @@ export declare class ZoomChangeEvent {
     maxZoom: boolean;
     constructor(minZoom?: boolean, maxZoom?: boolean);
 }
-export declare const enum CAMERA_EVENT {
-    ORBIT_START = 0,
-    ORBIT_MOVE = 1,
-    ORBIT_END = 2,
-    ZOOM_IN = 3,
-    ZOOM_OUT = 4,
-    ZOOM_CHANGE = 5,
-    KEYBOARD_PRESSED = 6
-}
 export declare const enum STATE {
     NONE = 0,
     ORBIT = 1,

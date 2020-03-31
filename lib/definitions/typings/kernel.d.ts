@@ -47,6 +47,7 @@ export interface KernelPossibleChild {
     itemId?: RapiId;
     isDefault?: boolean;
     possible: boolean;
+    group: string;
 }
 export interface KernelPartList {
     originPart: KernelComponent;
@@ -103,6 +104,7 @@ export interface UiKernelParameter extends KernelParameter {
 export interface UiPossibleChild extends RapiElement {
     isItem: boolean;
     isComponent: boolean;
+    group: string;
 }
 export interface UiPossibleChildTag extends RapiTag {
     possibleChildren: UiPossibleChild[];
@@ -151,8 +153,10 @@ export interface KernelComponent {
     boxForMeasurement: KernelCube;
     position: KernelVector3;
     rotation: KernelVector3;
+    possibleChildren: KernelPossibleChild[];
     childIds: EmscriptenList;
     addOnSpots: AddOnSpot[];
+    parameters: KernelParameter[];
     parameterGroups: KernelParameterGroup[];
     dimensionings: Dimensioning[];
     [key: string]: any;
@@ -307,6 +311,7 @@ export interface ConfiguratorKernelClass {
     syncPlanObjectToView(conversationId: number, planObjectId: number): void;
     addMeshCorto(meshId: string, quality: number, data: Uint8Array): void;
     setMaterialsInGroup(groupId: string, materialIds: string[]): void;
+    setActiveGroupInView(groupId: string): void;
 }
 export interface KernelObjectPtrList {
     size(): void;

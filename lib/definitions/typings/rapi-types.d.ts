@@ -76,6 +76,7 @@ export interface RapiMaterial extends RapiJson {
     textures: number[];
     shading: RapiMaterialShading;
     tags: RapiId[];
+    active: boolean;
     [key: string]: string | RapiMaterialShading | AssetUrl | RapiId | number[] | boolean | number | LinksCollection | RapiId[];
 }
 export interface RapiMaterialGroup extends RapiJson {

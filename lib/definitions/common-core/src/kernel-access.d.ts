@@ -67,6 +67,7 @@ export default class KernelAccess extends CommonKernelAccess {
     componentDefinitionLoadingError(conversationId: number, errorMessage: string): void;
     configurationLoadingError(): void;
     componentConfigurationUpdated(componentId: number, geometryChanged: boolean): void;
+    setActiveGroupInView(group: string): void;
     componentParameters(): void;
     requestComponentDimensions(): void;
     planObjectCreated(conversationId: number, planObjectId: number): void;

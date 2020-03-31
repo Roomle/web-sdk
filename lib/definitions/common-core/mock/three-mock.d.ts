@@ -9,7 +9,7 @@ export declare class WebGLRendererMock {
         get: () => boolean;
     };
     capabilities: {
-        getMaxAnisotropy: () => void;
+        getMaxAnisotropy: () => number;
         maxTextures: number;
     };
     shadowMap: {

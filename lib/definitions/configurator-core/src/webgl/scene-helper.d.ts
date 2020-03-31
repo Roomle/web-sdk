@@ -1,7 +1,7 @@
 import { PreviewComponent, PreviewLineComponent, RoomleComponent } from '../../../common-core/src/webgl/roomle-component-factory';
 import { SELECTION_MODE } from '../utils/selection-handler';
 import { Base64Image, CanvasOffset } from '../../../common-core/src/common-interfaces';
-import { KernelComponent, PlanObject } from '../../../typings/kernel';
+import { KernelComponent, PlanObject, UiPossibleChild } from '../../../typings/kernel';
 import { DynamicLightSettingSource } from '../../../common-core/src/lightsetting/dynamic-light-setting-loader';
 import { SceneSettings } from '../../../common-core/src/scene-settings-loader';
 import { RapiMaterial } from '../../../typings/rapi-types';
@@ -10,7 +10,6 @@ import { LifeCycleCallbacks } from '../../../common-core/src/life-cycle-manager'
 import { ConfiguratorViewModelCallbackI } from '../../../common-core/src/view-model/configurator-view-model';
 export default class SceneHelper implements Context, LifeCycleCallbacks, EventListenerObject, ConfiguratorViewModelCallbackI {
     _creator_: string;
-    private _unitFormatter;
     private _domHelper;
     private _scriptLoader;
     private _configuratorInputManager;
@@ -25,6 +24,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _environmentLoader;
     private _pluginSystem;
     private _componentFactory;
+    private _componentRaycastHelper;
     private _pixotron;
     private _pixotronUtil;
     private _composer;
@@ -33,7 +33,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _statsHelper;
     private _renderer;
     private _renderTarget;
-    private _maxAnisotrophy;
+    private _maxAnisotropy;
     private _clock;
     private _delta;
     private _dimensionHelper;
@@ -43,7 +43,6 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _addonHelper;
     private _scene;
     private _uiScene;
-    private _gizmoScene;
     private _depthWriteMaterial;
     private _camera;
     private _environment;
@@ -52,13 +51,16 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _running;
     private _onAfterRender;
     constructor(creator: string, offset: CanvasOffset);
+    private _initOptionalModules;
+    private _showDockings;
+    cancelDockings(): void;
     private _cancelDockings;
     stopRenderLoop(): void;
     private _onHoverOn;
     private _onHoverOff;
     private _highlight;
-    private _shouldRenderGizmo;
-    private _renderGizmo;
+    private _shouldRenderUi;
+    private _renderUi;
     private _requestRender;
     private _checkLayers;
     private _animateCamera;
@@ -114,7 +116,8 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     zoomIn(value?: number): void;
     zoomOut(value?: number): void;
     showStats(): void;
-    showDimensions(): void;
+    showDimensions(): Promise<void>;
+    private _initDimensions;
     hideDimensions(): void;
     loadSceneSettings(sceneSetting: SceneSettings): Promise<{}>;
     setBackgroundColor(hex: string): void;
@@ -123,7 +126,7 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     private _setEnvironment;
     handleEvent(evt: Event): void;
     private _updateCameraToBounds;
-    private _requestDockingsPreview;
+    requestDockingsPreview(userInitiated: boolean, possibleChild?: UiPossibleChild, dragEvent?: DragEvent, dragIn?: boolean): void;
     private _requestDockingsPreviewWithDrag;
     private _dockComponent;
     private _onSelectedRuntimeComponentsChange;
@@ -137,4 +140,5 @@ export default class SceneHelper implements Context, LifeCycleCallbacks, EventLi
     addComponentHandlers(component: RoomleComponent): void;
     addPreviewHandlers(previewComponent: PreviewComponent): void;
     addPreviewLineHandlers(previewLineComponent: PreviewLineComponent): void;
+    private _updateComponentPosition;
 }

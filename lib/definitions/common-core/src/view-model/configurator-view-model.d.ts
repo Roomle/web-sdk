@@ -80,6 +80,8 @@ export default class ConfiguratorViewModel implements ConfiguratorKernelCallback
     clearRootComponent(): void;
     debugSceneGraph(id?: number): void;
     getComponentsForIds(ids: number[]): RoomleComponent[];
+    getComponents(): RoomleComponent[];
+    getPreviews(): PreviewComponent[];
     isPreviewLine(obj: RoomleComponent): boolean;
     isPreview(obj: RoomleComponent): boolean;
     setGeometriesMergedListener(fun: () => void): void;

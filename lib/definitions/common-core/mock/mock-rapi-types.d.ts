@@ -1,4 +1,4 @@
-import { RapiBaseColor, RapiItem, RapiJson, RapiMaterial, RapiSkin, RapiTenant, RapiPrice } from '../../typings/rapi-types';
+import { RapiBaseColor, RapiItem, RapiJson, RapiMaterial, RapiPrice, RapiSkin, RapiTenant } from '../../typings/rapi-types';
 export declare const cloneMockObject: (object: any) => any;
 export declare const MOCK_RAPI_BASE_COLOR: RapiBaseColor;
 export declare const MOCK_RAPI_TEXTURES_EMPTY: any[];

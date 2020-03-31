@@ -108,6 +108,10 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
      */
     previewDockings(possibleChild: UiPossibleChild, dragEvent?: DragEvent, dragIn?: boolean): void;
     /**
+     * Remove/cancel all dockings/ghosts
+     */
+    cancelDockings(): void;
+    /**
      * Deletes the currently selected component if possible
      */
     requestDeleteComponent(): void;
@@ -512,4 +516,9 @@ export default class RoomleConfigurator implements GlobalAPI, Context, KernelUti
     loadError(error?: any): void;
     resumeKernelCallbacks(): void;
     pauseKernelCallbacks(): void;
+    /**
+     * Set the name of the parameter group which is selected at the moment
+     * @param group
+     */
+    setActiveGroupInView(group: string): void;
 }

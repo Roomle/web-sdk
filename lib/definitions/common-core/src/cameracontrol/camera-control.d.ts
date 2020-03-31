@@ -3,6 +3,17 @@ import DomHelper from '../utils/dom-helper';
 import InputManager, { InputEvent } from '../input/input-manager';
 import { Context } from '../di/context';
 import { Position2 } from '../common-interfaces';
+export declare const enum CAMERA_EVENT {
+    ORBIT_START = 0,
+    ORBIT_MOVE = 1,
+    ORBIT_END = 2,
+    ZOOM_IN = 3,
+    ZOOM_OUT = 4,
+    ZOOM_CHANGE = 5,
+    KEYBOARD_PRESSED = 6,
+    MOVING = 7,
+    IDLE = 8
+}
 export interface CameraParameter {
     yaw: number;
     pitch: number;
@@ -15,6 +26,8 @@ export interface CameraParameter {
     far?: number;
     blockOtherTweens?: boolean;
 }
+export declare const INITIAL_YAW = -30;
+export declare const INITIAL_PITCH = 10;
 export declare const INITIAL_CAMERA_DISTANCE = -1;
 export default abstract class CameraControl extends EventDispatcher<any> implements Context {
     _creator_: string;
@@ -25,6 +38,7 @@ export default abstract class CameraControl extends EventDispatcher<any> impleme
     protected _targetPosition: THREE.Vector3;
     protected _tweenEnd: CameraParameter;
     private _stateSaved;
+    private _cameraStandingStill;
     protected _pitch: number;
     protected _yaw: number;
     protected _distance: number;
@@ -40,6 +54,7 @@ export default abstract class CameraControl extends EventDispatcher<any> impleme
     private _removeInputListeners;
     cleanUp(): void;
     animateCamera(delta: number): boolean;
+    private _dispatchCameraIdle;
     protected _areEqual(a: CameraParameter, b: CameraParameter): boolean;
     protected _tweenCameraParameter(start: CameraParameter, end: CameraParameter, ignoreChecks: boolean): Promise<void>;
     protected _getCurrentCameraParameters(): CameraParameter;

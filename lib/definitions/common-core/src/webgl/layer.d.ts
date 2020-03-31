@@ -4,7 +4,7 @@ export declare const enum LAYER {
     BACKGROUND = 2,
     OBJECT = 3,
     PREVIEW = 4,
-    GIZMO = 5,
+    UI = 5,
     DIMENSIONS = 6,
     ADDONSPOTS = 7
 }

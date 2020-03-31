@@ -1,6 +1,6 @@
 import { Base64Image } from './common-interfaces';
 import { SHORT_TYPES } from './utils/url-shortener';
-import { RapiJson, RapiId, RapiAdditionalContent, RapiMesh, RapiServerUrlType, RapiComponent, RapiPackage, RapiConfiguration, RapiItem, RapiTag, RapiTexture, RapiCatalog, RapiMeshData, RapiMaterial, RapiPlan, RapiMaterialGroup, RapiShortId, RapiSkin, PriceId, RapiPrice } from '../../typings/rapi-types';
+import { PriceId, RapiAdditionalContent, RapiCatalog, RapiComponent, RapiConfiguration, RapiId, RapiItem, RapiJson, RapiMaterial, RapiMaterialGroup, RapiMesh, RapiMeshData, RapiPackage, RapiPlan, RapiPrice, RapiServerUrlType, RapiShortId, RapiSkin, RapiTag, RapiTexture } from '../../typings/rapi-types';
 import { Context } from './di/context';
 export declare const MAX_URL_LENGTH = 1500;
 export declare const MESH_DEFAULT_FORMAT = "crt";

@@ -6,7 +6,7 @@ export default class BananaForScale extends ScenePluginDefaultImplementation {
     private _staticItemLoader;
     setScene(scene: THREE.Scene): void;
     updateBounds(bounds: THREE.Box3): void;
-    clearScene(scene: THREE.Scene): void;
+    clearScene(scene: THREE.Scene, uiScene: THREE.Scene): void;
     addToScene(): void;
     removeFromScene(): void;
 }

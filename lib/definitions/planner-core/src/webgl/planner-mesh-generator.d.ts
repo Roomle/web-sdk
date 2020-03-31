@@ -11,7 +11,7 @@ export default class PlannerMeshGenerator extends MeshGenerator {
     generateGeometry(meshId: string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, newGeometryInstance?: boolean): THREE.Geometry;
     generateMesh(meshId: string, material: BaseMaterial | string, vertices: Int32Array, indices: Int32Array, uvCoords: Float32Array, normals: Float32Array, type?: KernelEnum, newGeometryInstance?: boolean): THREE.Mesh;
     setMaterial(mesh: THREE.Mesh, material: BaseMaterial | string, type?: KernelEnum): void;
-    maxAnisotrophy: number;
+    maxAnisotropy: number;
     private _checkWallMaterial;
     clear(): void;
     clearWallMeshes(): void;

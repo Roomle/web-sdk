@@ -54,6 +54,7 @@ export interface ConfiguratorInitData {
     minHorizontalCameraAngle?: number;
     maxHorizontalCameraAngle?: number;
     bananaForScale?: boolean;
+    transparentHighlighting?: boolean;
 }
 export interface PlannerInitData {
     mode?: CAMERA_TYPE;
